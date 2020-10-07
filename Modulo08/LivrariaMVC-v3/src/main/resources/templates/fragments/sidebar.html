@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<nav class="sidebar sidebar-open" th:fragment="nav-sidebar">
+		<ul class="nav nav-pills">
+			<li class="nav-item"><a class="nav-link " th:href="@{/}"> <i
+					class="oi oi-home"></i> <span th:text="#{sidebar.link.home}"></span>
+			</a></li>
+		</ul>
+		<div sec:authorize="hasRole('ROLE_USER')">
+			<ul class="nav nav-pills">
+				<li class="nav-item"><span class="nav-link active"
+					th:text="#{sidebar.titulo.compra}"></span></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/compras/cadastrar}"> <i class="oi oi-plus"></i> <span
+						th:text="#{sidebar.link.cadastrar}"></span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/compras/listar}"> <i class="oi oi-spreadsheet"></i>
+						<span th:text="#{sidebar.link.listar}"></span>
+				</a></li>
+			</ul>
+		</div>
+
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<ul class="nav nav-pills">
+				<li class="nav-item"><span class="nav-link active"
+					th:text="#{sidebar.titulo.editora}"></span></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/editoras/cadastrar}"> <i class="oi oi-plus"></i> <span
+						th:text="#{sidebar.link.cadastrar}"></span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/editoras/listar}"> <i class="oi oi-spreadsheet"></i>
+						<span th:text="#{sidebar.link.listar}"></span>
+				</a></li>
+			</ul>
+		</div>
+
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<ul class="nav nav-pills">
+				<li class="nav-item"><span class="nav-link active"
+					th:text="#{sidebar.titulo.livro}"></span></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/livros/cadastrar}"> <i class="oi oi-plus"></i> <span
+						th:text="#{sidebar.link.cadastrar}"></span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/livros/listar}"> <i class="oi oi-spreadsheet"></i>
+						<span th:text="#{sidebar.link.listar}"></span>
+				</a></li>
+			</ul>
+		</div>
+
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<ul class="nav nav-pills">
+				<li class="nav-item"><span class="nav-link active"
+					th:text="#{sidebar.titulo.usuario}"></span></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/usuarios/cadastrar}"> <i class="oi oi-plus"></i> <span
+						th:text="#{sidebar.link.cadastrar}"></span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/usuarios/listar}"> <i class="oi oi-spreadsheet"></i>
+						<span th:text="#{sidebar.link.listar}"></span>
+				</a></li>
+			</ul>
+		</div>
+	</nav>
+</body>
+</html>

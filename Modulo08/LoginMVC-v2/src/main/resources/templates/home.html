@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	layout:decorate="~{fragments/layout}">
+<head>
+<title>Menu</title>
+</head>
+<body>
+	<div layout:fragment="content" th:remove="tag">
+		<h1>
+			<span th:text="#{home.hello}"></span>
+			<span th:inline="text">[[${#httpServletRequest.remoteUser}]]!</span>
+		</h1>
+		
+		<p><a th:href="@{/}"><span th:text="#{home.message.1}"></a></p>
+		
+		<!-- <div sec:authorize="hasRole('ROLE_ADMIN')"> -->
+		<p><a th:href="@{/admin}"><span th:text="#{home.message.2}"></a></p>
+
+		<!-- </div> -->
+
+		<!-- <div sec:authorize="hasRole('ROLE_USER')"> -->
+		<p><a th:href="@{/user}"><span th:text="#{home.message.3}"></a></p>
+		<!-- </div> -->
+		
+	</div>
+</body>
+</html>

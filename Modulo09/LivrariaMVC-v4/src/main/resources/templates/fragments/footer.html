@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<footer class="layout-footer" th:fragment="rodape">
+		<div class="container">
+
+			<div class="footer-copy">
+				<div sec:authorize="isAuthenticated()">
+					<span th:text="#{login.username}"></span>: <span
+						sec:authentication="name"></span> | <span th:text="#{user.role}"></span>:
+					<span sec:authentication="principal.authorities"></span> <br />
+				<span>&copy; Departamento de Computação &copy;</span>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
+

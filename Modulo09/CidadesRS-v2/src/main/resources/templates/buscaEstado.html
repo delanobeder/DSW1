@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>AJAX (dynamic select)</title>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:inline="javascript">
+var contextRoot = [[@{/}]];
+</script>
+<script th:src="@{/js/ajaxEstado.js}"></script>
+</head>
+<body>
+	<div class="form-group col-md-6">
+		<label for="estado">Estado</label> <select id="estado"
+			class="form-control">
+			<option value="">Selecione</option>
+			<option th:each="estado : ${estados}" th:value="${estado.id}"
+				th:text="${estado.nome}"></option>
+		</select>
+	</div>
+
+	<div class="form-group col-md-6">
+		<label for="cidade">Cidade</label> <select id="cidade"
+			class='form-control' onchange='apresentaDS()'>
+		</select>
+	</div>
+
+<br/>
+
+	<a th:href="@{/}">Voltar</a>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>AJAX (dynamic table)</title>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:inline="javascript">
+var contextRoot = [[@{/}]];
+</script>
+<script th:src="@{/js/ajaxNome.js}"></script>
+</head>
+<body>
+	<form name='form'>
+		<div align="center">
+			<p>Lista de Cidades</p>
+			<label for="cidade">Nome</label> <input id="nome" name="nome">
+			<div id="cidades">
+
+				<p>
+					Quantidade: <span th:text="${#lists.size(cidades)}">[Engine
+						Size]</span>
+				</p>
+
+
+				<table border="1" style="width: 400px; border: 1px solid black">
+					<tr>
+						<th style="width: 10%; text-align: center"></th>
+						<th style="width: 70%;">Nome</th>
+						<th style="width: 20%; text-align: center">Estado</th>
+					</tr>
+					<tr th:each="cidade : ${cidades}">
+						<td style="text-align: center"><input
+							type="radio" th:id="|${cidade.nome}/${cidade.estado.sigla}|"
+							name="selCidade" th:value="|${cidade.nome}/${cidade.estado.sigla}|"
+							th:attr="onclick=|alert('Selecionado: ${cidade.nome}/${cidade.estado.sigla}')|" >
+						</td>
+						<td th:text="${cidade.nome}"></td>
+						<td th:text="${cidade.estado.sigla}" style="text-align: center"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</form>
+	<a th:href="@{/}">Voltar</a>
+</body>
+</html>

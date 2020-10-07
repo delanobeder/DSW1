@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>AJAX (Autocomplete)</title>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/jquery-ui/jquery-ui.js}"></script>
+<link rel="stylesheet" th:href="@{/webjars/jquery-ui/jquery-ui.css}">
+<script th:inline="javascript">
+	$(function() {	
+		$("#cidade").autocomplete({
+			minLength : 2,
+			source: "/cidades/filtros",
+			select : function(event, ui) {
+				alert("Selecionado: " + ui.item.value);
+			}
+		});
+	});
+</script>
+</head>
+<div class="ui-widget">
+	<label for="cidade">Nome</label> <input id="cidade" name="cidade"
+		placeholder="Pelo menos 2 caracteres">
+</div>
+<br />
+<a th:href="@{/}">Voltar</a>
+</body>
+</html>

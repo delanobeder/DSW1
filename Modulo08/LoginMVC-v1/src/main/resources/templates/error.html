@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	layout:decorate="~{fragments/layout}">
+<head>
+<title th:text="#{error.page.title}"></title>
+</head>
+<body>
+	<div layout:fragment="content" th:remove="tag">
+
+
+
+		<h1 class="h3 mb-3 font-weight-normal">
+			<i class="oi oi-warning"></i> <span th:text="${status}"></span>
+		</h1>
+
+		<h2 th:text="#{${error}}"></h2>
+
+		<hr />
+
+		<div>
+			<span th:text="#{${message}}"></span><br />
+			<br /> <a class="btn btn-primary" type="button"
+				href="javascript:history.back()"><span th:text="#{previous.message}"></span></a>
+		</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	layout:decorate="~{fragments/layout}">
+<head>
+<title th:text="#{user.index.title}"></title>
+</head>
+<body>
+	<div layout:fragment="content" th:remove="tag">
+		<h1 th:text="#{user.index.title}"></h1>
+		<h1>
+			<span th:text="#{home.hello}"></span>
+			<span th:inline="text">[[${#httpServletRequest.remoteUser}]]!</span>
+		</h1>
+		<a class="btn btn-primary" type="button"
+				href="javascript:history.back()"><span th:text="#{previous.message}"></span></a>
+	</div>
+</body>
+</html>

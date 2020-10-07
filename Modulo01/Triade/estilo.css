@@ -1,0 +1,52 @@
+
+
+/* Seleciona todos os elementos p */
+
+p {
+    color: blue;
+}
+
+/* Seleciona todos os elementos da classe even */
+
+.even {
+    text-transform: capitalize;
+    text-align: right;
+}
+
+/* Seleciona todos os elementos da classe odd */
+
+.odd {
+    text-transform: uppercase;
+    text-align: justify;
+}
+
+/* Seleciona os elementos com id = p3 ou id = p4 */
+
+#p3, #p4 {
+    color: red;
+}
+
+/* Seleciona todo elemento "b" descendente (filho, neto, etc) de um elemento "p" */
+
+p b {
+    color: green;
+}
+
+/* Seleciona todo elemento "b" filho de um elemento "p" */
+
+p > b {
+    color: magenta;
+}
+
+
+/* Seleciona todo elemento p imediatamente precedido de um elemento h2 */
+
+h2 + p {
+    text-decoration: underline;
+}
+
+/* Seleciona todo elemento p precedido de um elemento h2 */
+
+h2 ~ p {
+    color: darkmagenta;
+}

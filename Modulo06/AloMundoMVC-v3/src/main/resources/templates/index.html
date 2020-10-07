@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title th:text="#{title.text}">Alô Mundo</title>
+</head>
+
+<body>
+	<div style="right: 40px; position: absolute">
+		<a th:href="@{''(lang=pt)}"><img alt="" th:src="@{/image/Brasil.gif}" style="width: 50px;" /></a> 
+		<a th:href="@{''(lang=en)}"><img alt="" th:src="@{/image/EUA.gif}" style="width: 50px;" /></a>
+		<a th:href="@{''(lang=fr)}"><img alt="" th:src="@{/image/Franca.gif}" style="width: 50px;" /></a> 
+		<a th:href="@{''(lang=ja)}"><img alt="" th:src="@{/image/Japao.gif}" style="width: 50px;" /></a>
+	</div>
+	<h1 th:text="#{welcome.text}"></h1>
+
+	<h4>
+		<span th:text="${dateString}">16 Março 2020</span>
+	</h4>
+	<h4>
+		<span th:text="${#dates.format(date)}">16 Março 2020</span>
+	</h4>
+</body>
+
+</html>

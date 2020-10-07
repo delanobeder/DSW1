@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+    <servlet>
+        <servlet-name>AloMundo</servlet-name>
+        <servlet-class>br.ufscar.dc.dsw.AloMundoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AloMundo</servlet-name>
+        <url-pattern>/TestarAloMundo</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
