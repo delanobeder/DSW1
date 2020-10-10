@@ -1,11 +1,11 @@
 
 function hideEven() {
-    var flag = confirm('Are you sure?');
+    var flag = confirm('Você tem certeza?');
     if (flag) {
         var divsToHide = document.getElementsByClassName("even");
         for (var i = 0; i < divsToHide.length; i++) {
-            divsToHide[i].style.visibility = "hidden"; // or
-            divsToHide[i].style.display = "none"; // depending on what you're doing
+            divsToHide[i].style.visibility = "hidden"; 
+            divsToHide[i].style.display = "none";
         }
     } else
         return false;
