@@ -121,7 +121,7 @@
     ...
     ```
     
-12. Refazer o processo (compilar, deploy) e testar, abrindo agora a URL: http://localhost:8080/AplicacaoAloMundo/TestarAloMundo
+12. Refazer o processo (compilar, deploy) e testar, abrindo agora a URL: http://localhost:8080/AloMundo/TestarAloMundo
 
 13. Fazer undeploy da aplicação e parar o tomcat
 

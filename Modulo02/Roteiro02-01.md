@@ -12,7 +12,7 @@
 
 
 
-1. Baixar o arquivo zip - http://tomcat.apache.org (preferencialmente a versão 9.0.37)
+1. Baixar o arquivo zip - http://tomcat.apache.org (preferencialmente a versão 9.0.38)
 
 2. Descompactar em uma pasta (`<diretório Tomcat>`) sem espaços ou acentos
 
