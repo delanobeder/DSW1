@@ -35,6 +35,7 @@
 
    ```jsp
    <%@ page contentType="text/html" pageEncoding="UTF-8"%>
+   <%@ page import="java.util.Date" %>
    <!DOCTYPE html>
    <html>
        <head>
@@ -43,6 +44,8 @@
        </head>
        <body>
            <h1>Alô Mundo</h1>
+           
+           <h1> <%= new Date() %></h1>
        </body>
    </html>
    ```
@@ -50,6 +53,8 @@
 3. Criar um servlet **AloMundo** qualquer (com o mesmo texto do JSP)
 
 4. Exibir o **servlet** gerado, dentro da pasta work do TomCat
+
+<div style="page-break-after: always"></div>
 
 5. Adicionar um código no servlet, para fazer um for de 1 a 10
 
@@ -59,8 +64,6 @@
        out.println(i + ": " + linha + "<br/>");
    }
    ```
-
-<div style="page-break-after: always"></div>
 
 6. Adicionar um código equivalente no JSP, para comparar
 
