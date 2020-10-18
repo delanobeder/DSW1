@@ -3,6 +3,7 @@
 **Prof. Delano M. Beder (UFSCar)**
 
 **Módulo 03 - Java Server Pages (JSPs)**
+
 - - -
 
 #### 04 - Transferindo controle para outros recursos web
@@ -93,12 +94,26 @@
    Bem-vindo <%=request.getParameter("nomeCompleto")%>!
    <br/>
    Seu último acesso foi em <%=request.getParameter("ultimoAcesso")%>!
+   <br>
+   Você está em: <%= voceEstaEm %>!
+   <br>
    <hr>
    ```
 
 <div style="page-break-after: always"></div>
 
-8. Modificar a página **sucesso.jsp** para incluir o **cabecalho.jsp**
+8. Criar a página **rodape.jsp**
+
+   ```jsp
+   <%@ page contentType="text/html" pageEncoding="UTF-8"%>
+   <%@ page import="java.util.Date" %>
+   <hr>
+   <p align="center"><%= new Date() %></p>
+   ```
+   
+   
+   
+9. Modificar a página **sucesso.jsp** para incluir os arquivos **cabecalho.jsp** e **rodape.jsp**
 
    ```jsp
    <%@ page contentType="text/html" pageEncoding="UTF-8"%>
@@ -110,43 +125,22 @@
            <title>JSP Page</title>
        </head>
        <body>
-           <jsp:include page="cabecalho.jsp"/>
+           <% String voceEstaEm = "AT9 - Sala 197"; %>
+           <%@include file="cabecalho.jsp" %>
+           
            Menu de opções:<br/><br/>
            Conteúdo da página<br/>
            Conteúdo da página<br/>
            Conteúdo da página<br/>
-           Conteúdo da página<br/>
-           Conteúdo da página<br/>
-           Conteúdo da página<br/>
+           
+           <jsp:include page="rodape.jsp"/>
        </body>
    </html>
    ```
    
-9. Testar a aplicação 
+10. Testar a aplicação 
 
-10. Mostrar o código gerado para **sucesso.jsp**, e identificar a linha do include
-
-11. Modificar **sucesso.jsp** para usar <%@include%> (Mostrar o código gerado agora, e comparar)
-
-    ```jsp
-    <%@ include file="cabecalho.jsp" %>
-    ```
-
-12. Adicionar, na página **sucesso.jsp**, o seguinte código
-
-    ```jsp
-    <% String voceEstaEm = "AT9 – Sala 197"; %>
-    ```
-
-14. Modificar a página **cabecalho.jsp** para acessar a variável local
-
-    ```jsp
-    Você está em: <%= voceEstaEm %>!
-    ```
-
-15. Testar
-
-
+    
 
 
 #### Leituras adicionais

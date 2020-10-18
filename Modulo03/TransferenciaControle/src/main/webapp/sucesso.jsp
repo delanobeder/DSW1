@@ -8,8 +8,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%--jsp:include page="cabecalho.jsp"--%>
-        
         <% String voceEstaEm = "AT9 - Sala 197"; %>
 
         <%@include file="cabecalho.jsp" %>
@@ -18,8 +16,7 @@
         Conteúdo da página<br/>
         Conteúdo da página<br/>
         Conteúdo da página<br/>
-        Conteúdo da página<br/>
-        Conteúdo da página<br/>
-        Conteúdo da página<br/>
+        
+        <jsp:include page="rodape.jsp"/>
     </body>
 </html>
