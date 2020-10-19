@@ -6,11 +6,18 @@
     <h2>Hello World!</h2>
 
     <%
-        int num = Integer.parseInt(request.getParameter("num"));
-        String nome = request.getParameter("nome");
+        String numValue = request.getParameter("num");
+    	int num = (numValue == null) ? 5 : Integer.parseInt(numValue);
+    
+        String nome = "Fulano";
+        String param = request.getParameter("nome"); 
+        if (param != null) {
+        	nome = param; 
+        }
+        
         for(int i=0; i < num; i++) {
-      %>
-    Olá <%=nome%>!<br />
+    %>
+    Olá <%= nome %>!<br />
     <% } %>
 </body>
 

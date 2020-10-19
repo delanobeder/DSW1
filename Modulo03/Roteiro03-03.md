@@ -49,7 +49,33 @@
 
 3. Testar e verificar que ocorre erro quando não é passado nenhum parâmetro
 
+<div style="page-break-after: always"></div>
+
 4. Corrigir o problema e testar novamente sem parâmetros e com diferentes valores de “num” e “nome”
+
+   ```jsp
+   <%@ page contentType="text/html" pageEncoding="UTF-8"%>
+   <!DOCTYPE html>
+   <html>
+   <body>
+       <h2>Hello World!</h2>
+       <%
+           String numValue = request.getParameter("num");
+       	int num = (numValue == null) ? 5 : Integer.parseInt(numValue);    
+           String nome = "Fulano";
+           String param = request.getParameter("nome"); 
+           if (param != null) {
+           	nome = param; 
+           }
+           for(int i=0; i < num; i++) {
+       %>
+       Olá <%= nome %>!<br />
+       <% } %>
+   </body>
+   </html>
+   ```
+
+   
 
 5. Fim
 

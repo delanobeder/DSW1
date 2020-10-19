@@ -33,7 +33,7 @@
 
    ```jsp
    <body>
-       <form action="login.jsp">
+       <form action="login.jsp" method="POST">
            <fieldset>
                <legend>Login</legend>
                Usuário: <input type="text" name="usuario" /><br/>
