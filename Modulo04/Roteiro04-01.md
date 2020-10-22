@@ -158,7 +158,7 @@
    Query OK, 1 row affected (0.01 sec)
    Query OK, 1 row affected (0.01 sec)
    mysql> quit
-Bye
+   Bye
    ```
 
    3.3. Adicionar biblioteca do  ***MySQL JDBC Driver*** como dependência do projeto (no arquivo **pom.xml**)
