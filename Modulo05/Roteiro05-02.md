@@ -290,8 +290,11 @@
    }
    ```
 
+   <div style="page-break-after: always"></div>
+
+
    5.2. Criar a classe **br.ufscar.dc.dsw.dao.UsuarioDAO**
-   
+
    ```java
    package br.ufscar.dc.dsw.dao;
    
@@ -440,14 +443,12 @@
    import java.util.List;
    
    public final class Erro implements Serializable {
-   
    	private static final long serialVersionUID = 1L;
    	private final List<String> erros;
-   	
+       
    	public Erro() {
    		erros = new ArrayList<>();
-   	}
-   	
+   	}	
    	public Erro(String mensagem) {
    		erros = new ArrayList<>();
    		erros.add(mensagem);
@@ -456,17 +457,15 @@
    	public void add(String mensagem) {
    		erros.add(mensagem);
    	}
-   	
    	public boolean isExisteErros() {
    		return !erros.isEmpty();
    	}
-   	
    	public List<String> getErros() {
    		return erros;
    	}
    }
    ```
-
+   
 7. Criar os controladores **[C do MVC]**
 
    Criar uma nova pasta (pacote) dentro de src/main/java: **br.ufscar.dc.dsw.controller**
@@ -629,8 +628,8 @@
    }
    ```
    
-   
-   
+<div style="page-break-after: always"></div>
+
 8. Criar as visões (arquivos em **src/main/webapp**) **[V do MVC]**
 
    8.1. Remova o arquivo **index.jsp** e crie o arquivo **login.jsp**
@@ -745,7 +744,8 @@
    
    
    
-   
+<div style="page-break-after: always"></div>
+
    
    8.5 Crie o arquivo **logado/usuario/index.jsp**
    
