@@ -633,7 +633,7 @@
    
 8. Criar as visões (arquivos em **src/main/webapp**) **[V do MVC]**
 
-   8.1. Remova o arquivo **index.gsp** e crie o arquivo **login.jsp**
+   8.1. Remova o arquivo **index.jsp** e crie o arquivo **login.jsp**
    
    ```jsp
    <%@ page contentType="text/html" pageEncoding="UTF-8"%>
@@ -720,7 +720,7 @@
    }
    ```
 
-   8.4. Crie o arquivo **logado/admin/index.gsp**
+   8.4. Crie o arquivo **logado/admin/index.jsp**
    
    ```jsp
    <%@ page contentType="text/html" pageEncoding="UTF-8"%>
@@ -747,7 +747,7 @@
    
    
    
-   8.5 Crie o arquivo **logado/usuario/index.gsp**
+   8.5 Crie o arquivo **logado/usuario/index.jsp**
    
    ```jsp
    <%@page contentType="text/html" pageEncoding="UTF-8"%>
