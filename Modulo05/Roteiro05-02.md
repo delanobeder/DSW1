@@ -1,4 +1,4 @@
-﻿## DESENVOLVIMENTO DE SOFTWARE PARA A WEB 1
+## DESENVOLVIMENTO DE SOFTWARE PARA A WEB 1
 
 **Prof. Delano M. Beder (UFSCar)**
 
@@ -28,7 +28,7 @@
       mvn -N io.takari:maven:wrapper
       ```
 
-    - Incluir as dependências (**javax.servlet**, **javax.servlet.jsp**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
+    - Incluir as dependências (**javax.servlet**, **javax.servlet.jsp**, **jstl**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
 
       
 
