@@ -746,9 +746,9 @@
    
 <div style="page-break-after: always"></div>
 
-   
+
    8.5 Crie o arquivo **logado/usuario/index.jsp**
-   
+
    ```jsp
    <%@page contentType="text/html" pageEncoding="UTF-8"%>
    <%@page isELIgnored="false"%>
@@ -770,7 +770,7 @@
        </body>
    </html>
    ```
-   
+
 9. Abrir um terminal dentro da pasta do projeto e executar os seguintes comandos (note que devido ao uso do Maven Wrapper, não é mais necessário acessar a instalação global do Maven):
 
    ```sh
@@ -785,7 +785,7 @@
 
     - Tentar entrar apenas digitando o login e verificar que uma mensagem de erro é apresentada ( Senha não informada! )
 
-    - Logar admin/maria e verificar que uma mensagem de erro é apresentada (Senha Inválida !)
+    - Logar admin/user e verificar que uma mensagem de erro é apresentada (Senha Inválida !)
 
     - Logar admin/admin e verificar que abre a página de administrador
 
@@ -793,7 +793,7 @@
 
       Verificar que uma mensagem de erro é apresentada (Acesso não autorizado!)
 
-    - Logar maria/maria e verificar que abre a página de usuário. 
+    - Logar user/user e verificar que abre a página de usuário. 
 
       Depois tente acessar a seguinte URL http://localhost:8080/Login/admin
 
