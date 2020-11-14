@@ -511,7 +511,7 @@
    				UsuarioDAO dao = new UsuarioDAO();
    				Usuario usuario = dao.getbyLogin(login);
    				if (usuario != null) {
-   					if (usuario.getSenha().equalsIgnoreCase(senha)) {
+   					if (usuario.getSenha().equals(senha)) {
    						request.getSession().setAttribute("usuarioLogado", usuario);
    						if (usuario.getPapel().equals("ADMIN")) {
    							response.sendRedirect("admin/");
