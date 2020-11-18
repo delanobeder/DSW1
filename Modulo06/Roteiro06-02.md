@@ -182,6 +182,3 @@
 - Your Step-by-Step Guide to Spring Boot Internationalization
 
   https://phrase.com/blog/posts/spring-boot-internationalization/
-
-
-

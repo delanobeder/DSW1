@@ -23,7 +23,7 @@
 	
 	- **Language:** Java
 	
-	- **Spring Boot:** 2.3.3
+	- **Spring Boot:** 2.4.0
 	
 	- **Group:** br.ufscar.dc.dsw
 	
@@ -629,7 +629,7 @@
 
 * JPA and Spring Data JPA
 
-  https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/htmlsingle/#boot-features-jpa-and-spring-data
+  https://docs.spring.io/spring-boot/docs/2.4.0/reference/htmlsingle/#boot-features-jpa-and-spring-data
 
 * Accessing Data Accessing Data with JPA
 

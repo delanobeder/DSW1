@@ -16,7 +16,7 @@
 	
 	- **Language:** Java
 	
-	- **Spring Boot:** 2.3.3
+	- **Spring Boot:** 2.4.0
 	
 	- **Group:** br.ufscar.dc.dsw
 	
