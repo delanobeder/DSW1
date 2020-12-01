@@ -890,34 +890,36 @@
     
     import java.util.Arrays;
     import java.util.Collection;
+     
     import org.springframework.security.core.GrantedAuthority;
     import org.springframework.security.core.authority.SimpleGrantedAuthority;
     import org.springframework.security.core.userdetails.UserDetails;
+    
     import br.ufscar.dc.dsw.domain.Usuario;
      
     @SuppressWarnings("serial")
     public class UsuarioDetails implements UserDetails {
      
-        private Usuario user;
+        private Usuario usuario;
          
-        public UsuarioDetails(Usuario user) {
-            this.user = user;
+        public UsuarioDetails(Usuario usuario) {
+            this.usuario = usuario;
         }
      
         @Override
         public Collection<? extends GrantedAuthority> getAuthorities() {
-            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());
+            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(usuario.getRole());
             return Arrays.asList(authority);
         }
      
         @Override
         public String getPassword() {
-            return user.getPassword();
+            return usuario.getPassword();
         }
      
         @Override
         public String getUsername() {
-            return user.getUsername();
+            return usuario.getUsername();
         }
      
         @Override
@@ -940,15 +942,16 @@
             return true;
         }
     
-    	public Usuario getUser() {
-    		return user;
-    	}   
+    	public Usuario getUsuario() {
+    		return usuario;
+    	}
+        
     }
     ```
 
     
 
-15. Adicionar a classe **br.ufscar.dc.dsw.security.UserDetailsServiceImpl**
+15. Adicionar a classe **br.ufscar.dc.dsw.security.UsuarioDetailsServiceImpl**
 
     ```java
     package br.ufscar.dc.dsw.security;
@@ -957,6 +960,7 @@
     import org.springframework.security.core.userdetails.UserDetails;
     import org.springframework.security.core.userdetails.UserDetailsService;
     import org.springframework.security.core.userdetails.UsernameNotFoundException;
+    
     import br.ufscar.dc.dsw.dao.IUsuarioDAO;
     import br.ufscar.dc.dsw.domain.Usuario;
      
@@ -968,13 +972,13 @@
         @Override
         public UserDetails loadUserByUsername(String username)
                 throws UsernameNotFoundException {
-            Usuario user = dao.getUserByUsername(username);
+            Usuario usuario = dao.getUserByUsername(username);
              
-            if (user == null) {
+            if (usuario == null) {
                 throw new UsernameNotFoundException("Could not find user");
             }
              
-            return new UsuarioDetails(user);
+            return new UsuarioDetails(usuario);
         }
     }
     ```

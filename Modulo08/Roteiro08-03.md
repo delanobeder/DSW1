@@ -8,7 +8,7 @@
 
 #### 03 -  Autenticação/Autorização
 
-**Spring Security**
+**Spring Security (Autenticação em memória)**
 
 [Código](https://github.com/delanobeder/DSW1/blob/master/Modulo08/LoginMVC-v1)
 
@@ -546,26 +546,24 @@
    		
    		<p><a th:href="@{/}"><span th:text="#{home.message.1}"></a></p>
    		
-   		<!-- <div sec:authorize="hasRole('ROLE_ADMIN')"> -->
-   		<p><a th:href="@{/admin}"><span th:text="#{home.message.2}"></a></p>
+   		<div sec:authorize="hasRole('ROLE_ADMIN')">
+   			<p><a th:href="@{/admin}"><span th:text="#{home.message.2}"></a></p>
+   		</div>
    
-   		<!-- </div> -->
-   
-   		<!-- <div sec:authorize="hasRole('ROLE_USER')"> -->
-   		<p><a th:href="@{/user}"><span th:text="#{home.message.3}"></a></p>
-   		<!-- </div> -->
-   		
+   		<div sec:authorize="hasRole('ROLE_USER')">
+   			<p><a th:href="@{/user}"><span th:text="#{home.message.3}"></a></p>
+   		</div>
    	</div>
    </body>
    </html>
    ```
-
+   
    
 
    9.8 Arquivo **src/main/resources/templates/index.html**
 
    ```html
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
          xmlns:th="http://www.thymeleaf.org"
          layout:decorate="~{fragments/layout}">
@@ -583,13 +581,13 @@
    </body>
    </html>
    ```
-
+   
    
 
    9.9 Arquivo **src/main/resources/templates/login.html**
 
    ```html
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
    	xmlns:th="http://www.thymeleaf.org"
    	layout:decorate="~{fragments/layout}">
@@ -633,7 +631,7 @@
    </body>
    </html>
    ```
-
+   
    
 
 10. Visão - área de usuários comuns (papel ROLE_USER)

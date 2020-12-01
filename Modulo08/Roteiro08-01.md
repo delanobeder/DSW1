@@ -54,13 +54,11 @@
    spring.datasource.username=root
    spring.datasource.password=root
    spring.datasource.driver-class-name=org.apache.derby.jdbc.ClientDriver
-   
    # JPA
    spring.jpa.hibernate.ddl-auto = update
    spring.jpa.show-sql = true
    spring.jpa.open-in-view = true
    spring.jpa.hibernate.naming.physical-strategy = org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-   
    # THYMELEAF
    spring.thymeleaf.cache = false
    ```
@@ -84,13 +82,11 @@
    spring.datasource.url = jdbc:mysql://localhost:3306/Livraria
    spring.datasource.username = root
    spring.datasource.password = root
-   
    # JPA
    spring.jpa.hibernate.ddl-auto = update
    spring.jpa.show-sql = true
    spring.jpa.open-in-view = true
    spring.jpa.hibernate.naming.physical-strategy = org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-   
    # THYMELEAF
    spring.thymeleaf.cache = false
    ```
@@ -105,7 +101,8 @@
    ```
    
 5. Configurar o projeto --- no arquivo **pom.xml** (incluir novas maven dependências)
-
+Lembrar de adicionar o **plugin** native2ascii (ver roteiros anteriores)
+   
    ```xml
    <dependency>
    	<groupId>org.webjars</groupId>
@@ -136,8 +133,30 @@
    	<artifactId>thymeleaf-layout-dialect</artifactId>
    </dependency>
    ```
+5.1 Adicionar a biblioteca Native2Ascii (https://native2ascii.net/) via Maven, adicionando as seguintes linhas ao arquivo **pom.xml**:
 
+   ```xml
+   <plugin>
+   	<groupId>org.codehaus.mojo</groupId>
+   	<artifactId>native2ascii-maven-plugin</artifactId>
+   	<version>1.0-beta-1</version>
+   	<executions>
+   		<execution>
+   			<id>native2ascii-utf8-resources</id>
+   			<goals>
+   				<goal>native2ascii</goal>
+   			</goals>
+   			<configuration>
+   				<dest>${project.build.directory}/classes</dest>
+   				<src>${project.resources[0].directory}</src>
+   				<encoding>UTF-8</encoding>
+   			</configuration>
+   		</execution>
+   	</executions>
+   </plugin>
+   ```
 
+<div style="page-break-after: always"></div>
 
 ##### (2) Home Page
 - - -

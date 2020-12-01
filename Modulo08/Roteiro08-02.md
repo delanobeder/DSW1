@@ -6,7 +6,7 @@
 
 - - -
 
-#### 02 - Internacionalizando a aplicação "LivrariaMVC" 
+#### 02 - Internacionalizando a aplicação "LivrariaMVC" (Demonstração 01)
 **Através de um menu de opções**
 
 [Código](https://github.com/delanobeder/DSW1/blob/master/Modulo08/LivrariaMVC-v2)

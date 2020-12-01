@@ -8,7 +8,7 @@
 
 #### 04 - Autenticação/Autorização 
 
-**Acesso a banco de dados**
+**Spring Security (Autenticação através acesso a banco de dados)**
 
 [Código](https://github.com/delanobeder/DSW1/blob/master/Modulo08/LoginMVC-v2)
 
@@ -50,30 +50,28 @@
    
    quit;
    ```
-   
-   
-   
-   
-   
+
+   <div style="page-break-after: always"></div>
+
    4.2. Em um terminal no diretório do projeto (<DB_HOME> é o local em que serão armazenados os bancos de dados do DERBY e $DERBY_HOME é a instalação do Derby -- onde foi descompactado seu conteúdo)
 
    ```sh
-% java -Dderby.system.home=<DB_HOME> -jar  $DERBY_HOME/lib/derbyrun.jar ij
+   % java -Dderby.system.home=<DB_HOME> -jar  $DERBY_HOME/lib/derbyrun.jar ij
    versão ij 10.15
-ij> run 'db/Derby/create.sql';
+   ij> run 'db/Derby/create.sql';
    ij> connect 'jdbc:derby:Login;create=true;user=root;password=root';
-ij> disconnect;
+   ij> disconnect;
    ij> quit;
    ```
-   
+
    4.3. Iniciar o servidor **Apache Derby**. Em um terminal executar: 
-   
+
    ```sh
    % java -Dderby.system.home=<DB_HOME> -jar $DERBY_HOME/lib/derbyrun.jar server start
    ```
-   
+
    4.4. Adicionar biblioteca do ***Derby JDBC Driver*** como dependência do projeto (no arquivo **pom.xml**)
-   
+
    ```xml
    <dependency>
         <groupId>org.apache.derby</groupId>
@@ -82,30 +80,31 @@ ij> disconnect;
      <scope>runtime</scope>
     </dependency>
    ```
+
    4.5. No arquivo **src/main/resources/application.properties**, iremos configurar o projeto para acessar o banco de dados criado
 
    ```properties
-   
-   ```
-# DERBY
+   # DERBY
    spring.datasource.url=jdbc:derby://localhost:1527/Login
    spring.datasource.username=root
    spring.datasource.password=root
    spring.datasource.driver-class-name=org.apache.derby.jdbc.ClientDriver
-
+   
    # JPA
    spring.jpa.hibernate.ddl-auto = create
    spring.jpa.show-sql = true
    spring.jpa.open-in-view = true
    spring.jpa.hibernate.naming.physical-strategy = org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-
+   
    # THYMELEAF
    spring.thymeleaf.cache = false
-
+   
    # I18n
    spring.messages.basename = messages
    ```
-   
+
+<div style="page-break-after: always"></div>
+
 5. Utilizando o  **MySQL** (pule esse passo, se o **Apache Derby** já foi configurado)
 
    5.1. Criar novo banco de dados **Login** (usuário: **root**, senha: **root**) e popular com alguns dados
@@ -123,11 +122,11 @@ ij> disconnect;
    ```sh
    % mysql -uroot -p
    Enter password: 
-Welcome to the MySQL monitor.  Commands end with ; or \g.
+   Welcome to the MySQL monitor.  Commands end with ; or \g.
    Your MySQL connection id is 13
-Server version: 8.0.21 MySQL Community Server - GPL
+   Server version: 8.0.21 MySQL Community Server - GPL
    Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
-Oracle is a registered trademark of Oracle Corporation and/or its
+   Oracle is a registered trademark of Oracle Corporation and/or its
    affiliates. Other names may be trademarks of their respective
    owners.
    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
@@ -151,7 +150,7 @@ Oracle is a registered trademark of Oracle Corporation and/or its
    5.4. No arquivo **src/main/resources/application.properties**, iremos configurar o projeto para acessar o banco de dados criado
 
    ```properties
-# MYSQL
+   # MYSQL
    spring.datasource.url = jdbc:mysql://localhost:3306/Login
    spring.datasource.username = root
    spring.datasource.password = root
@@ -168,13 +167,6 @@ Oracle is a registered trademark of Oracle Corporation and/or its
    # I18n
    spring.messages.basename = messages
    ```
-
-
-
-
-
-
-
 
 6. Atualizar a classe **br.ufscar.dc.dsw.config.WebSecurityConfig**
 
@@ -241,7 +233,7 @@ Oracle is a registered trademark of Oracle Corporation and/or its
 
   
 
-6. Adicionar a classe **br.ufscar.dc.dsw.domain.Usuario** (entidade JPA)
+7. Adicionar a classe **br.ufscar.dc.dsw.domain.Usuario** (entidade JPA)
 
    ```java
    package br.ufscar.dc.dsw.domain;
@@ -260,16 +252,12 @@ Oracle is a registered trademark of Oracle Corporation and/or its
        @Id
        @GeneratedValue(strategy = GenerationType.IDENTITY)
        private Long id;
-    
        @Column(nullable = false, length = 45)
        private String username;
-       
        @Column(nullable = false, length = 64)
        private String password;
-       
        @Column(nullable = false, length = 45)
        private String role;
-       
        @Column(nullable = false)
        private boolean enabled;
    	
@@ -314,8 +302,8 @@ Oracle is a registered trademark of Oracle Corporation and/or its
    	}
    }
    ```
-
-7. Adicionar a classe **br.ufscar.dc.dsw.dao.IUserDAO**
+   
+7. Adicionar a classe **br.ufscar.dc.dsw.dao.IUsuarioDAO**
 
    ```java
    package br.ufscar.dc.dsw.dao;
@@ -347,26 +335,26 @@ Oracle is a registered trademark of Oracle Corporation and/or its
    @SuppressWarnings("serial")
    public class UsuarioDetails implements UserDetails {
     
-       private Usuario user;
+       private Usuario usuario;
         
-       public UsuarioDetails(Usuario user) {
-           this.user = user;
+       public UsuarioDetails(Usuario usuario) {
+           this.user = usuario;
        }
     
        @Override
        public Collection<? extends GrantedAuthority> getAuthorities() {
-           SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());
+           SimpleGrantedAuthority authority = new SimpleGrantedAuthority(usuario.getRole());
            return Arrays.asList(authority);
        }
     
        @Override
        public String getPassword() {
-           return user.getPassword();
+           return usuario.getPassword();
        }
     
        @Override
        public String getUsername() {
-           return user.getUsername();
+           return usuario.getUsername();
        }
     
        @Override
@@ -393,7 +381,7 @@ Oracle is a registered trademark of Oracle Corporation and/or its
 
 
 
-9. Adicionar a classe **br.ufscar.dc.dsw.security.UserDetailsServiceImpl**
+10. Adicionar a classe **br.ufscar.dc.dsw.security.UsuarioDetailsServiceImpl**
 
    ```java
    package br.ufscar.dc.dsw.security;
@@ -414,21 +402,20 @@ Oracle is a registered trademark of Oracle Corporation and/or its
        @Override
        public UserDetails loadUserByUsername(String username)
                throws UsernameNotFoundException {
-           Usuario user = dao.getUserByUsername(username);
+           Usuario usuario = dao.getUserByUsername(username);
             
-           if (user == null) {
+           if (usuario == null) {
                throw new UsernameNotFoundException("Could not find user");
            }
             
-           return new UsuarioDetails(user);
+           return new UsuarioDetails(usuario);
        }
     
    }
    ```
 
-​    
 
-10. Atualizar a classe **LoginMVCApplication** 
+11. Atualizar a classe **LoginMVCApplication** 
 
     ```java
     package br.ufscar.dc.dsw;
@@ -473,7 +460,7 @@ Oracle is a registered trademark of Oracle Corporation and/or its
 
 
 
-11. Executar (**mvn spring-boot:run**) e testar
+12. Executar (**mvn spring-boot:run**) e testar
 
 * Testar, abrindo o browser no endereço: http://localhost:8080
 * Acessar a página principal (não precisa autenticação)
@@ -489,7 +476,7 @@ Oracle is a registered trademark of Oracle Corporation and/or its
     * Tentar acessar a área de usuário comum (papel ROLE_USER): Sucesso 
     * Logout
 
-12. Fim
+13. Fim
 
   #### Leituras adicionais
 

@@ -42,7 +42,7 @@ public class CompraController {
 	
 	private Usuario getUsuario() {
 		UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return usuarioDetails.getUser();
+		return usuarioDetails.getUsuario();
 	}
 	
 	@GetMapping("/listar")

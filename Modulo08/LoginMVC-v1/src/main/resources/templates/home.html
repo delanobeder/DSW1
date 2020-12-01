@@ -15,15 +15,13 @@
 		
 		<p><a th:href="@{/}"><span th:text="#{home.message.1}"></a></p>
 		
-		<!-- <div sec:authorize="hasRole('ROLE_ADMIN')"> -->
-		<p><a th:href="@{/admin}"><span th:text="#{home.message.2}"></a></p>
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<p><a th:href="@{/admin}"><span th:text="#{home.message.2}"></a></p>
+		</div>
 
-		<!-- </div> -->
-
-		<!-- <div sec:authorize="hasRole('ROLE_USER')"> -->
-		<p><a th:href="@{/user}"><span th:text="#{home.message.3}"></a></p>
-		<!-- </div> -->
-		
+		<div sec:authorize="hasRole('ROLE_USER')">
+			<p><a th:href="@{/user}"><span th:text="#{home.message.3}"></a></p>
+		</div>
 	</div>
 </body>
 </html>
