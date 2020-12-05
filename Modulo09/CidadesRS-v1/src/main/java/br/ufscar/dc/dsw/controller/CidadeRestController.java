@@ -25,6 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import br.ufscar.dc.dsw.domain.Cidade;
 import br.ufscar.dc.dsw.domain.Estado;
 import br.ufscar.dc.dsw.service.spec.ICidadeService;
+import br.ufscar.dc.dsw.service.spec.IEstadoService;
 
 @CrossOrigin
 @RestController
@@ -33,6 +34,9 @@ public class CidadeRestController {
 	@Autowired
 	private ICidadeService service;
 
+	@Autowired
+	private IEstadoService estadoService;
+	
 	private boolean isJSONValid(String jsonInString) {
 		try {
 			return new ObjectMapper().readTree(jsonInString) != null;
@@ -94,7 +98,10 @@ public class CidadeRestController {
 
 	@GetMapping(path = "/cidades/estados/{id}")
 	public ResponseEntity<List<Cidade>> listaPorEstado(@PathVariable("id") long id) {
-		List<Cidade> lista = service.findByEstado(id);
+		
+		Estado estado = estadoService.findById(id);
+		List<Cidade> lista = service.findByEstado(estado);
+		
 		if (lista.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}

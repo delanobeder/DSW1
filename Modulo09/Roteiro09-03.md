@@ -89,9 +89,7 @@
    3.5 No arquivo **src/main/resources/application.properties**, iremos configurar o projeto para acessar o banco de dados **Transacoes**
 
    ```properties
-   
-   ```
-# DERBY
+   # DERBY
    spring.datasource.url=jdbc:derby://localhost:1527/Transacoes
    spring.datasource.username=root
    spring.datasource.password=root
@@ -122,11 +120,10 @@
       create database Transacoes;
       use Transacoes;
    ```
-
-4.2. Em um terminal no diretório do projeto, executar 
-      
-      ```sh
-      % mysql -uroot -p
+   4.2. Em um terminal no diretório do projeto, executar 
+   
+   ```
+   % mysql -uroot -p
    Enter password: 
    Welcome to the MySQL monitor.  Commands end with ; or \g.
    Your MySQL connection id is 13
@@ -135,15 +132,15 @@
    Oracle is a registered trademark of Oracle Corporation and/or its
    affiliates. Other names may be trademarks of their respective
    owners.
-   Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+   Type 'help;' or '\h' for help. Type '\c' to clear the current input
+   statement.
       
    mysql> source db/MySQL/create.sql
    Query OK, 1 row affected (0.02 sec)
    Database changed
    mysql> quit
    Bye
-   ```
-   
+```
 4.3. Adicionar biblioteca do  ***MySQL JDBC Driver*** como dependência do projeto (no arquivo **pom.xml**)
    
    ```xml
@@ -155,8 +152,8 @@
    </dependency>
    ```
       <div style="page-break-after: always"></div>
-   4.4 No arquivo **src/main/resources/application.properties**, iremos configurar o projeto para acessar o banco de dados **Transacoes**
-
+4.4 No arquivo **src/main/resources/application.properties**, iremos configurar o projeto para acessar o banco de dados **Transacoes**
+   
       ```properties
    # MySQL & JPA
    spring.datasource.url = jdbc:mysql://localhost:3306/Transacoes
@@ -170,12 +167,12 @@
    spring.thymeleaf.cache = false
    # SERVER PORT
    server.port = 8081
-      ```
-
-   5. Configurar o projeto --- no arquivo **pom.xml** (incluir novas maven dependências)
-
-   ```xml
-<dependency>
+   ```
+   
+5. Configurar o projeto --- no arquivo **pom.xml** (incluir novas maven dependências)
+   
+```xml
+   <dependency>
    	<groupId>com.googlecode.json-simple</groupId>
    	<artifactId>json-simple</artifactId>
    	<version>1.1.1</version>

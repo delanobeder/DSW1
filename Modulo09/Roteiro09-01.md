@@ -280,7 +280,7 @@
 
    <div style="page-break-after: always"></div>
 
-6. Criar as interfaces DAO (**pacote br.ufscar.dc.dsw.dao**)
+7. Criar as interfaces DAO (**pacote br.ufscar.dc.dsw.dao**)
 
    7.1. Interface **br.ufscar.dc.dsw.dao.IEstadoDAO**
 
@@ -313,19 +313,23 @@
    import org.springframework.data.repository.CrudRepository;
    import org.springframework.data.repository.query.Param;
    import br.ufscar.dc.dsw.domain.Cidade;
+   import br.ufscar.dc.dsw.domain.Estado;
    
    @SuppressWarnings("unchecked")
    public interface ICidadeDAO extends CrudRepository<Cidade, Long> {
    	
-       Cidade findById(long id);
+   	Cidade findById(long id);
+   	
    	List<Cidade> findAll();
+   	
    	Cidade save(Cidade cidade);
-   	void deleteById(Long id);	
+   
+   	void deleteById(Long id);
    	
-       public List<Cidade> findByNomeLikeIgnoreCase(String nome);
+   	public List<Cidade> findByNomeLikeIgnoreCase(String nome);
    	
-       @Query("select c from Cidade c where estado.id = :id")
-   	public List<Cidade> findByEstadoId(@Param("id") Long id);
+   	@Query("select c from Cidade c where estado = :estado")
+   	public List<Cidade> findByEstado(@Param("estado") Estado estado);
    }
    ```
 
@@ -399,7 +403,9 @@
 package br.ufscar.dc.dsw.service.spec;
    
    import java.util.List;
+   
    import br.ufscar.dc.dsw.domain.Cidade;
+   import br.ufscar.dc.dsw.domain.Estado;
    
    public interface ICidadeService {
    	
@@ -408,24 +414,23 @@ package br.ufscar.dc.dsw.service.spec;
    	void save(Cidade estado);
    	void delete(Long id);
    	
-   	List<Cidade> findByEstado(Long id);
+   	List<Cidade> findByEstado(Estado estado);
    	List<Cidade> findByNome(String nome);
    }
    ```
-   
+
    8.4. Classe **br.ufscar.dc.dsw.service.impl.CidadeService**
 
    ```java
-package br.ufscar.dc.dsw.service.impl;
+   package br.ufscar.dc.dsw.service.impl;
    
    import java.util.List;
-   
    import org.springframework.beans.factory.annotation.Autowired;
    import org.springframework.stereotype.Service;
    import org.springframework.transaction.annotation.Transactional;
-   
    import br.ufscar.dc.dsw.dao.ICidadeDAO;
    import br.ufscar.dc.dsw.domain.Cidade;
+   import br.ufscar.dc.dsw.domain.Estado;
    import br.ufscar.dc.dsw.service.spec.ICidadeService;
    
    @Service
@@ -449,8 +454,8 @@ package br.ufscar.dc.dsw.service.impl;
    	
    	@Override
    	@Transactional(readOnly = true)
-   	public List<Cidade> findByEstado(Long id) {
-   		return dao.findByEstadoId(id);
+   	public List<Cidade> findByEstado(Estado estado) {
+   		return dao.findByEstado(estado);
    	}
    	
    	@Override
@@ -627,6 +632,7 @@ import java.util.List;
    import br.ufscar.dc.dsw.domain.Cidade;
    import br.ufscar.dc.dsw.domain.Estado;
    import br.ufscar.dc.dsw.service.spec.ICidadeService;
+   import br.ufscar.dc.dsw.service.spec.IEstadoService;
    
    @CrossOrigin
    @RestController
@@ -635,6 +641,9 @@ import java.util.List;
    	@Autowired
    	private ICidadeService service;
    
+   	@Autowired
+   	private IEstadoService estadoService;
+   	
    	private boolean isJSONValid(String jsonInString) {
    		try {
    			return new ObjectMapper().readTree(jsonInString) != null;
@@ -696,7 +705,10 @@ import java.util.List;
    
    	@GetMapping(path = "/cidades/estados/{id}")
    	public ResponseEntity<List<Cidade>> listaPorEstado(@PathVariable("id") long id) {
-   		List<Cidade> lista = service.findByEstado(id);
+   		
+   		Estado estado = estadoService.findById(id);
+   		List<Cidade> lista = service.findByEstado(estado);
+   		
    		if (lista.isEmpty()) {
    			return ResponseEntity.notFound().build();
    		}

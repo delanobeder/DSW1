@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import br.ufscar.dc.dsw.domain.Cidade;
+import br.ufscar.dc.dsw.domain.Estado;
 
 @SuppressWarnings("unchecked")
 public interface ICidadeDAO extends CrudRepository<Cidade, Long> {
@@ -21,6 +22,6 @@ public interface ICidadeDAO extends CrudRepository<Cidade, Long> {
 	
 	public List<Cidade> findByNomeLikeIgnoreCase(String nome);
 	
-	@Query("select c from Cidade c where estado.id = :id")
-	public List<Cidade> findByEstadoId(@Param("id") Long id);
+	@Query("select c from Cidade c where estado = :estado")
+	public List<Cidade> findByEstado(@Param("estado") Estado estado);
 }

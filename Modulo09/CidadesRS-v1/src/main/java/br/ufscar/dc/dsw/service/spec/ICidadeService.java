@@ -3,6 +3,7 @@ package br.ufscar.dc.dsw.service.spec;
 import java.util.List;
 
 import br.ufscar.dc.dsw.domain.Cidade;
+import br.ufscar.dc.dsw.domain.Estado;
 
 public interface ICidadeService {
 	
@@ -11,6 +12,6 @@ public interface ICidadeService {
 	void save(Cidade estado);
 	void delete(Long id);
 	
-	List<Cidade> findByEstado(Long id);
+	List<Cidade> findByEstado(Estado estado);
 	List<Cidade> findByNome(String nome);
 }

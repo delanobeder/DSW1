@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.ufscar.dc.dsw.dao.ICidadeDAO;
 import br.ufscar.dc.dsw.domain.Cidade;
+import br.ufscar.dc.dsw.domain.Estado;
 import br.ufscar.dc.dsw.service.spec.ICidadeService;
 
 @Service
@@ -31,8 +32,8 @@ public class CidadeService implements ICidadeService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<Cidade> findByEstado(Long id) {
-		return dao.findByEstadoId(id);
+	public List<Cidade> findByEstado(Estado estado) {
+		return dao.findByEstado(estado);
 	}
 	
 	@Override
