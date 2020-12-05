@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>AJAX (dynamic table)</title>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/js/ajaxNome.js}"></script>
+</head>
+<body>
+	<form name='form'>
+		<div align="center">
+			<p>Lista de Cidades</p>
+			<label for="cidade">Nome</label> <input id="nome" name="nome">
+			<div id="cidades" align="center"></div>
+		</div>
+	</form>
+</body>
+</html>
