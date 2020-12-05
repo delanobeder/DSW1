@@ -12,13 +12,12 @@
 
 
 
-- [01 - CRUD + REST API utilizando as tecnologias Spring MVC, Thymeleaf & JPA](Roteiro09-01.md)
+- [01 - Exemplo de servidor REST (Cidades REST Server)](Roteiro09-01.md)
 
 
-- [02 - Livraria Virtual - Cliente do REST API (TransacoesRS)](Roteiro09-02.md)
+- [02 - Exemplo de cliente de um servidor REST (Cidades REST Server & AJAX)](Roteiro09-02.md)
+
+- [03 - Transações (CRUD REST API)](Roteiro09-03.md)
 
 
-- [03 - Exemplo de servidor REST (Cidades REST Server)](Roteiro09-03.md)
-
-
-- [04 - Exemplo de servidor REST (Cidades REST Server & AJAX)](Roteiro09-04.md)
+- [04 - Livraria Virtual - Cliente do REST API (TransacoesRS)](Roteiro09-04.md)

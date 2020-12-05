@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CidadesRSApplication {
 
-	/* private static final Logger log = LoggerFactory.getLogger(CidadesRSApplication.class);
+	/*
+	
+	private static final Logger log = LoggerFactory.getLogger(CidadesRSApplication.class);
 	
 	static Map<String, Estado> map = new HashMap<>();
 
@@ -75,17 +77,20 @@ public class CidadesRSApplication {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}*/
-
+	}
+	*/
+	
 	public static void main(String[] args) {
 		SpringApplication.run(CidadesRSApplication.class, args);
 	}
 
-	/* @Bean
+	/*
+	@Bean
 	public CommandLineRunner run(IEstadoDAO estadoDAO, ICidadeDAO cidadeDAO) throws Exception {
 		return args -> {
 			populaEstados(estadoDAO);
 			populaCidades(cidadeDAO);
 		};
-	}*/
+	}
+	*/
 }

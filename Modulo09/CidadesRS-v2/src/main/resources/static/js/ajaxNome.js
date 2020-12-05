@@ -1,13 +1,11 @@
-
-
-
 $(document).ready(function() {
 
 		$('#nome').on('keyup', function() {
 			var nome = $(this).val();
 			$.ajax({
 				type : 'GET',
-				url : contextRoot +'cidades/filtros?term='+ nome,
+				// url : '/cidades/filtros?term='+ nome,
+				url : 'http://localhost:8081/cidades/filtros?term='+ nome,
 				success : function(result) {
 					var s = '';
 					s += '<p>Quantidade: ' + result.length+'</p>';

@@ -13,7 +13,8 @@ $(document).ready(function() {
 		var estadoId = $(this).val();
 			$.ajax({
 				type : 'GET',
-				url : contextRoot +'cidades/estados/'+ estadoId,
+				// url : '/cidades/estados/' + estadoId,
+				url : 'http://localhost:8081/cidades/estados/'+ estadoId,
 				success : function(result) {
 					var s = '<option value="">Selecione</option>';
 					for (var i = 0; i < result.length; i++) {

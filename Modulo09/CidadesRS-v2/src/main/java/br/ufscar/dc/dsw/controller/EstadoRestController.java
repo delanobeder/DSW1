@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.ufscar.dc.dsw.domain.Estado;
 import br.ufscar.dc.dsw.service.spec.IEstadoService;
 
+@CrossOrigin
 @RestController
 public class EstadoRestController {
 

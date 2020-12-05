@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -25,6 +26,7 @@ import br.ufscar.dc.dsw.domain.Cidade;
 import br.ufscar.dc.dsw.domain.Estado;
 import br.ufscar.dc.dsw.service.spec.ICidadeService;
 
+@CrossOrigin
 @RestController
 public class CidadeRestController {
 
