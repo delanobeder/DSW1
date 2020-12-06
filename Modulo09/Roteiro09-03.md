@@ -140,6 +140,7 @@
    Database changed
    mysql> quit
    Bye
+   ```
 ```
 4.3. Adicionar biblioteca do  ***MySQL JDBC Driver*** como dependência do projeto (no arquivo **pom.xml**)
    
@@ -150,10 +151,10 @@
      <version>8.0.21</version>
      <scope>runtime</scope>
    </dependency>
-   ```
+```
       <div style="page-break-after: always"></div>
 4.4 No arquivo **src/main/resources/application.properties**, iremos configurar o projeto para acessar o banco de dados **Transacoes**
-   
+
       ```properties
    # MySQL & JPA
    spring.datasource.url = jdbc:mysql://localhost:3306/Transacoes
@@ -171,7 +172,7 @@
    
 5. Configurar o projeto --- no arquivo **pom.xml** (incluir novas maven dependências)
    
-```xml
+​```xml
    <dependency>
    	<groupId>com.googlecode.json-simple</groupId>
    	<artifactId>json-simple</artifactId>
@@ -1935,6 +1936,12 @@ src/main/resources/static/css/style.css
 
 - - -
 
+- Persisting Enums in JPA
+
+  https://www.baeldung.com/jpa-persisting-enums-in-jpa
+
+  
+
 - Building REST services with Spring
 
   https://spring.io/guides/tutorials/rest/
@@ -1944,3 +1951,129 @@ src/main/resources/static/css/style.css
 - Building a RESTful Web Service
   
   https://spring.io/guides/gs/rest-service/
+
+
+
+
+
+
+
+
+- - -
+
+##### CRUD: Transações
+
+- - -
+
+
+
+- Cria uma nova transação [**C**reate - **CRUD**]
+
+  POST http://localhost:8081/transacoes
+
+  Body: raw/JSON (application/json)
+  ```json
+  { "descricao": "Compra Online", "valor": 98.76, "data": "08/12/2019", 
+    "categoria": "COMPRA", "status": "CONFIRMADA",
+    "cartao": { "id": 1, "titular": "Beltrano Andrade", 
+                "numero": "5259 5697 2426 9163", "vencimento": "02/22", 
+                "cpf": "985.849.614-10", "cvv": "147" } }
+  ```
+
+
+
+* Retorna a lista de transações [**R**ead - **CRUD**]
+
+  GET http://localhost:8081/transacoes
+
+
+
+* Retorna a transação de id = 1 [**R**ead - **CRUD**]
+
+  GET http://localhost:8081/transacoes/1
+  
+  
+
+* Atualiza a transação (apenas descrição) de id = 3 [**U**pdate - **CRUD**]
+
+  PUT http://localhost:8081/transacoes/3
+  
+  Body: raw/JSON (application/json) 
+  
+  ```json
+  { "descricao": "Compra Online Atualizada", "valor": 98.76, 
+    "data": "08/12/2019", "categoria": "COMPRA", "status": "CONFIRMADA",
+    "cartao": { "id": 1, "titular": "Beltrano Andrade", 
+                "numero": "5259 5697 2426 9163", "vencimento": "02/22", 
+                "cpf": "985.849.614-10", "cvv": "147" } }
+  ```
+
+<div style="page-break-after: always"></div>
+
+
+* Atualiza a transação (descrição e cartão) de id = 3 [**U**pdate - **CRUD**]
+
+  PUT http://localhost:8081/transacoes/3
+  
+  Body: raw/JSON (application/json)
+  
+  ```json
+  { "descricao": "Compra Online Atualizada Novamente", "valor": 98.76, 
+    "data": "08/12/2019", "categoria": "COMPRA", "status": "CONFIRMADA",
+    "cartao": { "id": 2, "titular": "Fulano Silva", 
+                "numero": "4929 5828 5594 8623", "vencimento": "12/21", 
+                "cpf": "367.318.380-04", "cvv": "663" } }
+  ```
+
+
+
+* Remove a transação de id = 3 [**D**elete - **CRUD**]
+
+  DELETE http://localhost:8081/transacoes/3
+
+
+
+- - -
+
+##### CRUD: Cartões
+
+- - -
+
+
+- Cria um novo cartão [**C**reate - **CRUD**]
+
+  POST http://localhost:8081/cartoes
+
+  ```json
+  { "titular": "Sincrano Alves", "numero": "5183 3373 8522 6547", 
+    "vencimento": "11/21", "cpf": "214.720.460-99", "cvv": "853" }
+  ```
+
+
+
+* Retorna a lista de cartões [**R**ead - **CRUD**]
+
+  GET http://localhost:8081/cartoes
+
+  
+
+* Retorna o cartão de id = 1 [**R**ead - **CRUD**]
+
+  GET http://localhost:8081/cartoes/1
+
+  
+
+* Atualiza o cartão (número, vencimento, cvv) de id = 3 [**U**pdate - **CRUD**]
+
+  PUT http://localhost:8081/cartoes/3
+
+  ```json
+  { "titular": "Sincrano Alves", "numero": "4916 1338 6252 1766", 
+    "vencimento": "04/21", "cpf": "214.720.460-99", "cvv": "209" }
+  ```
+
+  
+
+* Remove o cartão de id = 3 [**D**elete - **CRUD**]
+
+  DELETE http://localhost:8081/cartoes/3

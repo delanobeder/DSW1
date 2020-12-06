@@ -802,3 +802,130 @@ public class EstadoRestController {
 - Building a RESTful Web Service
   
   https://spring.io/guides/gs/rest-service/
+
+<div style="page-break-after: always"></div>
+
+#### Roteiro de Testes - REST API
+
+- - -
+
+##### CRUD: Cidades
+
+- - -
+
+
+
+- Cria uma nova cidade [**C**reate - **CRUD**]
+
+  POST http://localhost:8081/cidades
+
+  Body: raw/JSON (application/json)
+  ```json
+  { 
+      "nome": "Teste Cidade", 
+      "estado": { "id": 9, "sigla": "GO", "nome": "Goiás" } 
+  }
+  ```
+
+
+
+* Retorna a lista de cidades [**R**ead - **CRUD**]
+
+  GET http://localhost:8081/cidades
+
+
+
+* Retorna a cidade de id = 1 [**R**ead - **CRUD**]
+
+  GET http://localhost:8081/cidades/1
+
+
+
+* Retorna a lista de cidades do estado de id = 1 [**R**ead - **CRUD**]
+
+  GET http://localhost:8081/cidades/estados/1
+
+  
+  
+* Atualiza a cidade (apenas o nome) de id = 5563 [**U**pdate - **CRUD**]
+
+  PUT http://localhost:8081/cidades/5563
+  
+  Body: raw/JSON (application/json) 
+  
+  ```json
+  { 
+    "nome": "Teste Cidade Atualizado", 
+    "estado": { "id": 9, "sigla": "GO", "nome": "Goiás" } 
+  }
+  ```
+
+<div style="page-break-after: always"></div>
+
+
+* Atualiza a cidade (nome e estado) de id = 5563 [**U**pdate - **CRUD**]
+
+  PUT http://localhost:8081/cidades/5563
+  
+  Body: raw/JSON (application/json)
+  
+  ```json
+  { 
+    "nome": "Teste Cidade Atualizado Novamente", 
+    "estado": { "id": 27, "sigla": "TO", "nome": "Tocantins" }
+  }
+  ```
+
+
+
+* Remove a cidade de id = 5563 [**D**elete - **CRUD**]
+
+  DELETE http://localhost:8081/cidades/5563
+
+
+
+- - -
+
+##### CRUD: Estados
+
+- - -
+
+
+- Cria um novo estado [**C**reate - **CRUD**]
+
+  POST http://localhost:8081/estados
+
+  Body: raw/JSON (application/json)
+  ```json
+  { "sigla": "TS", "nome": "Teste" }
+  ```
+
+
+
+* Retorna a lista de estados [**R**ead - **CRUD**]
+
+  GET http://localhost:8081/estados
+
+  
+
+* Retorna o estado de id = 1 [**R**ead - **CRUD**]
+
+  GET http://localhost:8081/estados/1
+
+  
+
+* Atualiza o estado (apenas o nome) de id = 28 [**U**pdate - **CRUD**]
+
+  PUT http://localhost:8081/estados/28
+
+  Body: raw/JSON (application/json) 
+
+  ```json
+  { "sigla": "TS", "nome": "Teste Atualizado" }
+  ```
+
+  
+
+* Remove o estado de id = 28 [**D**elete - **CRUD**]
+
+  DELETE http://localhost:8081/estados/28
