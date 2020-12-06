@@ -225,7 +225,7 @@
    6.1. Explore os arquivos presentes no diretório **src/main/resources/static** e **src/main/resources/templates**
 
    ```
-src/main/resources/static/css/style.css
+   src/main/resources/static/css/style.css
    src/main/resources/static/image/error.ico
    src/main/resources/static/image/favicon.png
    src/main/resources/static/image/image.png
