@@ -155,7 +155,7 @@
       <div style="page-break-after: always"></div>
 4.4 No arquivo **src/main/resources/application.properties**, iremos configurar o projeto para acessar o banco de dados **Transacoes**
 
-      ```properties
+   ```properties
    # MySQL & JPA
    spring.datasource.url = jdbc:mysql://localhost:3306/Transacoes
    spring.datasource.username = root
@@ -168,7 +168,7 @@
    spring.thymeleaf.cache = false
    # SERVER PORT
    server.port = 8081
-      ```
+   ```
    
 5. Configurar o projeto --- no arquivo **pom.xml** (incluir novas maven dependências)
 
