@@ -400,7 +400,7 @@
    8.3. Interface **br.ufscar.dc.dsw.service.spec.ICidadeService**
    
    ```java
-package br.ufscar.dc.dsw.service.spec;
+   package br.ufscar.dc.dsw.service.spec;
    
    import java.util.List;
    import br.ufscar.dc.dsw.domain.Cidade;
@@ -420,7 +420,7 @@ package br.ufscar.dc.dsw.service.spec;
    8.4. Classe **br.ufscar.dc.dsw.service.impl.CidadeService**
 
    ```java
-package br.ufscar.dc.dsw.service.impl;
+   package br.ufscar.dc.dsw.service.impl;
    
    import java.util.List;
    
@@ -507,11 +507,11 @@ package br.ufscar.dc.dsw.service.impl;
    import org.springframework.web.bind.annotation.CrossOrigin;
    import com.fasterxml.jackson.databind.ObjectMapper;
    import br.ufscar.dc.dsw.domain.Estado;
-import br.ufscar.dc.dsw.service.spec.IEstadoService;
+   import br.ufscar.dc.dsw.service.spec.IEstadoService;
    
    @CrossOrigin
    @RestController
-public class EstadoRestController {
+   public class EstadoRestController {
    
    	@Autowired
 	private IEstadoService service;
@@ -612,6 +612,7 @@ public class EstadoRestController {
    
    
    8.2. Classe **br.ufscar.dc.dsw.controller.CidadeRestController**
+   
    ```java
    package br.ufscar.dc.dsw.controller;
    
