@@ -403,9 +403,7 @@
 package br.ufscar.dc.dsw.service.spec;
    
    import java.util.List;
-   
    import br.ufscar.dc.dsw.domain.Cidade;
-   import br.ufscar.dc.dsw.domain.Estado;
    
    public interface ICidadeService {
    	
@@ -414,21 +412,23 @@ package br.ufscar.dc.dsw.service.spec;
    	void save(Cidade estado);
    	void delete(Long id);
    	
-   	List<Cidade> findByEstado(Estado estado);
+   	List<Cidade> findByEstado(Long id);
    	List<Cidade> findByNome(String nome);
    }
    ```
-
+   
    8.4. Classe **br.ufscar.dc.dsw.service.impl.CidadeService**
 
    ```java
-   package br.ufscar.dc.dsw.service.impl;
+package br.ufscar.dc.dsw.service.impl;
    
    import java.util.List;
+   
    import org.springframework.beans.factory.annotation.Autowired;
    import org.springframework.stereotype.Service;
    import org.springframework.transaction.annotation.Transactional;
    import br.ufscar.dc.dsw.dao.ICidadeDAO;
+   import br.ufscar.dc.dsw.dao.IEstadoDAO;
    import br.ufscar.dc.dsw.domain.Cidade;
    import br.ufscar.dc.dsw.domain.Estado;
    import br.ufscar.dc.dsw.service.spec.ICidadeService;
@@ -439,6 +439,9 @@ package br.ufscar.dc.dsw.service.spec;
    
    	@Autowired
    	ICidadeDAO dao;
+   	
+   	@Autowired
+   	IEstadoDAO estadoDAO;
    
    	@Override
    	@Transactional(readOnly = true)
@@ -454,7 +457,8 @@ package br.ufscar.dc.dsw.service.spec;
    	
    	@Override
    	@Transactional(readOnly = true)
-   	public List<Cidade> findByEstado(Estado estado) {
+   	public List<Cidade> findByEstado(Long id) {
+   		Estado estado = estadoDAO.findById(id.longValue());
    		return dao.findByEstado(estado);
    	}
    	
@@ -482,11 +486,12 @@ package br.ufscar.dc.dsw.service.spec;
 8. Criar as classes  controladores (pacote **br.ufscar.dc.dsw.controller**)
 
    8.1. Classe **br.ufscar.dc.dsw.controller.EstadoRestController**
+   
    ```java
    package br.ufscar.dc.dsw.controller;
    
-   import java.io.IOException;
-import java.util.List;
+import java.io.IOException;
+   import java.util.List;
    import org.json.simple.JSONObject;
    import org.springframework.beans.factory.annotation.Autowired;
    import org.springframework.http.HttpStatus;
@@ -618,6 +623,7 @@ import java.util.List;
    import org.springframework.beans.factory.annotation.Autowired;
    import org.springframework.http.HttpStatus;
    import org.springframework.http.ResponseEntity;
+   import org.springframework.web.bind.annotation.CrossOrigin;
    import org.springframework.web.bind.annotation.DeleteMapping;
    import org.springframework.web.bind.annotation.GetMapping;
    import org.springframework.web.bind.annotation.PathVariable;
@@ -627,12 +633,10 @@ import java.util.List;
    import org.springframework.web.bind.annotation.RequestParam;
    import org.springframework.web.bind.annotation.ResponseBody;
    import org.springframework.web.bind.annotation.RestController;
-   import org.springframework.web.bind.annotation.CrossOrigin;
    import com.fasterxml.jackson.databind.ObjectMapper;
    import br.ufscar.dc.dsw.domain.Cidade;
    import br.ufscar.dc.dsw.domain.Estado;
    import br.ufscar.dc.dsw.service.spec.ICidadeService;
-   import br.ufscar.dc.dsw.service.spec.IEstadoService;
    
    @CrossOrigin
    @RestController
@@ -640,9 +644,6 @@ import java.util.List;
    
    	@Autowired
    	private ICidadeService service;
-   
-   	@Autowired
-   	private IEstadoService estadoService;
    	
    	private boolean isJSONValid(String jsonInString) {
    		try {
@@ -706,8 +707,7 @@ import java.util.List;
    	@GetMapping(path = "/cidades/estados/{id}")
    	public ResponseEntity<List<Cidade>> listaPorEstado(@PathVariable("id") long id) {
    		
-   		Estado estado = estadoService.findById(id);
-   		List<Cidade> lista = service.findByEstado(estado);
+   		List<Cidade> lista = service.findByEstado(id);
    		
    		if (lista.isEmpty()) {
    			return ResponseEntity.notFound().build();
@@ -785,8 +785,9 @@ import java.util.List;
     Verificar que as operações REST estão funcionais
 
 10. Fim
-
     
+
+<div style="page-break-after: always"></div>
 
 #### Leituras adicionais
 

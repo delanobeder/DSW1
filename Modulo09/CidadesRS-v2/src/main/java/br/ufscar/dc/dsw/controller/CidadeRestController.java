@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,14 +19,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.ufscar.dc.dsw.domain.Cidade;
 import br.ufscar.dc.dsw.domain.Estado;
 import br.ufscar.dc.dsw.service.spec.ICidadeService;
-import br.ufscar.dc.dsw.service.spec.IEstadoService;
 
 @CrossOrigin
 @RestController
@@ -33,9 +32,6 @@ public class CidadeRestController {
 
 	@Autowired
 	private ICidadeService service;
-
-	@Autowired
-	private IEstadoService estadoService;
 	
 	private boolean isJSONValid(String jsonInString) {
 		try {
@@ -99,8 +95,7 @@ public class CidadeRestController {
 	@GetMapping(path = "/cidades/estados/{id}")
 	public ResponseEntity<List<Cidade>> listaPorEstado(@PathVariable("id") long id) {
 		
-		Estado estado = estadoService.findById(id);
-		List<Cidade> lista = service.findByEstado(estado);
+		List<Cidade> lista = service.findByEstado(id);
 		
 		if (lista.isEmpty()) {
 			return ResponseEntity.notFound().build();

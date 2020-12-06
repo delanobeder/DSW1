@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.ufscar.dc.dsw.dao.ICidadeDAO;
+import br.ufscar.dc.dsw.dao.IEstadoDAO;
 import br.ufscar.dc.dsw.domain.Cidade;
 import br.ufscar.dc.dsw.domain.Estado;
 import br.ufscar.dc.dsw.service.spec.ICidadeService;
@@ -17,6 +18,9 @@ public class CidadeService implements ICidadeService {
 
 	@Autowired
 	ICidadeDAO dao;
+	
+	@Autowired
+	IEstadoDAO estadoDAO;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -32,7 +36,8 @@ public class CidadeService implements ICidadeService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<Cidade> findByEstado(Estado estado) {
+	public List<Cidade> findByEstado(Long id) {
+		Estado estado = estadoDAO.findById(id.longValue());
 		return dao.findByEstado(estado);
 	}
 	
