@@ -61,7 +61,7 @@
    3.2. Em um terminal no diretório do projeto (<DB_HOME> é o local em que serão armazenados os bancos de dados do DERBY e $DERBY_HOME é a instalação do Derby -- onde foi descompactado seu conteúdo)
 
    ```sh
-% java -Dderby.system.home=<DB_HOME> -jar  $DERBY_HOME/lib/derbyrun.jar ij
+   % java -Dderby.system.home=<DB_HOME> -jar $DERBY_HOME/lib/derbyrun.jar ij
    versão ij 10.15
    ij> run 'db/Derby/create.sql';
    ij> connect 'jdbc:derby:Transacoes;create=true;user=root;password=root';
