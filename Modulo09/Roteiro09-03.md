@@ -72,7 +72,7 @@
    3.3. Iniciar o servidor **Apache Derby**. Em um terminal executar: 
 
    ```sh
-% java -Dderby.system.home=<DB_HOME> -jar $DERBY_HOME/lib/derbyrun.jar server start
+   % java -Dderby.system.home=<DB_HOME> -jar $DERBY_HOME/lib/derbyrun.jar server start
    ```
    
    3.4. Adicionar biblioteca do ***Derby JDBC Driver*** como dependência do projeto (no arquivo **pom.xml**)
