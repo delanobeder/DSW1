@@ -141,9 +141,9 @@
    mysql> quit
    Bye
    ```
-```
-4.3. Adicionar biblioteca do  ***MySQL JDBC Driver*** como dependência do projeto (no arquivo **pom.xml**)
    
+   4.3. Adicionar biblioteca do  ***MySQL JDBC Driver*** como dependência do projeto (no arquivo **pom.xml**)
+
    ```xml
    <dependency>
      <groupId>mysql</groupId>
@@ -151,7 +151,7 @@
      <version>8.0.21</version>
      <scope>runtime</scope>
    </dependency>
-```
+   ```
       <div style="page-break-after: always"></div>
 4.4 No arquivo **src/main/resources/application.properties**, iremos configurar o projeto para acessar o banco de dados **Transacoes**
 
@@ -168,49 +168,49 @@
    spring.thymeleaf.cache = false
    # SERVER PORT
    server.port = 8081
-   ```
+      ```
    
 5. Configurar o projeto --- no arquivo **pom.xml** (incluir novas maven dependências)
-   
-​```xml
-   <dependency>
-   	<groupId>com.googlecode.json-simple</groupId>
-   	<artifactId>json-simple</artifactId>
-   	<version>1.1.1</version>
-   </dependency>		
-   <dependency>
-   	<groupId>com.fasterxml.jackson.dataformat</groupId>
-   	<artifactId>jackson-dataformat-xml</artifactId>
-   </dependency>
-   <dependency>
-   	<groupId>org.webjars</groupId>
-   	<artifactId>webjars-locator-core</artifactId>
-   </dependency>
-   <dependency>
-   	<groupId>org.webjars</groupId>
-   	<artifactId>jquery</artifactId>
-   	<version>3.4.1</version>
-   </dependency>
-   <dependency>
-   	<groupId>org.webjars</groupId>
-   	<artifactId>bootstrap</artifactId>
-   	<version>4.4.1-1</version>
-   </dependency>
-   <dependency>
-   	<groupId>org.webjars.bower</groupId>
-   	<artifactId>open-iconic</artifactId>
-   	<version>1.1.1</version>
-   </dependency>
-   <dependency>
-   	<groupId>org.webjars.bower</groupId>
-   	<artifactId>jquery-mask-plugin</artifactId>
-   	<version>1.14.15</version>
-   </dependency>
-   <dependency>
-   	<groupId>nz.net.ultraq.thymeleaf</groupId>
-   	<artifactId>thymeleaf-layout-dialect</artifactId>
-   </dependency>
-   ```
+
+      ```xml
+      <dependency>
+         	<groupId>com.googlecode.json-simple</groupId>
+         	<artifactId>json-simple</artifactId>
+         	<version>1.1.1</version>
+      </dependency>		
+      <dependency>
+         	<groupId>com.fasterxml.jackson.dataformat</groupId>
+         	<artifactId>jackson-dataformat-xml</artifactId>
+      </dependency>
+      <dependency>
+         	<groupId>org.webjars</groupId>
+         	<artifactId>webjars-locator-core</artifactId>
+      </dependency>
+      <dependency>
+         	<groupId>org.webjars</groupId>
+         	<artifactId>jquery</artifactId>
+         	<version>3.4.1</version>
+      </dependency>
+      <dependency>
+         	<groupId>org.webjars</groupId>
+         	<artifactId>bootstrap</artifactId>
+         	<version>4.4.1-1</version>
+      </dependency>
+      <dependency>
+         	<groupId>org.webjars.bower</groupId>
+         	<artifactId>open-iconic</artifactId>
+         	<version>1.1.1</version>
+      </dependency>
+      <dependency>
+         	<groupId>org.webjars.bower</groupId>
+         	<artifactId>jquery-mask-plugin</artifactId>
+         	<version>1.14.15</version>
+      </dependency>
+         <dependency>
+         	<groupId>nz.net.ultraq.thymeleaf</groupId>
+         	<artifactId>thymeleaf-layout-dialect</artifactId>
+      </dependency>
+      ```
 
 
 
@@ -1957,8 +1957,9 @@ src/main/resources/static/css/style.css
 
 
 
+<div style="page-break-after: always"></div>
 
-
+#### Roteiro de Testes - REST API
 - - -
 
 ##### CRUD: Transações
