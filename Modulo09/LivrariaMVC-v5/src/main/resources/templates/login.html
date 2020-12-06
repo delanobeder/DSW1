@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout2}">
+<head>
+<title th:text="#{login.message}"></title>
+</head>
+<body>
+	<div layout:fragment="content" th:remove="tag">
+
+		<br /> <br /> <br />
+		<div>
+			<div class="col-md-6">
+				<h1 th:text="#{login.message}"></h1>
+				<form th:action="@{/login}" method="post">
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">
+							<span th:text="#{login.error}"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="username" th:text="#{login.username}"></label>: <input
+							type="text" id="username" name="username" class="form-control"
+							autofocus="autofocus" th:placeholder="#{login.username}">
+					</div>
+					<div class="form-group">
+						<label for="password" th:text="#{login.password}"></label>: <input
+							type="password" id="password" name="password"
+							class="form-control" th:placeholder="#{login.password}">
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-3 col-sm-offset-3">
+								<input type="submit" name="login-submit" id="login-submit"
+									class="form-control btn btn-info" th:value="#{login.button}">
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

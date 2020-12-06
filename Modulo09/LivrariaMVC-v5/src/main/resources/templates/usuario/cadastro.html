@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section class="layout-content" layout:fragment="corpo">
+
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><i class="oi oi-caret-right"></i>
+						<span th:text="#{usuario.cadastrar.label}"></span></li>
+				</ul>
+				<a class="btn btn-primary btn-md" th:href="@{/usuarios/listar}"
+					role="button"> <span class="oi oi-spreadsheet" title="Listar"
+					aria-hidden="true"></span> <span th:text="#{usuario.listar.label}"></span>
+				</a>
+			</div>
+		</nav>
+
+		<div class="container" id="cadastro">
+
+			<div th:replace="fragments/alert"></div>
+
+			<form
+				th:action="${usuario.id == null} ? @{/usuarios/salvar} : @{/usuarios/editar}"
+				th:object="${usuario}" method="POST">
+
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label th:text="#{usuario.username.label}" for="username"></label> 
+						<input type="text" class="form-control" id="username"
+							th:placeholder="#{usuario.username.label}"
+							autofocus="autofocus" th:field="*{username}"
+							th:classappend="${#fields.hasErrors('username')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{username}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label th:text="#{usuario.password.label}" for="password"></label> 
+						<input type="text" class="form-control" id="password"
+							th:placeholder="#{usuario.password.label}" autofocus="autofocus"
+							th:field="*{password}"
+							th:classappend="${#fields.hasErrors('password')} ? is-invalid" th:readonly="${usuario.id != null}"/>
+							
+						<div class="invalid-feedback">
+							<span th:errors="*{password}"></span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label th:text="#{usuario.name.label}" for="name"></label> 
+						<input type="text" class="form-control" id="name" th:field="*{name}"
+							th:placeholder="#{usuario.name.label}" autofocus="autofocus"
+							th:classappend="${#fields.hasErrors('name')} ? is-invalid" />
+							
+						<div class="invalid-feedback">
+							<span th:errors="*{name}"></span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label th:text="#{usuario.CPF.label}" for="CPF"></label> 
+						<input type="text" class="form-control" id="CPF" th:field="*{CPF}"
+							autofocus="autofocus" placeholder="___.___.___-__"
+							th:classappend="${#fields.hasErrors('CPF')} ? is-invalid" 
+							data-mask="000.000.000-00" data-mask-reverse="true" />
+							
+						<div class="invalid-feedback">
+							<span th:errors="*{CPF}"></span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label th:text="#{usuario.role.label}" for="role"></label> 
+						<select id="role" class="form-control" th:field="*{role}"
+							th:classappend="${#fields.hasErrors('role')} ? is-invalid">
+							<option value="ROLE_ADMIN">ROLE_ADMIN</option>
+							<option value="ROLE_USER">ROLE_USER</option>
+						</select>
+
+						<div class="invalid-feedback">
+							<span th:errors="*{role}"></span>
+						</div>
+					</div>
+				</div>
+
+				<input type="hidden" id="id" th:field="*{id}" />
+				<button type="submit" th:text="#{button.salvar.label}"
+					class="btn btn-primary btn-sm"></button>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

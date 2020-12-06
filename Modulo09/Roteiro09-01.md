@@ -489,8 +489,8 @@ package br.ufscar.dc.dsw.service.impl;
    
    ```java
    package br.ufscar.dc.dsw.controller;
-   
-import java.io.IOException;
+
+   import java.io.IOException;
    import java.util.List;
    import org.json.simple.JSONObject;
    import org.springframework.beans.factory.annotation.Autowired;
@@ -507,14 +507,14 @@ import java.io.IOException;
    import org.springframework.web.bind.annotation.CrossOrigin;
    import com.fasterxml.jackson.databind.ObjectMapper;
    import br.ufscar.dc.dsw.domain.Estado;
-   import br.ufscar.dc.dsw.service.spec.IEstadoService;
+import br.ufscar.dc.dsw.service.spec.IEstadoService;
    
    @CrossOrigin
    @RestController
-   public class EstadoRestController {
+public class EstadoRestController {
    
    	@Autowired
-   	private IEstadoService service;
+	private IEstadoService service;
    
    	private boolean isJSONValid(String jsonInString) {
    		try {
@@ -522,7 +522,7 @@ import java.io.IOException;
    		} catch (IOException e) {
    			return false;
    		}
-   	}
+	}
    
    	private void parse(Estado estado, JSONObject json) {
    		
@@ -533,11 +533,11 @@ import java.io.IOException;
    			} else {
    				estado.setId((Long) id);
    			}
-   		}
+		}
    
    		estado.setNome((String) json.get("nome"));
    		estado.setSigla((String) json.get("sigla"));
-   	}
+	}
    
    	@GetMapping(path = "/estados")
    	public ResponseEntity<List<Estado>> lista() {
@@ -546,7 +546,7 @@ import java.io.IOException;
    			return ResponseEntity.notFound().build();
    		}
    		return ResponseEntity.ok(lista);
-   	}
+	}
    
    	@GetMapping(path = "/estados/{id}")
    	public ResponseEntity<Estado> lista(@PathVariable("id") long id) {
@@ -555,7 +555,7 @@ import java.io.IOException;
    			return ResponseEntity.notFound().build();
    		}
    		return ResponseEntity.ok(estado);
-   	}
+	}
    
    	@PostMapping(path = "/estados")
    	@ResponseBody
@@ -573,7 +573,7 @@ import java.io.IOException;
    			e.printStackTrace();
    			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
    		}
-   	}
+	}
    
    	@PutMapping(path = "/estados/{id}")
    	public ResponseEntity<Estado> atualiza(@PathVariable("id") long id, @RequestBody JSONObject json) {
@@ -593,10 +593,10 @@ import java.io.IOException;
    		} catch (Exception e) {
    			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
    		}
-   	}
+	}
    
    	@DeleteMapping(path = "/estados/{id}")
-   	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
+	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
    
    		Estado estado = service.findById(id);
    		if (estado == null) {

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section class="layout-content" layout:fragment="corpo">
+
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<i class="oi oi-caret-right"></i>
+						<span th:text="#{compra.listar.label}"></span>
+					</li>
+				</ul>
+				<a class="btn btn-primary btn-md" th:href="@{/compras/cadastrar}" role="button"> 
+					<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> 
+					<span th:text="#{compra.cadastrar.label}"></span>
+				</a>
+			</div>
+		</nav>
+		
+		<div class="container" id="listagem">
+
+			<div th:replace="fragments/alert"></div>
+
+			<div class="table-responsive">
+				<table class="table table-striped table-hover table-sm">
+					<thead>
+						<tr>
+							<th class="bg-warning">#</th>
+							<th class="bg-warning" th:text="#{compra.data.label}"></th>
+							<th class="bg-warning" th:text="#{livro.titulo.label}"></th>
+							<th class="bg-warning" th:text="#{livro.autor.label}"></th>
+							<th class="bg-warning" th:text="#{livro.editora.label}"></th>
+							<th class="bg-warning" th:text="#{livro.ano.label}"></th>
+							<th class="bg-warning" th:text="#{compra.valor.label}"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="compra : ${compras}">
+							<td th:text="${compra.id}"></td>
+							<td th:text="${compra.data}"></td>
+							<td th:text="${compra.livro.titulo}"></td>
+							<td th:text="${compra.livro.autor}"></td>
+							<td th:text="${compra.livro.editora.nome}"></td>
+							<td th:text="${compra.livro.ano}"></td>
+							<td th:text="|R$ ${#numbers.formatDecimal(compra.valor,2,2,'COMMA')}|"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div th:replace="fragments/modal :: modal"></div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section class="layout-content" layout:fragment="corpo">
+
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<i class="oi oi-caret-right"></i>
+						<span th:text="#{usuario.listar.label}"></span>
+					</li>
+				</ul>
+				<a class="btn btn-primary btn-md" th:href="@{/usuarios/cadastrar}" role="button"> 
+					<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> 
+					<span th:text="#{usuario.cadastrar.label}"></span>
+				</a>
+			</div>
+		</nav>
+
+		<div class="container" id="listagem">
+
+			<div th:replace="fragments/alert"></div>
+
+			<div class="table-responsive">
+				<table class="table table-striped table-hover table-sm">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th th:text="#{usuario.username.label}"></th>
+							<th th:text="#{usuario.name.label}"></th>
+							<th th:text="#{usuario.CPF.label}"></th>
+							<th th:text="#{usuario.role.label}"></th>
+							<th th:text="#{acao.label}"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="usuario : ${usuarios}">
+							<td th:text="${usuario.id}"></td>
+							<td th:text="${usuario.username}"></td>
+							<td th:text="${usuario.name}"></td>
+							<td th:text="${usuario.CPF}"></td>
+							<td th:text="${usuario.role}"></td>
+							<td colspan="2">
+								<a class="btn btn-info btn-sm" th:href="@{/usuarios/editar/{id} (id=${usuario.id}) }"
+									role="button"> 
+									<span class="oi oi-brush" th:title="#{link.editar.label}" aria-hidden="true"> </span>
+								</a>
+								<button
+									th:id="${'btn_usuarios/excluir/' + usuario.id}"
+									type="button" class="btn btn-danger btn-sm"
+									data-toggle="modal" data-target="#myModal">
+									<span class="oi oi-circle-x" th:title="#{link.excluir.label}" aria-hidden="true"></span>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div th:replace="fragments/modal :: modal"></div>
+	</section>
+</body>
+</html>
