@@ -76,9 +76,9 @@
    ```
    
    3.4. Adicionar biblioteca do ***Derby JDBC Driver*** como dependência do projeto (no arquivo **pom.xml**)
-
+   
    ```xml
-<dependency>
+   <dependency>
         <groupId>org.apache.derby</groupId>
         <artifactId>derbyclient</artifactId>
         <version>10.14.2.0</version>
