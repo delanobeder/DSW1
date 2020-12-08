@@ -6,7 +6,7 @@
 
 - - -
 
-#### 03 - Transações (CRUD REST API)
+#### 03 - Transações de Cartões de Crédito (CRUD REST API)
 [Código](https://github.com/delanobeder/DSW1/blob/master/Modulo09/TransacoesRS)
 
 - - -
@@ -2027,14 +2027,12 @@
                 "numero": "4929 5828 5594 8623", "vencimento": "12/21", 
                 "cpf": "367.318.380-04", "cvv": "663" } }
   ```
-
-
+  
+  
 
 * Remove a transação de id = 3 [**D**elete - **CRUD**]
 
   DELETE http://localhost:8081/transacoes/3
-
-
 
 - - -
 
@@ -2051,18 +2049,20 @@
   { "titular": "Sincrano Alves", "numero": "5183 3373 8522 6547", 
     "vencimento": "11/21", "cpf": "214.720.460-99", "cvv": "853" }
   ```
-
-
+  
+  
 
 * Retorna a lista de cartões [**R**ead - **CRUD**]
 
   GET http://localhost:8081/cartoes
 
-  
-
 * Retorna o cartão de id = 1 [**R**ead - **CRUD**]
 
   GET http://localhost:8081/cartoes/1
+
+* Retorna a lista de cartões cujo CPF do titular = 367.318.380-04 [**R**ead - **CRUD**]
+
+  GET http://localhost:8081/cartoes/cpf/367.318.380-04
 
   
 
