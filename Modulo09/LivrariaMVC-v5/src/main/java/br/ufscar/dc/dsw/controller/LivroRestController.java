@@ -94,6 +94,15 @@ public class LivroRestController {
 		return ResponseEntity.ok(livro);
 	}
 
+	@GetMapping(path = "/livros/titulos/{titulo}")
+	public ResponseEntity<List<Livro>> listaPorTitulo(@PathVariable("titulo") String titulo) {
+		List<Livro> lista = service.buscarPorTitulo(titulo);
+		if (lista.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(lista);
+	}
+	
 	@PostMapping(path = "/livros")
 	@ResponseBody
 	public ResponseEntity<Livro> cria(@RequestBody JSONObject json) {

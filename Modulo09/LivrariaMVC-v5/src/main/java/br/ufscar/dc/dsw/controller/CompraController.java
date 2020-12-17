@@ -47,7 +47,7 @@ public class CompraController {
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
 					
-		model.addAttribute("compras",service.buscarTodos(this.getUsuario()));
+		model.addAttribute("compras",service.buscarTodosPorUsuario(this.getUsuario()));
 		
 		return "compra/lista";
 	}

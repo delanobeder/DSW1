@@ -9,7 +9,9 @@ public interface ICompraService {
 
 	Compra buscarPorId(Long id);
 
-	List<Compra> buscarTodos(Usuario u);
-
+	List<Compra> buscarTodosPorUsuario(Usuario u);
+	
+	List<Compra> buscarTodosPorUsuario(Long id);
+	
 	void salvar(Compra editora);
 }

@@ -9,7 +9,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @SuppressWarnings("serial")
+@JsonIgnoreProperties(value = { "usuario" })
 @Entity
 @Table(name = "Compra")
 public class Compra extends AbstractEntity<Long> {

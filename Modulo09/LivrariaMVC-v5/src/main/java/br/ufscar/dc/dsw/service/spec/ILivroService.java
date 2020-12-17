@@ -10,6 +10,8 @@ public interface ILivroService {
 	
 	List<Livro> buscarTodos();
 	
+	List<Livro> buscarPorTitulo(String titulo);
+	
 	void salvar(Livro livro);
 	
 	void excluir(Long id);

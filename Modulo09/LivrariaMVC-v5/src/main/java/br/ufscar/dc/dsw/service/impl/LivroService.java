@@ -34,4 +34,9 @@ public class LivroService implements ILivroService {
 	public List<Livro> buscarTodos() {
 		return dao.findAll();
 	}
+	
+	@Transactional(readOnly = true)
+	public List<Livro> buscarPorTitulo(String titulo) {
+		return dao.findAllByTitulo(titulo);
+	}
 }
