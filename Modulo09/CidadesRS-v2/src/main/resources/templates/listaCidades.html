@@ -11,10 +11,11 @@
 			<tr>
 				<td>Estado</td>
 				<td><select id='estado' name='estado' onchange='submit()'>
-						<option value='0'>--</option>
+						<option value='-1'>--</option>
 						<option th:each="estado : ${estados}" 
 						th:value="${estado.id}" 
-						th:text="${estado.nome}"></option>
+						th:text="${estado.nome}"
+						th:selected="${estado.id == selecionado}"></option>
 				</select></td>
 			</tr>
 		</table>

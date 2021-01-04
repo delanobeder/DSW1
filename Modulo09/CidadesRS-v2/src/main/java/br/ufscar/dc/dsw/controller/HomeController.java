@@ -47,12 +47,13 @@ public class HomeController {
 	public String listaCidades(@RequestParam(required = false) Long estado, ModelMap model) {
 		List<Cidade> cidades;
 		model.addAttribute("estados", estadoService.findAll());
-		if (estado == null) {
+		if (estado == null || estado == -1) {
 			cidades = cidadeService.findAll();
 		} else {
 			cidades = cidadeService.findByEstado(estado);
 		}
 		model.addAttribute("cidades", cidades);
+		model.addAttribute("selecionado", estado);
 		return "listaCidades";
 	}
 }
