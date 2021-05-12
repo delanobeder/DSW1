@@ -18,7 +18,7 @@ import javax.mail.internet.MimeMultipart;
 
 public class EmailService {
 
-	public static void send(InternetAddress from, InternetAddress to, String subject, String body, File file) {
+	public void send(InternetAddress from, InternetAddress to, String subject, String body, File file) {
 
 		try {
 
@@ -69,7 +69,7 @@ public class EmailService {
 		}
 	}
 	
-	public static void send(InternetAddress from, InternetAddress to, String subject, String body) {
+	public void send(InternetAddress from, InternetAddress to, String subject, String body) {
 		send(from, to, subject, body, null);
 	}
 }

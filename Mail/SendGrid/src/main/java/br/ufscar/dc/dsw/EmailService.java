@@ -19,7 +19,7 @@ import com.sendgrid.helpers.mail.objects.Email;
 
 public class EmailService {
 	
-	public static void send(Email from, Email to, String subject, String body, File file) throws IOException {
+	public void send(Email from, Email to, String subject, String body, File file) throws IOException {
 
 		try {
 			Properties prop = new Properties();
@@ -78,7 +78,7 @@ public class EmailService {
 		}
 	}
 	
-	public static void send(Email from, Email to, String subject, String body) throws IOException {
+	public void send(Email from, Email to, String subject, String body) throws IOException {
 		send(from, to, subject, body, null);
 	}
 }

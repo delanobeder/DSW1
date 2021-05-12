@@ -9,6 +9,8 @@ public class Main {
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
 
+		EmailService service = new EmailService();
+		
 		InternetAddress from = new InternetAddress("admin@dsw.com", "Administrator");
 		InternetAddress to = new InternetAddress("bob@dsw.com", "Bob");
 		
@@ -17,11 +19,11 @@ public class Main {
 
 		String body1 = "Exemplo mensagem (Mailtrap/Java)";
 		String body2 = "Exemplo mensagem com Anexo (Mailtrap/Java)";
-
+		
 		// Envio sem anexo
-		EmailService.send(from, to, subject1, body1);
+		service.send(from, to, subject1, body1);
 
 		// Envio com anexo
-		EmailService.send(from, to, subject2, body2, new File("SIGA.pdf"));
+		service.send(from, to, subject2, body2, new File("SIGA.pdf"));
 	}
 }

@@ -7,6 +7,9 @@ import com.sendgrid.helpers.mail.objects.Email;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
+		
+		EmailService service = new EmailService();
+		
 		Email from = new Email("fulano@dsw.ufscar.br", "Fulano"); // Atualize
 		Email to = new Email("beltrano@dsw.ufscar.br", "Beltrano"); // Atualize
 
@@ -17,9 +20,9 @@ public class Main {
 		String body2 = "Exemplo mensagem com Anexo (SendGrid/Java)";
 
 		// Envio sem anexo
-		EmailService.send(from, to, subject1, body1);
+		service.send(from, to, subject1, body1);
 
 		// Envio com anexo
-		EmailService.send(from, to, subject2, body2, new File("SIGA.pdf"));
+		service.send(from, to, subject2, body2, new File("SIGA.pdf"));
 	}
 }
