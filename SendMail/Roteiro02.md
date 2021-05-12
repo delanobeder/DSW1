@@ -36,6 +36,8 @@
 
 4. Caso a **<u>Verificação em duas etapas</u>** esteja ativada, é necessário criar uma **Senha de app** para permitir que seu programa Java acesse o Gmail SMTP. Utilize essa senha no arquivo **config.properties** discutido anteriormente.
 
+    Maiores informações: https://support.google.com/accounts/answer/185833?hl=pt-BR
+
     ![senha app](fig/02-03.png)
 
     
