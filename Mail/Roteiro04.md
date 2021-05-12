@@ -6,7 +6,7 @@
 - - -
 
 #### 04 - Envio de *emails* (Gmail SMTP + Spring Email)
-[Código](https://github.com/delanobeder/DSW1/blob/master/SendMail/GmailSMTP)
+[Código](https://github.com/delanobeder/DSW1/blob/master/SendMail/SpringEmail)
 
 - - -
 
