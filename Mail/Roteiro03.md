@@ -6,7 +6,7 @@
 - - -
 
 #### 03 - Envio de *emails* (SendGrid)
-[Código](https://github.com/delanobeder/DSW1/blob/master/SendMail/SendGrid)
+[Código](https://github.com/delanobeder/DSW1/blob/master/Mail/SendGrid)
 - - -
 
 1. Faça o cadastro em https://signup.sendgrid.com/

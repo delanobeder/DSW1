@@ -6,7 +6,7 @@
 - - -
 
 #### 02 - Envio de *emails* (Gmail SMTP)
-[Código](https://github.com/delanobeder/DSW1/blob/master/SendMail/GmailSMTP)
+[Código](https://github.com/delanobeder/DSW1/blob/master/Mail/GmailSMTP)
 
 - - -
 

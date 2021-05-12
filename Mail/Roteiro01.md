@@ -6,7 +6,7 @@
 - - -
 
 #### 01 - Envio de *emails* (Mailtrap)
-[Código](https://github.com/delanobeder/DSW1/blob/master/SendMail/Mailtrap)
+[Código](https://github.com/delanobeder/DSW1/blob/master/Mail/Mailtrap)
 - - -
 
 1. Faça o cadastro em  https://mailtrap.io/
