@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Upload File Demo</title>
+</head>
+
+<body>
+
+	<h1>Upload File Demo</h1>
+	<form method="POST" action="/uploadFile" enctype="multipart/form-data">
+		Choose a file: <input type="file" name="file" /><input type="submit" value="Upload" />
+	</form>
+
+	<br />
+
+	<div th:if="${sucess} != null">
+		<span> <strong th:text="${sucess}"></strong></span>
+	</div>
+
+	<h1>Files</h1>
+
+						
+	<table border="1" style="width: 400px; border: 1px solid black">
+		<thead>
+			<tr>
+				<th style="width: 10%; text-align: center">#</th>
+				<th style="width: 25%; text-align: center">Type</th>
+				<th style="width: 25%; text-align: center">Link</th>
+				<th style="width: 40%; text-align: center">Preview</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="file : ${files}">
+				<td th:text="${file.id}" style="text-align: center"></td>
+				<td th:text="${file.type}" style="text-align: center"></td>
+				<td style="text-align: center"><a th:href="@{/download/{id} (id=${file.id}) }" th:text="${file.name}"></a></td>
+				<td style="text-align: center">
+					<span th:if="${file.image}">
+						<img th:src="@{/download/{id} (id=${file.id})}" width="160px"/>
+					</span>
+					<span th:unless="${file.image}">-</span>
+				</td>
+		</tbody>
+	</table>
+</body>
+
+</html>

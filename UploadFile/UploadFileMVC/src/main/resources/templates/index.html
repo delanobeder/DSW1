@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Upload File Demo</title>
+</head>
+
+<body>
+
+	<h1>Upload File Demo</h1>
+	<form method="POST" action="/uploadFile" enctype="multipart/form-data">
+		Choose a file: <input type="file" name="file" /><input type="submit" value="Upload" />
+	</form>
+
+	<br />
+
+	<div th:if="${sucess} != null">
+		<span> <strong th:text="${sucess}"></strong></span>
+	</div>
+
+	<h1>Files</h1>
+
+	<ul th:each="file : ${files}">
+		<li><a th:href="@{/upload/{file} (file=${file}) }" th:text="${file}"></a></li>
+	</ul>
+</body>
+
+</html>
