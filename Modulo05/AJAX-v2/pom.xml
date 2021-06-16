@@ -8,7 +8,7 @@
   <artifactId>AJAX</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>AJAX</name>
+  <name>AJAX (v2)</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -71,7 +71,7 @@
   </dependencies>
 
   <build>
-    <finalName>AJAX</finalName>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
          <plugin>
             <groupId>org.apache.tomcat.maven</groupId>
