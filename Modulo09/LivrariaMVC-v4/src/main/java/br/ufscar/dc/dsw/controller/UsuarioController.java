@@ -74,12 +74,6 @@ public class UsuarioController {
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, ModelMap model) {
-		/* if (service.editoraTemLivros(id)) {
-			model.addAttribute("fail", "Editora não excluída. Possui livro(s) vinculado(s).");
-		} else {
-			service.excluir(id);
-			model.addAttribute("sucess", "Editora excluída com sucesso.");
-		} */
 		service.excluir(id);
 		model.addAttribute("sucess", "Usuário excluído com sucesso.");
 		return listar(model);

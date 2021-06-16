@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -42,6 +44,7 @@ public class CompraController {
 	@GetMapping("/cadastrar")
 	public String cadastrar(ModelMap model, Compra compra) {
 		try {
+			compra.setUsuario(getUsuario());
 			model.addAttribute("livros", listaLivros());
 			model.addAttribute("cartoes", listaCartoes());
 		} catch (RestClientException e) {
@@ -53,13 +56,13 @@ public class CompraController {
 	private Usuario getUsuario() {
 		UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
-		return usuarioDetails.getUser();
+		return usuarioDetails.getUsuario();
 	}
 
 	@GetMapping("/listar")
 	public String listar(ModelMap model, Locale locale) {
 
-		List<Compra> compras = service.buscarTodos(this.getUsuario());
+		List<Compra> compras = service.buscarTodosPorUsuario(this.getUsuario());
 		try {
 			for (Compra c : compras) {
 				Transacao t = clienteRestService.buscaTransacao(c.getTransacaoID());
@@ -76,11 +79,13 @@ public class CompraController {
 	}
 
 	@PostMapping("/salvar")
-	public String salvar(Compra compra, BindingResult result, ModelMap model) {
+	public String salvar(@Valid Compra compra, BindingResult result, ModelMap model) {
 
 		try {
-			compra.setValor(compra.getLivro().getPreco());
-			compra.setUsuario(this.getUsuario());
+			
+			if (result.hasErrors()) {
+				return "compra/cadastro";
+			}
 
 			Transacao transacao = new Transacao();
 			transacao.setDescricao("Compra Livraria Virtual");

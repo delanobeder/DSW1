@@ -27,7 +27,6 @@
 
 				<div th:replace="fragments/validacao :: validacao"></div>
 
-
 				<div class="form-row">
 					<div class="form-group col-md-12">
 						
@@ -61,6 +60,9 @@
 						</div>
 					</div>
 				</div>
+				
+				<input type="hidden" th:field="*{usuario}" id="usuario">
+				<input type="hidden" th:field="*{data}" id="data">
 
 				<button type="submit" th:text="#{button.salvar.label}"
 					class="btn btn-primary btn-sm"></button>

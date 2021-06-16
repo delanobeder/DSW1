@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "Compra")
 public class Compra extends AbstractEntity<Long> {
     
+	@NotNull
 	@Column(columnDefinition = "DECIMAL(8,2) DEFAULT 0.0")
 	private BigDecimal valor;
     
@@ -44,8 +45,8 @@ public class Compra extends AbstractEntity<Long> {
 		return valor;
 	}
 
-	public void setValor(BigDecimal preco) {
-		this.valor = preco;
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 
 	public Livro getLivro() {
@@ -54,6 +55,7 @@ public class Compra extends AbstractEntity<Long> {
 
 	public void setLivro(Livro livro) {
 		this.livro = livro;
+		setValor(livro.getPreco());
 	}
 
 	public Usuario getUsuario() {

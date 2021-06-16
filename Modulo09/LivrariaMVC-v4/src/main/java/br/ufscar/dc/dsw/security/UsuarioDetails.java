@@ -12,26 +12,26 @@ import br.ufscar.dc.dsw.domain.Usuario;
 @SuppressWarnings("serial")
 public class UsuarioDetails implements UserDetails {
  
-    private Usuario user;
+    private Usuario usuario;
      
-    public UsuarioDetails(Usuario user) {
-        this.user = user;
+    public UsuarioDetails(Usuario usuario) {
+        this.usuario = usuario;
     }
  
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(usuario.getRole());
         return Arrays.asList(authority);
     }
  
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return usuario.getPassword();
     }
  
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return usuario.getUsername();
     }
  
     @Override
@@ -54,8 +54,8 @@ public class UsuarioDetails implements UserDetails {
         return true;
     }
 
-	public Usuario getUser() {
-		return user;
+	public Usuario getUsuario() {
+		return usuario;
 	}
     
 }

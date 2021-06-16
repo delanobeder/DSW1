@@ -16,13 +16,12 @@ public class UsuarioDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        Usuario user = dao.getUserByUsername(username);
+        Usuario usuario = dao.getUserByUsername(username);
          
-        if (user == null) {
+        if (usuario == null) {
             throw new UsernameNotFoundException("Could not find user");
         }
          
-        return new UsuarioDetails(user);
+        return new UsuarioDetails(usuario);
     }
- 
 }

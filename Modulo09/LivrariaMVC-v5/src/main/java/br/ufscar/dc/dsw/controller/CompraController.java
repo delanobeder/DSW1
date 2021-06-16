@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -34,8 +36,9 @@ public class CompraController {
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Compra compra) {
+		String data = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
 		compra.setUsuario(this.getUsuario());
-		compra.setData("31/08/2020");
+		compra.setData(data);
 		return "compra/cadastro";
 	}
 	
@@ -53,12 +56,11 @@ public class CompraController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(Compra compra, BindingResult result, RedirectAttributes attr) {
+	public String salvar(@Valid Compra compra, BindingResult result, RedirectAttributes attr) {
 		
-		String data = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
-		compra.setUsuario(this.getUsuario());
-		compra.setData(data);
-		compra.setValor(compra.getLivro().getPreco());
+		if (result.hasErrors()) {
+			return "compra/cadastro";
+		}
 		
 		service.salvar(compra);
 		attr.addFlashAttribute("sucess", "Compra inserida com sucesso.");
