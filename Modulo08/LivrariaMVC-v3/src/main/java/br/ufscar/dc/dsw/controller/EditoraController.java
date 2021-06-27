@@ -41,7 +41,7 @@ public class EditoraController {
 		}
 		
 		service.salvar(editora);
-		attr.addFlashAttribute("sucess", "Editora inserida com sucesso.");
+		attr.addFlashAttribute("sucess", "editora.create.sucess");
 		return "redirect:/editoras/listar";
 	}
 	
@@ -59,17 +59,17 @@ public class EditoraController {
 		}
 
 		service.salvar(editora);
-		attr.addFlashAttribute("sucess", "Editora editada com sucesso.");
+		attr.addFlashAttribute("sucess", "editora.edit.sucess");
 		return "redirect:/editoras/listar";
 	}
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, ModelMap model) {
 		if (service.editoraTemLivros(id)) {
-			model.addAttribute("fail", "Editora não excluída. Possui livro(s) vinculado(s).");
+			model.addAttribute("fail", "editora.delete.fail");
 		} else {
 			service.excluir(id);
-			model.addAttribute("sucess", "Editora excluída com sucesso.");
+			model.addAttribute("sucess", "editora.delete.sucess");
 		}
 		return listar(model);
 	}
