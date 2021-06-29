@@ -1,3 +1,5 @@
+drop database if exists Livraria;
+
 create database Livraria;
 
 use Livraria;

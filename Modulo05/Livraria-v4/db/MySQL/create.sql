@@ -1,4 +1,4 @@
-drop database Livraria;
+drop database if exists Livraria;
 
 create database Livraria;
 

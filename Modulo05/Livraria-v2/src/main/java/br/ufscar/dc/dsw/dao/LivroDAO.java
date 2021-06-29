@@ -19,9 +19,8 @@ public class LivroDAO extends GenericDAO {
 
         try {
             Connection conn = this.getConnection();
-            PreparedStatement statement = conn.prepareStatement(sql);;
+            PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement = conn.prepareStatement(sql);
             statement.setString(1, livro.getTitulo());
             statement.setString(2, livro.getAutor());
             statement.setInt(3, livro.getAno());
