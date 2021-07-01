@@ -113,8 +113,12 @@ public class EditoraRestController {
 		if (editora == null) {
 			return ResponseEntity.notFound().build();
 		} else {
-			service.excluir(id);
-			return ResponseEntity.noContent().build();
+			if (service.editoraTemLivros(id)) {
+				return new ResponseEntity<Boolean>(false, HttpStatus.FORBIDDEN);
+			} else {
+				service.excluir(id);
+				return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+			}
 		}
 	}
 }
