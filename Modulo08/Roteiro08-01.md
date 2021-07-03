@@ -101,7 +101,7 @@
    ```
    
 5. Configurar o projeto --- no arquivo **pom.xml** (incluir novas maven dependências)
-Lembrar de adicionar o **plugin** native2ascii (ver roteiros anteriores)
+   Lembrar de adicionar o **plugin** native2ascii (ver roteiros anteriores)
    
    ```xml
    <dependency>
@@ -133,7 +133,7 @@ Lembrar de adicionar o **plugin** native2ascii (ver roteiros anteriores)
    	<artifactId>thymeleaf-layout-dialect</artifactId>
    </dependency>
    ```
-5.1 Adicionar a biblioteca Native2Ascii (https://native2ascii.net/) via Maven, adicionando as seguintes linhas ao arquivo **pom.xml**:
+   5.1 Adicionar a biblioteca Native2Ascii (https://native2ascii.net/) via Maven, adicionando as seguintes linhas ao arquivo **pom.xml**:
 
    ```xml
    <plugin>
@@ -168,7 +168,7 @@ Lembrar de adicionar o **plugin** native2ascii (ver roteiros anteriores)
    6.1. Explore os arquivos presentes no diretório **src/main/resources/static** e **src/main/resources/templates**
 
    ```
-src/main/resources/static/css/style.css
+   src/main/resources/static/css/style.css
    src/main/resources/static/image/error.ico
    src/main/resources/static/image/favicon.png
    src/main/resources/static/image/image.png
@@ -359,7 +359,6 @@ src/main/resources/static/css/style.css
    
    ```java
    package br.ufscar.dc.dsw.domain;
-   
    import java.util.List;
    import javax.persistence.Column;
    import javax.persistence.Entity;
@@ -367,6 +366,7 @@ src/main/resources/static/css/style.css
    import javax.persistence.Table;
    import javax.validation.constraints.NotBlank;
    import javax.validation.constraints.Size;
+   import br.ufscar.dc.dsw.validation.UniqueCNPJ;
    
    @SuppressWarnings("serial")
    @Entity
@@ -374,6 +374,7 @@ src/main/resources/static/css/style.css
    public class Editora extends AbstractEntity<Long> {
    
    	@NotBlank
+       @UniqueCNPJ (message = "{Unique.editora.CNPJ}")
    	@Size(min = 18, max = 18, message = "{Size.editora.CNPJ}")
    	@Column(nullable = false, unique = true, length = 60)
    	private String CNPJ;
@@ -411,7 +412,64 @@ src/main/resources/static/css/style.css
    	}
    }
    ```
-   7.4 Criar arquivo de mensagens de validação (**src/main/resources/ValidationMessages.properties**)
+   
+   7.4 Interface **br.ufscar.dc.dsw.validation.UniqueCNPJ** (Validação CNPJ)
+   
+   ```java
+   package br.ufscar.dc.dsw.validation;
+   import java.lang.annotation.ElementType;
+   import java.lang.annotation.Retention;
+   import java.lang.annotation.RetentionPolicy;
+   import java.lang.annotation.Target;
+   import javax.validation.Constraint;
+   import javax.validation.Payload;
+   
+   @Constraint(validatedBy = UniqueCNPJValidator.class)
+   @Target(ElementType.FIELD)
+   @Retention(RetentionPolicy.RUNTIME)
+   public @interface UniqueCNPJ {
+    String message() default "CNPJ is already registered";
+    Class<?>[] groups() default { };
+    Class<? extends Payload>[] payload() default { };
+   }
+   ```
+   
+   7.5 Classe **br.ufscar.dc.dsw.validation.UniqueCNPJValidator** (Validação CNPJ)
+   
+   ```java
+   package br.ufscar.dc.dsw.validation;
+   
+   import javax.validation.ConstraintValidator;
+   import javax.validation.ConstraintValidatorContext;
+   
+   import org.springframework.beans.factory.annotation.Autowired;
+   import org.springframework.stereotype.Component;
+   
+   import br.ufscar.dc.dsw.dao.IEditoraDAO;
+   import br.ufscar.dc.dsw.domain.Editora;
+   
+   @Component
+   public class UniqueCNPJValidator implements ConstraintValidator<UniqueCNPJ, String> {
+   
+   	@Autowired
+   	private IEditoraDAO dao;
+   
+   	@Override
+   	public boolean isValid(String CNPJ, ConstraintValidatorContext context) {
+   		if (dao != null) {
+   			Editora editora = dao.findByCNPJ(CNPJ);
+   			return editora == null;
+   		} else {
+               // Não necessidade de validação
+   			// Durante a execução da classe LivrariaMvcApplication
+   			// não há injeção de dependência. 
+   			return true;
+   		}
+   	}
+   }
+   ```
+   
+   7.6 Criar arquivo de mensagens de validação (**src/main/resources/ValidationMessages.properties**)
    
    ```properties
    # Mensagens genéricas
@@ -432,9 +490,11 @@ src/main/resources/static/css/style.css
    # Validação campos Editora
    
    Size.editora.CNPJ = O CNPJ da editora deve ter {max} caracteres.
+   Unique.editora.CNPJ = O CNPJ deve ser único.
    ```
-   <div style="page-break-after: always"></div>
    
+   <div style="page-break-after: always"></div>
+
 8. Criar as interfaces DAO (pacote **br.ufscar.dc.dsw.dao**)
 
    8.1. Interface **br.ufscar.dc.dsw.dao.IEditoraDAO**
@@ -449,12 +509,14 @@ src/main/resources/static/css/style.css
    @SuppressWarnings("unchecked")
    public interface IEditoraDAO extends CrudRepository<Editora, Long>{
    	Editora findById(long id);
+       Editora findByCNPJ (String CNPJ);
    	List<Editora> findAll();
    	Editora save(Editora editora);
    	void deleteById(Long id);
    }
    ```
-   
+
+
 9. Criar as classes e interfaces de serviço (pacote **br.ufscar.dc.dsw.service**)
 
    9.1. Interface **br.ufscar.dc.dsw.service.spec.IEditoraService**
@@ -471,11 +533,11 @@ src/main/resources/static/css/style.css
    	boolean editoraTemLivros(Long id);
    }
    ```
+   
    9.2. Classe **br.ufscar.dc.dsw.service.impl.EditoraService**
    
    ```java
    package br.ufscar.dc.dsw.service.impl;
-   
    import java.util.List;
    import org.springframework.beans.factory.annotation.Autowired;
    import org.springframework.stereotype.Service;
@@ -494,16 +556,16 @@ src/main/resources/static/css/style.css
    	public void salvar(Editora editora) {
    		dao.save(editora);
    	}
-   
+   	
    	public void excluir(Long id) {
    		dao.deleteById(id);
    	}
-   
+   	
    	@Transactional(readOnly = true)
    	public Editora buscarPorId(Long id) {
    		return dao.findById(id.longValue());
    	}
-   
+   	
    	@Transactional(readOnly = true)
    	public List<Editora> buscarTodos() {
    		return dao.findAll();
@@ -516,7 +578,10 @@ src/main/resources/static/css/style.css
    }
    ```
 
+
+
 ##### (4) CRUD Editora: Controlador
+
 - - -
 
 10. Criar a classe controlador (pacote **br.ufscar.dc.dsw.controller**)
@@ -672,9 +737,7 @@ src/main/resources/static/css/style.css
     </body>
     </html>
     ```
-    
-    
-    
+
     11.2. Criar o arquivo **lista.html** (no diretório **src/main/resources/templates/editora**)
     
     ```html
@@ -743,6 +806,7 @@ src/main/resources/static/css/style.css
     </body>
     </html>
     ```
+    
     <div style="page-break-after: always"></div>
     
     11.3 Alterar o arquivo **src/main/resources/fragments/sidebar.html** (para incluir links para o CRUD Editora)
@@ -762,6 +826,7 @@ src/main/resources/static/css/style.css
         </li>
     </ul>
     ```
+    
     11.4. Atualizar a classe **br.ufscar.dc.dsw.LivrariaMvcApplication**
     
     ```java
@@ -801,6 +866,7 @@ src/main/resources/static/css/style.css
     	}
     }
     ```
+    
     11.5. Executar (**mvn spring-boot:run**) e ver o efeito (o CRUD Editora está operacional)
 
 
@@ -841,6 +907,7 @@ src/main/resources/static/css/style.css
     	}
     }
     ```
+    
     12.2 Classe **br.ufscar.dc.dsw.conversor.BigDecimalConversor** 
     
     ```java
@@ -863,6 +930,7 @@ src/main/resources/static/css/style.css
     	}
     }
     ```
+    
     12.3 Criar a classe de configuração **br.ufscar.dc.dsw.config.MvcConfig**
     
     ```java
@@ -875,15 +943,13 @@ src/main/resources/static/css/style.css
     
     import br.ufscar.dc.dsw.conversor.BigDecimalConversor;
     
-    
     @Configuration
     @ComponentScan(basePackages = "br.ufscar.dc.dsw.config")
-    public class MvcConfig implements WebMvcConfigurer {
-        
-        @Override
-        public void addFormatters(FormatterRegistry registry) {
-            registry.addConverter(new BigDecimalConversor());
-        }
+    public class MvcConfig implements WebMvcConfigurer {     
+    	@Override
+    	public void addFormatters(FormatterRegistry registry) {
+    	     registry.addConverter(new BigDecimalConversor());
+    	}
     }
     ```
 
@@ -907,6 +973,7 @@ src/main/resources/static/css/style.css
     	void deleteById(Long id);
     }
     ```
+    
     <div style="page-break-after: always"></div>
 
 
@@ -927,7 +994,7 @@ src/main/resources/static/css/style.css
     	void excluir(Long id);
     }
     ```
-    
+
     14.2. Classe **br.ufscar.dc.dsw.service.impl.LivroService**
     
     ```java
@@ -1066,7 +1133,6 @@ src/main/resources/static/css/style.css
     }
     ```
 
-
 <div style="page-break-after: always"></div>
 
 ##### (8) CRUD Livro: Visão
@@ -1175,7 +1241,7 @@ src/main/resources/static/css/style.css
     </body>
     </html>
     ```
-    
+
     16.2. Criar a visão **lista.html** (no diretório **src/main/resources/templates/livro**)
     
     ```html
@@ -1248,7 +1314,7 @@ src/main/resources/static/css/style.css
     </body>
     </html>
     ```
-    
+
     16.3. Alterar o arquivo **src/main/resources/fragments/sidebar.html** (para incluir links para o CRUD Livro)
     
     ```html
@@ -1268,6 +1334,8 @@ src/main/resources/static/css/style.css
         </li>
     </ul>
     ```
+    
+    
     <div style="page-break-after: always"></div>
     
     16.4. Atualizar a classe **br.ufscar.dc.dsw.LivrariaMvcApplication**
@@ -1340,7 +1408,7 @@ src/main/resources/static/css/style.css
     	}
     }
     ```
-    
+
     16.5. Executar (**mvn spring-boot:run**) e ver o efeito (o CRUD Livro está operacional)
 
 
@@ -1447,3 +1515,4 @@ src/main/resources/static/css/style.css
 * Spring WebJars tutorial 
 
   http://zetcode.com/spring/webjars/
+

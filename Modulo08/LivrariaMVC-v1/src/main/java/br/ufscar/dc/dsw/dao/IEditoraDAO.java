@@ -10,6 +10,8 @@ import br.ufscar.dc.dsw.domain.Editora;
 public interface IEditoraDAO extends CrudRepository<Editora, Long>{
 
 	Editora findById(long id);
+	
+	Editora findByCNPJ (String CNPJ);
 
 	List<Editora> findAll();
 	

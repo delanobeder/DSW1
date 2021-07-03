@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import br.ufscar.dc.dsw.validation.UniqueCNPJ;
 
 @SuppressWarnings("serial")
 @JsonIgnoreProperties(value = { "livros" })
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "Editora")
 public class Editora extends AbstractEntity<Long> {
 
+	@UniqueCNPJ (message = "{Unique.editora.CNPJ}")
 	@NotBlank
 	@Size(min = 18, max = 18, message = "{Size.editora.CNPJ}")
 	@Column(nullable = false, unique = true, length = 60)

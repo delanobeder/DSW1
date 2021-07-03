@@ -107,7 +107,7 @@
 7. Alterar o controlador de erros - **br.ufscar.dc.dsw.controller.ErrorViewController.java**
 
    ```java
-package br.ufscar.dc.dsw.controller;
+   package br.ufscar.dc.dsw.controller;
    
    import java.util.Map;
    
@@ -737,9 +737,10 @@ package br.ufscar.dc.dsw.controller;
     # Validação campos Editora
       
     Size.editora.CNPJ = The CNPJ of the publisher must have {max} characters.
+    Unique.editora.CNPJ = The CNPJ should be unique.
       ```
       11.2 **src/main/resources/messages.properties**
-
+    
       ```properties
     # Titulos do Header
     
@@ -787,7 +788,7 @@ package br.ufscar.dc.dsw.controller;
     acao.label = Ação
     
     # Mensagens de erro
-
+    
     error.page.title = Página de Erros
     
     previous.message = Voltar a página anterior 
@@ -877,7 +878,7 @@ package br.ufscar.dc.dsw.controller;
   
   https://www.baeldung.com/spring-boot-internationalization
   
-
+  
   
 - Your Step-by-Step Guide to Spring Boot Internationalization
   
