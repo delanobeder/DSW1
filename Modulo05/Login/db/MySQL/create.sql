@@ -1,3 +1,5 @@
+drop database if exists Login;
+
 create database Login;
 
 use Login

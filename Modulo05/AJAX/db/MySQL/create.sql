@@ -1,3 +1,5 @@
+drop database if exists Cidades;
+
 create database Cidades;
 
 use Cidades;
