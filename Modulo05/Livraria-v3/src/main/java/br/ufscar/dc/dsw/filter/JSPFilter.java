@@ -7,8 +7,10 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
+@WebFilter(urlPatterns = { "*.jsp" })
 public class JSPFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws ServletException, IOException {
@@ -23,7 +25,7 @@ public class JSPFilter implements Filter {
 		    chain.doFilter(request, response); // Just continue chain.
 		} else {
 			// otherwise deny acess to any jsp (typing in browser)
-			req.getRequestDispatcher("denied.jsp").forward(request, response);
+			req.getRequestDispatcher("/denied.jsp").forward(request, response);
 		}
 	}
 }
