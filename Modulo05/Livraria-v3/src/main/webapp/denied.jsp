@@ -9,8 +9,7 @@
     </head>
     <body>
         <center>
-            <h1>Erro</h1>
-            <h2><%= exception.getMessage() %><br/> </h2>
+            <h1>Página não existente</h1>
         </center>	
     </body>
 </html>
