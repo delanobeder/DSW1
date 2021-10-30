@@ -54,7 +54,9 @@ public class EditoraController {
 	@PostMapping("/editar")
 	public String editar(@Valid Editora editora, BindingResult result, RedirectAttributes attr) {
 		
-		if (result.hasErrors()) {
+		// Apenas rejeita se o problema não for com o CNPJ (CNPJ campo read-only) 
+		
+		if (result.getFieldErrorCount() > 1 || result.getFieldError("CNPJ") == null) {
 			return "editora/cadastro";
 		}
 
