@@ -42,6 +42,7 @@
 					<div class="form-group col-md-6">
 						<label for="CNPJ">CNPJ</label> 
 						<input type="text" class="form-control" id="CNPJ" placeholder="__.___.___/____-__"
+							th:readonly="${editora.id != null}"
 							autofocus="autofocus" th:field="*{CNPJ}"
 							th:classappend="${#fields.hasErrors('CNPJ')} ? is-invalid" 
 							data-mask="00.000.000/0000-00" data-mask-reverse="true" />

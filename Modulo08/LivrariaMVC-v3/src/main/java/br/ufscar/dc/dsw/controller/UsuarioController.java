@@ -48,7 +48,7 @@ public class UsuarioController {
 		
 		usuario.setPassword(encoder.encode(usuario.getPassword()));
 		service.salvar(usuario);
-		attr.addFlashAttribute("sucess", "Usuário inserido com sucesso.");
+		attr.addFlashAttribute("sucess", "usuario.create.sucess");
 		return "redirect:/usuarios/listar";
 	}
 	
@@ -68,14 +68,14 @@ public class UsuarioController {
 		System.out.println(usuario.getPassword());
 		
 		service.salvar(usuario);
-		attr.addFlashAttribute("sucess", "Usuário editado com sucesso.");
+		attr.addFlashAttribute("sucess", "usuario.edit.sucess");
 		return "redirect:/usuarios/listar";
 	}
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, ModelMap model) {
 		service.excluir(id);
-		model.addAttribute("sucess", "Usuário excluído com sucesso.");
+		model.addAttribute("sucess", "usuario.delete.sucess");
 		return listar(model);
 	}
 }
