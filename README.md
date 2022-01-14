@@ -101,7 +101,6 @@ Neste repositório encontram-se os materiais didáticos da disciplina Desenvolvi
 
 - [Exemplos de código](Modulo07/README.md)
 
-  
 - - -
 
 #### Módulo 08 - SpringMVC, Thymeleaf & Spring Data JPA
