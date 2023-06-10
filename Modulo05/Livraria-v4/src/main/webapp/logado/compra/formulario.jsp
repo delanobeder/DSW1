@@ -11,17 +11,14 @@
 	</head>
 
 	<body>
-		<%
-			String contextPath = request.getContextPath().replace("/", "");
-		%>
 		<div align="center">
 			<h1>
 				<fmt:message key="purchases.welcome" />
 			</h1>
 			<h2>
-				<a href="lista"> <fmt:message key="purchases.list" />
-				</a> &nbsp;&nbsp;&nbsp; <a
-					href="${pageContext.request.contextPath}/logout.jsp"> <fmt:message
+				<a href="lista"> <fmt:message key="purchases.list" /></a> 
+				&nbsp;&nbsp;&nbsp; 
+				<a href="${pageContext.request.contextPath}/logout.jsp"> <fmt:message
 						key="exit.link" />
 				</a>
 			</h2>

@@ -12,15 +12,12 @@
 
 	<body>
 
-		<%
-			String contextPath = request.getContextPath().replace("/", "");
-		%>
 		<div align="center">
 			<h1>
 				<fmt:message key="purchases.welcome" />
 			</h1>
 			<h2>
-				<a href="/<%=contextPath%>/compras/cadastro"> 
+				<a href="/${sessionScope.contextPath}/compras/cadastro"> 
 					<fmt:message key="purchases.create" />
 				</a> 
 				&nbsp;&nbsp;&nbsp; 

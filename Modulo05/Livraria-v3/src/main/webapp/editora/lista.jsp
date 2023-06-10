@@ -19,8 +19,9 @@
 				<fmt:message key="publishers.welcome" />
 			</h1>
 			<h2>
-				<a href="/<%=contextPath%>"> <fmt:message key="main.link" /></a>
-				&nbsp;&nbsp;&nbsp; <a href="/<%=contextPath%>/editoras/cadastro">
+				<a href="/${requestScope.contextPath}"> <fmt:message key="main.link" /></a>
+				&nbsp;&nbsp;&nbsp; 
+				<a href="/${requestScope.contextPath}/editoras/cadastro">
 					<fmt:message key="publishers.create" />
 				</a>
 			</h2>
@@ -42,12 +43,12 @@
 						<td><c:out value="${editora.CNPJ}" /></td>
 						<td><c:out value="${editora.nome}" /></td>
 						<td><a
-							href="/<%= contextPath %>/editoras/edicao?id=<c:out value='${editora.id}' />">
+							href="/${requestScope.contextPath}/editoras/edicao?id=<c:out value='${editora.id}' />">
 								<fmt:message key="publishers.update" />
 						</a> <c:if test="${editora.qtdeLivros == 0}">
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <a
-									href="/<%= contextPath %>/editoras/remocao?id=<c:out value='${editora.id}' />"
+									href="/${requestScope.contextPath}/editoras/remocao?id=<c:out value='${editora.id}' />"
 									onclick="return confirm('<fmt:message key="confirm.link" />');">
 									<fmt:message key="publishers.delete" />
 								</a>

@@ -11,20 +11,16 @@
 	</head>
 
 	<body>
-
-		<%
-			String contextPath = request.getContextPath().replace("/", "");
-		%>
 		<div align="center">
 			<h1>
 				<fmt:message key="books.welcome" />
 			</h1>
 			<h2>
-				<a href="/<%=contextPath%>/editoras">
+				<a href="/${sessionScope.contextPath}/editoras">
 					<fmt:message key="publishers.entity" />
 				</a>
 				&nbsp;&nbsp;&nbsp;
-				<a href="/<%=contextPath%>/usuarios"> 
+				<a href="/${sessionScope.contextPath}/usuarios"> 
 					<fmt:message key="users.entity" />
 				</a> 
 				&nbsp;&nbsp;&nbsp;
@@ -33,7 +29,7 @@
 				</a>
 				<br/>
 				<br/>
-				<a href="/<%=contextPath%>/livros/cadastro">
+				<a href="/${sessionScope.contextPath}/livros/cadastro">
 					<fmt:message key="books.create" />
 				</a>
 			</h2>
@@ -59,10 +55,10 @@
 						<td>${livro.autor}</td>
 						<td>${livro.ano}</td>
 						<td>${livro.preco}</td>
-						<td><a href="/<%= contextPath%>/livros/edicao?id=${livro.id}">
+						<td><a href="/${sessionScope.contextPath}/livros/edicao?id=${livro.id}">
 								<fmt:message key="books.update" />
 						</a> &nbsp;&nbsp;&nbsp;&nbsp; <a
-							href="/<%= contextPath%>/livros/remocao?id=${livro.id}"
+							href="/${sessionScope.contextPath}/livros/remocao?id=${livro.id}"
 							onclick="return confirm('<fmt:message key="confirm.link" />');">
 								<fmt:message key="books.delete" />
 						</a></td>

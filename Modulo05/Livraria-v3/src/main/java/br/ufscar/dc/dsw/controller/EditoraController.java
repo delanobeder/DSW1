@@ -69,6 +69,7 @@ public class EditoraController extends HttpServlet {
             throws ServletException, IOException {
         List<Editora> listaEditoras = dao.getAll();
         request.setAttribute("listaEditoras", listaEditoras);
+        request.setAttribute("contextPath", request.getContextPath().replace("/", ""));
         RequestDispatcher dispatcher = request.getRequestDispatcher("/editora/lista.jsp");
         dispatcher.forward(request, response);
     }

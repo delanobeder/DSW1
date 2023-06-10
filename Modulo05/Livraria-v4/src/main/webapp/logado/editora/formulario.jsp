@@ -11,19 +11,16 @@
 	</head>
 
 	<body>
-		<%
-			String contextPath = request.getContextPath().replace("/", "");
-		%>
 		<div align="center">
 			<h1>
 				<fmt:message key="publishers.welcome" />
 			</h1>
 			<h2>
-				<a href="/<%=contextPath%>/livros"> 
+				<a href="/${sessionScope.contextPath}/livros"> 
 					<fmt:message key="books.entity" />
 				</a> 
 				&nbsp;&nbsp;&nbsp;
-				<a href="/<%=contextPath%>/usuarios"> 
+				<a href="/${sessionScope.contextPath}/usuarios"> 
 					<fmt:message key="users.entity" />
 				</a> 
 				&nbsp;&nbsp;&nbsp;
