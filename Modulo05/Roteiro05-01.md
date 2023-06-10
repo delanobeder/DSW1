@@ -517,6 +517,7 @@
        private void lista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
            List<Livro> listaLivros = dao.getAll();
            request.setAttribute("listaLivros", listaLivros);
+           request.setAttribute("contextPath", request.getContextPath().replace("/", ""));
            RequestDispatcher dispatcher = request.getRequestDispatcher("/livro/lista.jsp");
            dispatcher.forward(request, response);
        }
@@ -609,14 +610,11 @@
    <title>Livraria Virtual</title>
    </head>
    <body>
-   	<%
-   		String contextPath = request.getContextPath().replace("/", "");
-   	%>
    	<div align="center">
    		<h1>Gerenciamento de Livros</h1>
    		<h2>
-   			<a href="/<%=contextPath%>">Menu Principal</a> &nbsp;&nbsp;&nbsp; <a
-   				href="/<%=contextPath%>/livros/cadastro">Adicione Novo Livro</a>
+   			<a href="/${requestScope.contextPath}">Menu Principal</a> &nbsp;&nbsp;&nbsp; <a
+   				href="/${requestScope.contextPath}/livros/cadastro">Adicione Novo Livro</a>
    		</h2>
    	</div>
    
@@ -640,9 +638,9 @@
    					<td>${livro.autor}</td>
    					<td>${livro.ano}</td>
    					<td>${livro.preco}</td>
-   					<td><a href="/<%= contextPath%>/livros/edicao?id=${livro.id}">Edição</a>
+   					<td><a href="/${requestScope.contextPath}/livros/edicao?id=${livro.id}">Edição</a>
    						&nbsp;&nbsp;&nbsp;&nbsp; <a
-   						href="/<%= contextPath%>/livros/remocao?id=${livro.id}"
+   						href="/${requestScope.contextPath}/livros/remocao?id=${livro.id}"
    						onclick="return confirm('Tem certeza de que deseja excluir este item?');">
    							Remoção </a></td>
    				</tr>
@@ -652,9 +650,9 @@
    </body>
    </html>
    ```
-
+   
    5.2. Criar o arquivo **livro/formulario.jsp**
-
+   
    ```jsp
    <%@ page language="java" contentType="text/html; charset=UTF-8"
    	pageEncoding="UTF-8"%>
@@ -696,10 +694,10 @@
    </body>
    </html>
    ```
-
+   
    5.3. Criar o arquivo **livro/campos.jsp**
    
-   
+
    ```jsp
    <%@ page language="java" contentType="text/html; charset=UTF-8"
    	pageEncoding="UTF-8"%>
@@ -755,7 +753,7 @@
    </table>
    ```
    5.4. Atualizar o arquivo **index.jsp**
-
+   
    ```jsp
    <%@ page contentType="text/html" pageEncoding="UTF-8"%>
    <%@ page isELIgnored="false"%>
@@ -772,7 +770,7 @@
    ```
    
    5.5. Criar o arquivo **erro.jsp**
-
+   
    ```jsp
    <%@ page language="java" contentType="text/html; charset=UTF-8"
             pageEncoding="UTF-8" isErrorPage="true" %>

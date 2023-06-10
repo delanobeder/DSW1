@@ -7,14 +7,11 @@
 <title>Livraria Virtual</title>
 </head>
 <body>
-	<%
-		String contextPath = request.getContextPath().replace("/", "");
-	%>
 	<div align="center">
 		<h1>Gerenciamento de Livros</h1>
 		<h2>
-			<a href="/<%=contextPath%>">Menu Principal</a> &nbsp;&nbsp;&nbsp; <a
-				href="/<%=contextPath%>/livros/cadastro">Adicione Novo Livro</a>
+			<a href="/${requestScope.contextPath}">Menu Principal</a> &nbsp;&nbsp;&nbsp; 
+			<a href="/${requestScope.contextPath}/livros/cadastro">Adicione Novo Livro</a>
 		</h2>
 	</div>
 
@@ -38,9 +35,9 @@
 					<td>${livro.autor}</td>
 					<td>${livro.ano}</td>
 					<td>${livro.preco}</td>
-					<td><a href="/<%= contextPath%>/livros/edicao?id=${livro.id}">Edição</a>
+					<td><a href="/${requestScope.contextPath}/livros/edicao?id=${livro.id}">Edição</a>
 						&nbsp;&nbsp;&nbsp;&nbsp; <a
-						href="/<%= contextPath%>/livros/remocao?id=${livro.id}"
+						href="/${requestScope.contextPath}/livros/remocao?id=${livro.id}"
 						onclick="return confirm('Tem certeza de que deseja excluir este item?');">
 							Remoção </a></td>
 				</tr>
