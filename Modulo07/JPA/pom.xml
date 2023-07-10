@@ -26,6 +26,12 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>4.3.8.Final</version>
 			<scope>compile</scope>
+			<exclusions>
+                <exclusion>
+                <groupId>xml-apis</groupId>
+                <artifactId>xml-apis</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
 
 		<!-- Implementação de EntityManager da JPA -->
@@ -35,6 +41,12 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.3.8.Final</version>
 			<scope>compile</scope>
+			<exclusions>
+                <exclusion>
+                <groupId>xml-apis</groupId>
+                <artifactId>xml-apis</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
 
 		<!-- Driver JDBC (banco de dados MySQL) -->
