@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  mysql:
+    image: mysql:5.6.36
+    restart: always
+    container_name: mysql
+    env_file:
+      - .env
+    volumes:
+    - './db/MySQL:/tmp/db'
+    command: mysqld --init-file="/tmp/db/create.sql" --max-connections=500
+  tomcat:
+    image: tomcat:9.0.75
+    container_name: tomcat
+    env_file:
+      - .env    
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./target/Livraria.war:/usr/local/tomcat/webapps/Livraria.war
+    depends_on:
+      - mysql
