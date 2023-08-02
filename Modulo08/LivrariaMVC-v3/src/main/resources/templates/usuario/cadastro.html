@@ -42,10 +42,10 @@
 
 					<div class="form-group col-md-6">
 						<label th:text="#{usuario.password.label}" for="password"></label> 
-						<input type="text" class="form-control" id="password"
+						<input type="password" class="form-control" id="password"
 							th:placeholder="#{usuario.password.label}" autofocus="autofocus"
 							th:field="*{password}"
-							th:classappend="${#fields.hasErrors('password')} ? is-invalid" th:readonly="${usuario.id != null}"/>
+							th:classappend="${#fields.hasErrors('password')} ? is-invalid" />
 							
 						<div class="invalid-feedback">
 							<span th:errors="*{password}"></span>
