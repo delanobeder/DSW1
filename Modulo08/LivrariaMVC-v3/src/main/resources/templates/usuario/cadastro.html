@@ -40,7 +40,7 @@
 						</div>
 					</div>
 
-					<div class="form-group col-md-6">
+					<div th:if="${usuario.id == null}" class="form-group col-md-6">
 						<label th:text="#{usuario.password.label}" for="password"></label> 
 						<input type="password" class="form-control" id="password"
 							th:placeholder="#{usuario.password.label}" autofocus="autofocus"
@@ -50,6 +50,15 @@
 						<div class="invalid-feedback">
 							<span th:errors="*{password}"></span>
 						</div>
+					</div>
+
+					<div th:unless="${usuario.id == null}" class="form-group col-md-6">
+						<label th:text="#{usuario.password.label}" for="password"></label> 
+						<input type="password" class="form-control" name="novoPassword"
+							th:placeholder="#{usuario.password.label}" autofocus="autofocus"
+							th:classappend="${#fields.hasErrors('password')} ? is-invalid" />
+							
+						<input type="hidden" th:field="*{password}" />
 					</div>
 					
 					<div class="form-group col-md-6">
