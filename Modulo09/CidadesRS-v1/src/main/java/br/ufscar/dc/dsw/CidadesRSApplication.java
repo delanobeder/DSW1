@@ -22,7 +22,6 @@ import br.ufscar.dc.dsw.domain.Estado;
 @SpringBootApplication
 public class CidadesRSApplication {
 	
-		
 	private static final Logger log = LoggerFactory.getLogger(CidadesRSApplication.class);
 	
 	static Map<String, Estado> map = new HashMap<>();
@@ -57,7 +56,7 @@ public class CidadesRSApplication {
 			e.printStackTrace();
 		}
 	}
-
+	
 	private static void populaCidades(ICidadeDAO dao) {
 
 		String line;
@@ -94,7 +93,6 @@ public class CidadesRSApplication {
 		}
 	}
 	
-	
 	public static void main(String[] args) {
 		SpringApplication.run(CidadesRSApplication.class, args);
 	}
@@ -102,8 +100,10 @@ public class CidadesRSApplication {
 	@Bean
 	public CommandLineRunner run(IEstadoDAO estadoDAO, ICidadeDAO cidadeDAO) throws Exception {
 		return args -> {
-			populaEstados(estadoDAO);
-			populaCidades(cidadeDAO);
+			if (estadoDAO.findAll().isEmpty()) {
+				populaEstados(estadoDAO);
+				populaCidades(cidadeDAO);
+			}
 		};
 	}
 }

@@ -36,7 +36,7 @@ public class RestClientService implements IRestClientService {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity<Cidade> entity = new HttpEntity<Cidade>(cidade, headers);
-		String url = "http://localhost:8080/cidades";
+		String url = "http://localhost:8081/cidades";
 		ResponseEntity<Cidade> res = restTemplate.postForEntity(url, entity, Cidade.class);
 		Cidade c = res.getBody();
 
@@ -45,20 +45,20 @@ public class RestClientService implements IRestClientService {
 	
 	@Override
 	public List<Cidade> get() {
-		String url = "http://localhost:8080/cidades";
+		String url = "http://localhost:8081/cidades";
 		Cidade[] cidades = restTemplate.getForObject(url, Cidade[].class);
 		return Arrays.asList(cidades);
 	}
 	
 	@Override
 	public Cidade get(Long id) {
-		String url = "http://localhost:8080/cidades/" + id;
+		String url = "http://localhost:8081/cidades/" + id;
 		return restTemplate.getForObject(url, Cidade.class);
 	}
 	
 	@Override
 	public List<Cidade> get(Estado estado) {
-		String url = "http://localhost:8080/cidades/estados/" + estado.getId();
+		String url = "http://localhost:8081/cidades/estados/" + estado.getId();
 		Cidade[] cidades = restTemplate.getForObject(url, Cidade[].class);
 		return Arrays.asList(cidades);
 	}
@@ -68,7 +68,7 @@ public class RestClientService implements IRestClientService {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity<Cidade> entity = new HttpEntity<Cidade>(cidade, headers);
-		String url = "http://localhost:8080/cidades/" + cidade.getId();
+		String url = "http://localhost:8081/cidades/" + cidade.getId();
 		ResponseEntity<Cidade> res = restTemplate.exchange(url, HttpMethod.PUT, entity, Cidade.class);
 		return res.getStatusCode() == HttpStatus.OK;
 	}
@@ -76,7 +76,7 @@ public class RestClientService implements IRestClientService {
 	@Override
 	public boolean delete(Long id) {
 		try {
-			String url = "http://localhost:8080/cidades/" + id;
+			String url = "http://localhost:8081/cidades/" + id;
 			restTemplate.delete(url);
 			return true;
 		} catch (RestClientException e) {
