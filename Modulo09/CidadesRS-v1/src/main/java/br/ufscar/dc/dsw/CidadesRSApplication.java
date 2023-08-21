@@ -1,13 +1,28 @@
 package br.ufscar.dc.dsw;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import br.ufscar.dc.dsw.dao.ICidadeDAO;
+import br.ufscar.dc.dsw.dao.IEstadoDAO;
+import br.ufscar.dc.dsw.domain.Cidade;
+import br.ufscar.dc.dsw.domain.Estado;
 
 @SpringBootApplication
 public class CidadesRSApplication {
-
-	/*
 	
+		
 	private static final Logger log = LoggerFactory.getLogger(CidadesRSApplication.class);
 	
 	static Map<String, Estado> map = new HashMap<>();
@@ -78,13 +93,12 @@ public class CidadesRSApplication {
 			e.printStackTrace();
 		}
 	}
-	*/
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CidadesRSApplication.class, args);
 	}
 
-	/*
 	@Bean
 	public CommandLineRunner run(IEstadoDAO estadoDAO, ICidadeDAO cidadeDAO) throws Exception {
 		return args -> {
@@ -92,5 +106,4 @@ public class CidadesRSApplication {
 			populaCidades(cidadeDAO);
 		};
 	}
-	*/
 }
