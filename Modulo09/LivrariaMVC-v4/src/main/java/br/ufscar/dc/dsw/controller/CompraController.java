@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestClientException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ufscar.dc.dsw.domain.Cartao;
 import br.ufscar.dc.dsw.domain.Compra;
@@ -48,7 +49,7 @@ public class CompraController {
 			model.addAttribute("livros", listaLivros());
 			model.addAttribute("cartoes", listaCartoes());
 		} catch (RestClientException e) {
-			model.addAttribute("fail", "Falha na conexão [cartão de crédito]");
+			model.addAttribute("fail", "compra.connection.fail");
 		}
 		return "compra/cadastro";
 	}
@@ -70,7 +71,7 @@ public class CompraController {
 				c.setData(t.getData());
 			}
 		} catch (RestClientException e) {
-			model.addAttribute("fail", "Falha na conexão [cartão de crédito]");
+			model.addAttribute("fail", "compra.connection.fail");
 		}
 
 		model.addAttribute("compras", compras);
@@ -79,7 +80,7 @@ public class CompraController {
 	}
 
 	@PostMapping("/salvar")
-	public String salvar(@Valid Compra compra, BindingResult result, ModelMap model) {
+	public String salvar(@Valid Compra compra, BindingResult result, ModelMap model, RedirectAttributes attr) {
 
 		try {
 			
@@ -98,10 +99,10 @@ public class CompraController {
 			Long id = clienteRestService.salva(transacao);
 			compra.setTransacaoID(id);
 			service.salvar(compra);
-			model.addAttribute("sucess", "Compra inserida com sucesso.");
+			attr.addFlashAttribute("sucess", "compra.create.sucess");
 			return "redirect:/compras/listar";
 		} catch (RestClientException e) {
-			model.addAttribute("fail", "Falha na conexão [cartão de crédito]");
+			model.addAttribute("fail", "compra.connection.fail");
 			return cadastrar(model, compra);
 		}
 	}

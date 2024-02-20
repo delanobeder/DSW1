@@ -31,7 +31,8 @@
 				<div class="form-row">
 					
 					<div class="form-group col-md-12">
-						<label for="cartao">Cartão</label> 
+						
+						<label th:text="#{cartao.label}" for="cartao"></label>
 						<select id="cartao"
 							class="form-control" th:field="*{cartao}"
 							th:classappend="${#fields.hasErrors('cartao')} ? is-invalid" required>
