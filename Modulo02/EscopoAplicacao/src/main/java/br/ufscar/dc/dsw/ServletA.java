@@ -21,11 +21,11 @@ public class ServletA extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.println("Página gerada pelo ServletA: ");
-            if (getServletContext().getAttribute("valor") == null) {
+            Integer valor = (Integer) getServletContext().getAttribute("valor");
+            if (valor == null) {
                 out.println("Valor não encontrado!");
             } else {
-                Integer i = (Integer) getServletContext().getAttribute("valor");
-                out.println("Valor = " + i);
+                out.println("Valor = " + valor);
             }
         }
     }
