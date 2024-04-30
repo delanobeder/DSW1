@@ -16,32 +16,36 @@ public class PopulaBD {
 	static Map<String, Estado> map = new HashMap<>();
 
 	private static void populaEstados() {
-		String line;
+
 		try {
-			InputStream stream = new FileInputStream("./estados.txt");
-			InputStreamReader isr = new InputStreamReader(stream);
-			BufferedReader reader = new BufferedReader(isr);
-			line = reader.readLine();
-
 			EstadoDAO dao = new EstadoDAO();
-			while (line != null) {
-				StringTokenizer tokenizer = new StringTokenizer(line, ",");
 
-				Estado estado = new Estado();
-				String sigla = tokenizer.nextToken();
-				estado.setSigla(sigla);
-				estado.setNome(tokenizer.nextToken());
-				dao.save(estado);
+			if (dao.getAll().size() == 0) { // checando se já não foi populado anteriormente
 
-				map.put(sigla, estado);
+				InputStream stream = new FileInputStream("./estados.txt");
+				InputStreamReader isr = new InputStreamReader(stream);
+				BufferedReader reader = new BufferedReader(isr);
+				String line = reader.readLine();
 
-				System.out.println("Salvo: " + estado);
+				while (line != null) {
+					StringTokenizer tokenizer = new StringTokenizer(line, ",");
 
-				line = reader.readLine();
+					Estado estado = new Estado();
+					String sigla = tokenizer.nextToken();
+					estado.setSigla(sigla);
+					estado.setNome(tokenizer.nextToken());
+					dao.save(estado);
+
+					map.put(sigla, estado);
+
+					System.out.println("Salvo: " + estado);
+
+					line = reader.readLine();
+				}
+				stream.close();
+				isr.close();
+				reader.close();
 			}
-			stream.close();
-			isr.close();
-			reader.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -49,35 +53,41 @@ public class PopulaBD {
 
 	private static void populaCidades() {
 
-		String line;
-		String nome;
-		Estado estado;
-		String sigla;
-
 		try {
-			InputStream stream = new FileInputStream("./cidades.txt");
-			InputStreamReader isr = new InputStreamReader(stream);
-			BufferedReader reader = new BufferedReader(isr);
-
-			line = reader.readLine();
+			
 			CidadeDAO dao = new CidadeDAO();
-			while (line != null) {
-				StringTokenizer tokenizer = new StringTokenizer(line, ",");
-				sigla = tokenizer.nextToken();
-				sigla = sigla.substring(1, 3);
-				nome = tokenizer.nextToken();
-				nome = nome.substring(1, nome.length() - 1);
-				estado = map.get(sigla);
-				Cidade cidade = new Cidade();
-				cidade.setNome(nome);
-				cidade.setEstado(estado);
-				dao.save(cidade);
-				System.out.println("Salvo: " + cidade);
+			
+			if (dao.getAll().size() == 0) { // checando se já não foi populado anteriormente
+
+				String line;
+				String nome;
+				Estado estado;
+				String sigla;
+
+				InputStream stream = new FileInputStream("./cidades.txt");
+				InputStreamReader isr = new InputStreamReader(stream);
+				BufferedReader reader = new BufferedReader(isr);
+
 				line = reader.readLine();
+
+				while (line != null) {
+					StringTokenizer tokenizer = new StringTokenizer(line, ",");
+					sigla = tokenizer.nextToken();
+					sigla = sigla.substring(1, 3);
+					nome = tokenizer.nextToken();
+					nome = nome.substring(1, nome.length() - 1);
+					estado = map.get(sigla);
+					Cidade cidade = new Cidade();
+					cidade.setNome(nome);
+					cidade.setEstado(estado);
+					dao.save(cidade);
+					System.out.println("Salvo: " + cidade);
+					line = reader.readLine();
+				}
+				stream.close();
+				isr.close();
+				reader.close();
 			}
-			stream.close();
-			isr.close();
-			reader.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
