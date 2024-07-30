@@ -10,7 +10,7 @@
 	<div layout:fragment="content" th:remove="tag">
 		<h1>
 			<span th:text="#{home.hello}"></span>
-			<span th:inline="text">[[${#httpServletRequest.remoteUser}]]!</span>
+			<span th:inline="text">[[${#authentication.principal.username}]]!</span>
 		</h1>
 		
 		<p><a th:href="@{/}"><span th:text="#{home.message.1}"></a></p>

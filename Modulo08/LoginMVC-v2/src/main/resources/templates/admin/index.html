@@ -11,7 +11,7 @@
 		<h1 th:text="#{admin.index.title}"></h1>
 		<h1>
 			<span th:text="#{home.hello}"></span>
-			<span th:inline="text">[[${#httpServletRequest.remoteUser}]]!</span>
+			<span th:inline="text">[[${#authentication.principal.username}]]!</span>
 		</h1>
 		<a class="btn btn-primary" type="button"
 				href="javascript:history.back()"><span th:text="#{previous.message}"></span></a>

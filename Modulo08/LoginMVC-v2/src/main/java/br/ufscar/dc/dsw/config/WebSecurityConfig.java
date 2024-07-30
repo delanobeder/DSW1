@@ -7,14 +7,13 @@ import org.springframework.security.config.annotation.web.builders.*;
 import org.springframework.security.config.annotation.web.configuration.*;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 import br.ufscar.dc.dsw.security.UsuarioDetailsServiceImpl;
 
-
-
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
 	@Bean
 	public UserDetailsService userDetailsService() {
@@ -35,26 +34,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return authProvider;
 	}
 
-	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
 	}
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-				.antMatchers("/", "/index", "/error").permitAll()
-				.antMatchers("/login/**", "/js/**", "/css/**", "/image/**", "/webjars/**").permitAll()
-				.antMatchers("/admin/**").hasRole("ADMIN")
-				.antMatchers("/user/**").hasRole("USER")
-				.anyRequest().authenticated()
-			.and()
-				.formLogin()
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		http
+				.authorizeHttpRequests((authz) -> authz
+						.requestMatchers("/", "/index", "error").permitAll()
+						.requestMatchers("/", "/index", "/error").permitAll()
+						.requestMatchers("/login/**", "/js/**", "/css/**", "/image/**", "/webjars/**").permitAll()
+						.requestMatchers("/admin/**").hasRole("ADMIN")
+						.requestMatchers("/user/**").hasRole("USER")
+						.anyRequest().authenticated()
+				).formLogin((form) -> form
 				.loginPage("/login")
 				.permitAll()
-			.and()
-				.logout()
-				.logoutSuccessUrl("/")
-				.permitAll();
+				).logout((logout) -> logout
+				.logoutSuccessUrl("/").
+				permitAll()
+		);
+
+		return http.build();
 	}
 }

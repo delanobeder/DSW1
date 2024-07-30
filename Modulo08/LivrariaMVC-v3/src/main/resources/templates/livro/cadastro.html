@@ -22,7 +22,7 @@
 
 		<div class="container" id="cadastro">
 
-			<div th:replace="fragments/alert"></div>
+			<div th:replace="~{fragments/alert}"></div>
 
 			<form
 				th:action="${livro.id == null} ? @{/livros/salvar} : @{/livros/editar}"
