@@ -6,15 +6,15 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 import br.ufscar.dc.dsw.security.UsuarioDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
 	@Bean
 	public UserDetailsService userDetailsService() {
@@ -35,32 +35,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return authProvider;
 	}
 
-	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
 	}
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		
-		http.csrf().disable()
-		.authorizeRequests()
-		.antMatchers("/error", "/login/**", "/js/**", "/css/**", "/image/**", "/webjars/**").permitAll()
-		// REST Controllers
-		.antMatchers("/livros", "/editoras").permitAll() // REST Controllers (GET - get All, POST - Create)
-		.antMatchers("/livros/{\\d+}", "/editoras/{\\d+}").permitAll() // REST Controllers (GET by id, PUT - Update by id, DELETE by ID)
-		.antMatchers("/livros/titulos/{\\w+}").permitAll() // REST Controllers (GET by titulo)
-		.antMatchers("/compras/usuarios/{\\d+}").permitAll() // REST Controllers (GET by UsuarioID)
-		.antMatchers("/compras/**").hasRole("USER")
-		.antMatchers("/editoras/**", "/livros/**", "/usuarios/**").hasRole("ADMIN")
-		.anyRequest().authenticated()
-		.and()
-			.formLogin()
-			.loginPage("/login")
-			.permitAll()
-		.and()
-			.logout()
-			.logoutSuccessUrl("/")
-			.permitAll();
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		http
+				.authorizeHttpRequests((authz) -> authz
+						.requestMatchers("/error", "/login/**", "/js/**").permitAll()
+						.requestMatchers("/css/**", "/image/**", "/webjars/**").permitAll()
+						.requestMatchers("/compras/**").hasRole("USER")
+						.requestMatchers("/editoras/**", "/livros/**", "/usuarios/**").hasRole("ADMIN")
+						.anyRequest().authenticated())
+				.formLogin((form) -> form
+						.loginPage("/login")
+						.permitAll())
+				.logout((logout) -> logout
+						.logoutSuccessUrl("/").permitAll());
+
+		return http.build();
 	}
 }

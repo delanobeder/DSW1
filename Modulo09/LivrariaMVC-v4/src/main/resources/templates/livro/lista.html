@@ -22,7 +22,7 @@
 
 		<div class="container" id="listagem">
 
-			<div th:replace="fragments/alert"></div>
+			<div th:replace="~{fragments/alert}"></div>
 
 			<div class="table-responsive">
 				<table class="table table-striped table-hover table-sm">
@@ -61,7 +61,7 @@
 			</div>
 		</div>
 
-		<div th:replace="fragments/modal :: modal"></div>
+		<div th:replace="~{fragments/modal::modal}"></div>
 	</section>
 </body>
 </html>

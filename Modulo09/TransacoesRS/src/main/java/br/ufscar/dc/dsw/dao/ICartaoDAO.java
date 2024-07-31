@@ -18,6 +18,6 @@ public interface ICartaoDAO extends CrudRepository<Cartao, Long> {
 
 	void deleteById(Long id);
 	
-	@Query("select c from Cartao c where cpf = :cpf")
+	@Query("select c from Cartao c where CPF = :cpf")
 	public List<Cartao> findByCPF(@Param("cpf") String cpf);
 }

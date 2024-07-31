@@ -25,13 +25,13 @@
 </head>
 <body>
 
-	<header th:replace="fragments/header :: cabecalho">
+	<header th:replace="~{fragments/header::cabecalho}">
 		<div>header</div>
 	</header>
 
 	<div class="layout-main">
 		<aside>
-			<nav th:replace="fragments/sidebar :: nav-sidebar">
+			<nav th:replace="~{fragments/sidebar::nav-sidebar}">
 				<span>menu</span>
 			</nav>
 		</aside>
@@ -41,7 +41,7 @@
 		</section>
 	</div>
 
-	<footer th:replace="fragments/footer :: rodape">
+	<footer th:replace="~{fragments/footer::rodape}">
 		<div>footer</div>
 	</footer>
 
@@ -54,18 +54,15 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	<script th:inline="javascript">
-	var localName = [[@{${#httpServletRequest.localName}}]];
-	var localPort = [[@{${#httpServletRequest.localPort}}]];
+
 	</script>
 	<script type="text/javascript">
 		
-	   var url = 'http://' + localName + ':' + localPort + '/';
-	
+
 		$('button[id*="btn_"]').click(function() {
-			url = url + $(this).attr('id').split("_")[1]
+			var host = window.location.host + "/";
+			url = "http://" + host + $(this).attr('id').split("_")[1]
 		});
-		
-		
 		
 		$('#ok_confirm').click(function() {
 			document.location.href = url;
