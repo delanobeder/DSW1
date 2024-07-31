@@ -13,7 +13,7 @@
     <title th:text="#{title.label}" layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE"></title>
 </head>
 <body>
-    <th:block th:replace="fragments/header :: header"/>
+    <th:block th:replace="~{fragments/header::header}"/>
     <div class="container">
         <th:block layout:fragment="content"/>
     </div>

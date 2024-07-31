@@ -32,7 +32,7 @@ public class ClienteRSApplication {
 			log.info("save()");
 			log.info("-----------------------------------");
 			Long id = service.create(cidade);
-			log.info("Salvo Cidade [" + id + "]" + cidade.toString());
+			log.info("Salvo Cidade [" + id + "] " + cidade.toString());
 			log.info("-----------------------------------");
 			log.info("getCidades()");
 			log.info("-----------------------------------");
@@ -72,7 +72,6 @@ public class ClienteRSApplication {
 			cidades = service.get();
 			log.info("Numero de Cidades: " + cidades.size());
 			log.info("-----------------------------------");
-			
 		};
 	}
 }
