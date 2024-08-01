@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
   <error-page>
     <exception-type>
-        javax.servlet.ServletException
+        jakarta.servlet.ServletException
     </exception-type>
     <location>/erro.jsp</location>
   </error-page>
