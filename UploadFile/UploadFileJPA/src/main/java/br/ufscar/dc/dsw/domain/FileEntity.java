@@ -1,9 +1,10 @@
 package br.ufscar.dc.dsw.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
@@ -17,6 +18,8 @@ public class FileEntity extends AbstractEntity<Long> {
 	private String type;
 
 	@Lob
+	@Basic
+	@Column(length=10485760) // 10MB
 	private byte[] data;
 
 	public FileEntity() {
