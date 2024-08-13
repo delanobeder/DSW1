@@ -2,7 +2,7 @@ package br.ufscar.dc.dsw;
 
 import java.io.File;
 
-import javax.mail.internet.InternetAddress;
+import jakarta.mail.internet.InternetAddress;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
