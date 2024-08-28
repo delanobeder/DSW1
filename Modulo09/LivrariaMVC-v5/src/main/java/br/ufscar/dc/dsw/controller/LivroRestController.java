@@ -1,14 +1,11 @@
 package br.ufscar.dc.dsw.controller;
 
-import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,11 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import br.ufscar.dc.dsw.domain.Editora;
 import br.ufscar.dc.dsw.domain.Livro;
 import br.ufscar.dc.dsw.service.spec.ILivroService;
+import jakarta.validation.Valid;
 
 @RestController
 public class LivroRestController {
@@ -30,53 +25,7 @@ public class LivroRestController {
 	@Autowired
 	private ILivroService service;
 
-	private boolean isJSONValid(String jsonInString) {
-		try {
-			return new ObjectMapper().readTree(jsonInString) != null;
-		} catch (IOException e) {
-			return false;
-		}
-	}
-
-	@SuppressWarnings("unchecked")
-	private void parse(Editora editora, JSONObject json) {
-
-		Map<String, Object> map = (Map<String, Object>) json.get("editora");
-
-		Object id = map.get("id");
-		if (id instanceof Integer) {
-			editora.setId(((Integer) id).longValue());
-		} else {
-			editora.setId(((Long) id));
-		}
-
-		editora.setCNPJ((String) map.get("cnpj"));
-		editora.setNome((String) map.get("nome"));
-	}
-
-	private void parse(Livro livro, JSONObject json) {
-
-		Object id = json.get("id");
-		if (id != null) {
-			if (id instanceof Integer) {
-				livro.setId(((Integer) id).longValue());
-			} else {
-				livro.setId(((Long) id));
-			}
-		}
-
-		livro.setTitulo((String) json.get("titulo"));
-		livro.setAutor((String) json.get("autor"));
-		livro.setAno((Integer) json.get("ano"));
-		Double value = (Double) json.get("preco");
-		livro.setPreco(BigDecimal.valueOf(value));
-
-		Editora editora = new Editora();
-		parse(editora, json);
-		livro.setEditora(editora);
-	}
-
-	@GetMapping(path = "/livros")
+	@GetMapping(path = "/api/livros")
 	public ResponseEntity<List<Livro>> lista() {
 		List<Livro> lista = service.buscarTodos();
 		if (lista.isEmpty()) {
@@ -85,7 +34,7 @@ public class LivroRestController {
 		return ResponseEntity.ok(lista);
 	}
 
-	@GetMapping(path = "/livros/{id}")
+	@GetMapping(path = "/api/livros/{id}")
 	public ResponseEntity<Livro> lista(@PathVariable("id") long id) {
 		Livro livro = service.buscarPorId(id);
 		if (livro == null) {
@@ -94,7 +43,7 @@ public class LivroRestController {
 		return ResponseEntity.ok(livro);
 	}
 
-	@GetMapping(path = "/livros/titulos/{titulo}")
+	@GetMapping(path = "/api/livros/titulos/{titulo}")
 	public ResponseEntity<List<Livro>> listaPorTitulo(@PathVariable("titulo") String titulo) {
 		List<Livro> lista = service.buscarPorTitulo(titulo);
 		if (lista.isEmpty()) {
@@ -103,45 +52,36 @@ public class LivroRestController {
 		return ResponseEntity.ok(lista);
 	}
 	
-	@PostMapping(path = "/livros")
+	@PostMapping(path = "/api/livros")
 	@ResponseBody
-	public ResponseEntity<Livro> cria(@RequestBody JSONObject json) {
-		try {
-			if (isJSONValid(json.toString())) {
-				Livro livro = new Livro();
-				parse(livro, json);
+	public ResponseEntity<Livro> cria(@Valid @RequestBody Livro livro, BindingResult result) {
+		
+		if (result.hasErrors()) {
+			return ResponseEntity.badRequest().body(null);
+		} else {
+			service.salvar(livro);
+			return ResponseEntity.ok(livro);
+		}		
+	}
+
+	@PutMapping(path = "/api/livros/{id}")
+	public ResponseEntity<Livro> atualiza(@PathVariable("id") long id, @Valid @RequestBody Livro livro, BindingResult result) {
+		
+		if (result.hasErrors()) {
+			return ResponseEntity.badRequest().body(null);
+		} else {
+			Livro l = service.buscarPorId(id);
+			if (l == null) {
+				return ResponseEntity.notFound().build();
+			} else {
+				livro.setId(id);
 				service.salvar(livro);
 				return ResponseEntity.ok(livro);
-			} else {
-				return ResponseEntity.badRequest().body(null);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
-		}
+		}			
 	}
 
-	@PutMapping(path = "/livros/{id}")
-	public ResponseEntity<Livro> atualiza(@PathVariable("id") long id, @RequestBody JSONObject json) {
-		try {
-			if (isJSONValid(json.toString())) {
-				Livro livro = service.buscarPorId(id);
-				if (livro == null) {
-					return ResponseEntity.notFound().build();
-				} else {
-					parse(livro, json);
-					service.salvar(livro);
-					return ResponseEntity.ok(livro);
-				}
-			} else {
-				return ResponseEntity.badRequest().body(null);
-			}
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
-		}
-	}
-
-	@DeleteMapping(path = "/livros/{id}")
+	@DeleteMapping(path = "/api/livros/{id}")
 	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
 
 		Livro livro = service.buscarPorId(id);
@@ -149,7 +89,7 @@ public class LivroRestController {
 			return ResponseEntity.notFound().build();
 		} else {
 			service.excluir(id);
-			return ResponseEntity.noContent().build();
+			return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 		}
 	}
 }
