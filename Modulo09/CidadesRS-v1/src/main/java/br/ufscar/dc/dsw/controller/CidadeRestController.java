@@ -1,14 +1,11 @@
 package br.ufscar.dc.dsw.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,11 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import br.ufscar.dc.dsw.domain.Cidade;
-import br.ufscar.dc.dsw.domain.Estado;
 import br.ufscar.dc.dsw.service.spec.ICidadeService;
+import jakarta.validation.Valid;
 
 @CrossOrigin
 @RestController
@@ -33,47 +28,6 @@ public class CidadeRestController {
 	@Autowired
 	private ICidadeService service;
 	
-	private boolean isJSONValid(String jsonInString) {
-		try {
-			return new ObjectMapper().readTree(jsonInString) != null;
-		} catch (IOException e) {
-			return false;
-		}
-	}
-
-	@SuppressWarnings("unchecked")
-	private void parse(Estado estado, JSONObject json) {
-		Map<String, Object> map = (Map<String, Object>) json.get("estado");
-		
-		Object id = map.get("id");
-		if (id instanceof Integer) {
-			estado.setId(((Integer) id).longValue());
-		} else {
-			estado.setId((Long) id);
-		}
-		 		
-		estado.setSigla((String) map.get("sigla"));
-		estado.setNome((String) map.get("nome"));
-	}
-
-	private void parse(Cidade cidade, JSONObject json) {
-
-		Object id = json.get("id");
-		if (id != null) {
-			if (id instanceof Integer) {
-				cidade.setId(((Integer) id).longValue());
-			} else {
-				cidade.setId((Long) id);
-			}
-		}
-
-		cidade.setNome((String) json.get("nome"));
-
-		Estado estado = new Estado();
-		parse(estado, json);
-		cidade.setEstado(estado);
-	}
-
 	@GetMapping(path = "/cidades")
 	public ResponseEntity<List<Cidade>> lista() {
 		List<Cidade> lista = service.findAll();
@@ -115,39 +69,29 @@ public class CidadeRestController {
 
 	@PostMapping(path = "/cidades")
 	@ResponseBody
-	public ResponseEntity<Cidade> cria(@RequestBody JSONObject json) {
-		try {
-			if (isJSONValid(json.toString())) {
-				Cidade cidade = new Cidade();
-				parse(cidade, json);
-				service.save(cidade);
-				return ResponseEntity.ok(cidade);
-			} else {
-				return ResponseEntity.badRequest().body(null);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
+	public ResponseEntity<Cidade> cria(@Valid @RequestBody Cidade cidade, BindingResult result) {
+		if (result.hasErrors()) {
+			return ResponseEntity.badRequest().body(null);
+		} else {
+			service.save(cidade);
+			return ResponseEntity.ok(cidade);
 		}
 	}
 
 	@PutMapping(path = "/cidades/{id}")
-	public ResponseEntity<Cidade> atualiza(@PathVariable("id") long id, @RequestBody JSONObject json) {
-		try {
-			if (isJSONValid(json.toString())) {
-				Cidade cidade = service.findById(id);
-				if (cidade == null) {
-					return ResponseEntity.notFound().build();
-				} else {
-					parse(cidade, json);
-					service.save(cidade);
-					return ResponseEntity.ok(cidade);
-				}
+	public ResponseEntity<Cidade> atualiza(@PathVariable("id") long id, @Valid @RequestBody Cidade cidade, 
+			BindingResult result) {
+		if (result.hasErrors()) {
+			return ResponseEntity.badRequest().body(null);
+		} else {
+			Cidade c = service.findById(id);
+			if (c == null) {
+				return ResponseEntity.notFound().build();
 			} else {
-				return ResponseEntity.badRequest().body(null);
+				cidade.setId(id);
+				service.save(cidade);
+				return ResponseEntity.ok(cidade);
 			}
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
 		}
 	}
 
