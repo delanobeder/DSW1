@@ -26,7 +26,6 @@ public class WebSecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 
-	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 		authProvider.setUserDetailsService(userDetailsService());

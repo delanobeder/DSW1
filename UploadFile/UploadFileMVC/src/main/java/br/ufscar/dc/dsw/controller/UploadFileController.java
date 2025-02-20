@@ -3,7 +3,7 @@ package br.ufscar.dc.dsw.controller;
 import java.io.File;
 import java.io.IOException;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
