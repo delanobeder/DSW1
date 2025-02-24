@@ -29,7 +29,7 @@
 
       
     
-    - Incluir as dependências (**javax.servlet**, **javax.servlet.jsp**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
+    - Incluir as dependências (**jakarta.servlet**, **jakarta.servlet.jsp**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
 
 2. Modificar o arquivo **index.jsp**, para introduzir um erro na diretiva `<%@page ...` (Ex: `<%#paje ...`)
 

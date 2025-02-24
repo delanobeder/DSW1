@@ -26,7 +26,7 @@
 	  mvn -N io.takari:maven:wrapper
 	  ```
 
-    - Incluir as dependências (**javax.servlet**, **javax.servlet.jsp**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
+    - Incluir as dependências (**jakarta.servlet**, **jakarta.servlet.jsp**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
 
 2. Criar o arquivo **index.jsp** com o seguinte conteúdo
 

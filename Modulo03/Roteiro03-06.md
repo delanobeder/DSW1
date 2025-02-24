@@ -18,11 +18,11 @@
 
    ```xml
    <dependency>
-       <groupId>javax.servlet</groupId>
-       <artifactId>jstl</artifactId>
-       <version>1.2</version>
-       <scope>runtime</scope>
-   </dependency>
+       <groupId>jakarta.servlet.jsp.jstl</groupId>
+   	<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+   	<version>3.0.0</version>
+   	<scope>runtime</scope>
+   </dependency>   
    ```
 
 2. Adicionar a biblioteca Native2Ascii (https://native2ascii.net/) via Maven, adicionando as seguintes linhas ao arquivo pom.xml:
