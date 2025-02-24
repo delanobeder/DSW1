@@ -62,7 +62,7 @@
 				<version>2.2</version>
 				<configuration>
 					<url>http://localhost:8080/manager/text</url>
-					<server>Tomcat9</server>
+					<server>Tomcat11</server>
 					<path>/${project.artifactId}</path>
 				</configuration>
 			</plugin>

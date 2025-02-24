@@ -25,7 +25,7 @@
       mvn -N io.takari:maven:wrapper
       ```
 
-    - Incluir as dependências (**javax.servlet**, **javax.servlet.jsp**, **jstl**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
+    - Incluir as dependências (**jakarta.servlet**, **jakarta.servlet.jsp**, **jstl**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
 
       
 
@@ -111,7 +111,7 @@
    3.2. Em um terminal no diretório do projeto, executar 
 
    ```sh
-% mysql -uroot -p
+   % mysql -uroot -p
    Enter password: 
    Welcome to the MySQL monitor.  Commands end with ; or \g.
    Your MySQL connection id is 13
@@ -695,11 +695,11 @@
    import br.ufscar.dc.dsw.domain.Cidade;
    import java.io.IOException;
    import java.util.List;
-   import javax.servlet.ServletException;
-   import javax.servlet.annotation.WebServlet;
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
+   import jakarta.servlet.ServletException;
+   import jakarta.servlet.annotation.WebServlet;
+   import jakarta.servlet.http.HttpServlet;
+   import jakarta.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletResponse;
    
    @WebServlet(urlPatterns = {"/buscaPorEstado"})
    public class EstadoController extends HttpServlet {
@@ -752,11 +752,11 @@
    import java.io.IOException;
    import java.util.ArrayList;
    import java.util.List;
-   import javax.servlet.ServletException;
-   import javax.servlet.annotation.WebServlet;
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
+   import jakarta.servlet.ServletException;
+   import jakarta.servlet.annotation.WebServlet;
+   import jakarta.servlet.http.HttpServlet;
+   import jakarta.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletResponse;
    
    @WebServlet(urlPatterns = {"/buscaPorNome"})
    public class NomeController extends HttpServlet {

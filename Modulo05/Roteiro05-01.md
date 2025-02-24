@@ -19,10 +19,14 @@
 
    ```xml
    <dependency>
-       <groupId>javax.servlet</groupId>
-       <artifactId>jstl</artifactId>
-       <version>1.2</version>
-       <scope>runtime</scope>
+   	<groupId>jakarta.servlet.jsp.jstl</groupId>
+   	<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+   	<version>3.0.0</version>
+   </dependency>
+   <dependency>
+   	<groupId>org.glassfish.web</groupId>
+   	<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+   	<version>3.0.1</version>
    </dependency>
    ```
 
@@ -458,12 +462,12 @@
    import java.util.HashMap;
    import java.util.List;
    import java.util.Map;
-   import javax.servlet.RequestDispatcher;
-   import javax.servlet.ServletException;
-   import javax.servlet.annotation.WebServlet;
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
+   import jakarta.servlet.RequestDispatcher;
+   import jakarta.servlet.ServletException;
+   import jakarta.servlet.annotation.WebServlet;
+   import jakarta.servlet.http.HttpServlet;
+   import jakarta.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletResponse;
    
    @WebServlet(urlPatterns = "/livros/*")
    public class LivroController extends HttpServlet {
@@ -808,7 +812,7 @@
      <display-name>Archetype Created Web Application</display-name>
      <error-page>
        <exception-type>
-           javax.servlet.ServletException
+           jakarta.servlet.ServletException
        </exception-type>
        <location>/erro.jsp</location>
      </error-page>

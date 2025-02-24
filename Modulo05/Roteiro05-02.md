@@ -28,7 +28,7 @@
       mvn -N io.takari:maven:wrapper
       ```
 
-    - Incluir as dependências (**javax.servlet**, **javax.servlet.jsp**, **jstl**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
+    - Incluir as dependências (**jakarta.servlet**, **jakarta.servlet.jsp**, **jstl**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
 
       
 
@@ -476,12 +476,12 @@
    package br.ufscar.dc.dsw.controller;
    
    import java.io.IOException;
-   import javax.servlet.RequestDispatcher;
-   import javax.servlet.ServletException;
-   import javax.servlet.annotation.WebServlet;
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
+   import jakarta.servlet.RequestDispatcher;
+   import jakarta.servlet.ServletException;
+   import jakarta.servlet.annotation.WebServlet;
+   import jakarta.servlet.http.HttpServlet;
+   import jakarta.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletResponse;
    import br.ufscar.dc.dsw.dao.UsuarioDAO;
    import br.ufscar.dc.dsw.domain.Usuario;
    import br.ufscar.dc.dsw.util.Erro;
@@ -542,12 +542,12 @@
    package br.ufscar.dc.dsw.controller;
    
    import java.io.IOException;
-   import javax.servlet.RequestDispatcher;
-   import javax.servlet.ServletException;
-   import javax.servlet.annotation.WebServlet;
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
+   import jakarta.servlet.RequestDispatcher;
+   import jakarta.servlet.ServletException;
+   import jakarta.servlet.annotation.WebServlet;
+   import jakarta.servlet.http.HttpServlet;
+   import jakarta.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletResponse;
    import br.ufscar.dc.dsw.domain.Usuario;
    import br.ufscar.dc.dsw.util.Erro;
    
@@ -588,12 +588,12 @@
    package br.ufscar.dc.dsw.controller;
    
    import java.io.IOException;
-   import javax.servlet.RequestDispatcher;
-   import javax.servlet.ServletException;
-   import javax.servlet.annotation.WebServlet;
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
+   import jakarta.servlet.RequestDispatcher;
+   import jakarta.servlet.ServletException;
+   import jakarta.servlet.annotation.WebServlet;
+   import jakarta.servlet.http.HttpServlet;
+   import jakarta.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletResponse;
    import br.ufscar.dc.dsw.domain.Usuario;
    import br.ufscar.dc.dsw.util.Erro;
    

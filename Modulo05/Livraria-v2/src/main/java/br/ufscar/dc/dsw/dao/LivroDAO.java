@@ -52,7 +52,7 @@ public class LivroDAO extends GenericDAO {
                 String autor = resultSet.getString("autor");
                 int ano = resultSet.getInt("ano");
                 float preco = resultSet.getFloat("preco");
-                Long editora_id = resultSet.getLong(6);
+                Long editora_id = resultSet.getLong("editora_id");
                 String cnpj = resultSet.getString("cnpj");
                 String nome = resultSet.getString("nome");
                 Editora editora = new Editora(editora_id, cnpj, nome);
