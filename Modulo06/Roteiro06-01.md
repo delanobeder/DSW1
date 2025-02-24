@@ -16,7 +16,7 @@
 	
 	- **Language:** Java
 	
-	- **Spring Boot:** 2.4.0
+	- **Spring Boot:** 3.4.3
 	
 	- **Group:** br.ufscar.dc.dsw
 	
@@ -30,7 +30,7 @@
 	
 	- **Packaging:** Jar
 	
-	- **Java:** 8
+	- **Java:** 17
 	
 	  **Dependências:** Spring Web, Thymeleaf e Spring Boot DevTools
 	
