@@ -22,7 +22,7 @@
 
   - **Language:** Java
 
-  - **Spring Boot:** 2.4.0
+  - **Spring Boot:** 3.4.3
 
   - **Group:** br.ufscar.dc.dsw
 
@@ -36,7 +36,7 @@
 
   - **Packaging:** Jar
 
-  - **Java:** 8
+  - **Java:** 17
 
     **Dependências:** Spring Web, Thymeleaf, Spring Security & Spring Boot DevTools
 
@@ -220,7 +220,7 @@
    package br.ufscar.dc.dsw.controller;
    
    import java.util.Map;
-   import javax.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletRequest;
    import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
    import org.springframework.http.HttpStatus;
    import org.springframework.stereotype.Component;
@@ -582,7 +582,7 @@
    </html>
    ```
    
-   
+
 
    9.9 Arquivo **src/main/resources/templates/login.html**
 
@@ -631,7 +631,7 @@
    </body>
    </html>
    ```
-   
+
    
 
 10. Visão - área de usuários comuns (papel ROLE_USER)
@@ -809,5 +809,4 @@
   
   
   
-
 

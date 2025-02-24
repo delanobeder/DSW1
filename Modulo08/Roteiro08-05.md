@@ -182,10 +182,10 @@
    ```java
    package br.ufscar.dc.dsw.domain;
    
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.Table;
-   import javax.validation.constraints.NotBlank;
+   import jakarta.persistence.Column;
+   import jakarta.persistence.Entity;
+   import jakarta.persistence.Table;
+   import jakarta.validation.constraints.NotBlank;
    
    @SuppressWarnings("serial")
    @Entity
@@ -371,7 +371,7 @@
     ```java
     package br.ufscar.dc.dsw.controller;
     
-    import javax.validation.Valid;
+    import jakarta.validation.Valid;
     
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -644,10 +644,10 @@
     ```properties
     # Mensagens genéricas
     
-    javax.validation.constraints.Size.message = Deve estar entre {min} e {max} caracteres.
-    javax.validation.constraints.NotBlank.message = É obrigatório.
-    javax.validation.constraints.NotNull.message = É obrigatório.
-    javax.validation.constraints.Digits.message = Deve conter no máximo {integer} digitos.
+    jakarta.validation.constraints.Size.message = Deve estar entre {min} e {max} caracteres.
+    jakarta.validation.constraints.NotBlank.message = É obrigatório.
+    jakarta.validation.constraints.NotNull.message = É obrigatório.
+    jakarta.validation.constraints.Digits.message = Deve conter no máximo {integer} digitos.
     
     # Validação campos Livro
     
@@ -673,10 +673,10 @@
     ```properties
     # Mensagens genéricas
     
-    javax.validation.constraints.Size.message = Must be between {min} and {max} characters.
-    javax.validation.constraints.NotBlank.message = It is mandatory.
-    javax.validation.constraints.NotNull.message = It is mandatory.
-    javax.validation.constraints.Digits.message = Must contain a maximum of {integer} digits.
+    jakarta.validation.constraints.Size.message = Must be between {min} and {max} characters.
+    jakarta.validation.constraints.NotBlank.message = It is mandatory.
+    jakarta.validation.constraints.NotNull.message = It is mandatory.
+    jakarta.validation.constraints.Digits.message = Must contain a maximum of {integer} digits.
     
     # Validação campos Livro
     
@@ -1237,12 +1237,12 @@
     
     import java.math.BigDecimal;
     
-    import javax.persistence.Column;
-    import javax.persistence.Entity;
-    import javax.persistence.JoinColumn;
-    import javax.persistence.ManyToOne;
-    import javax.persistence.Table;
-    import javax.validation.constraints.NotNull;
+    import jakarta.persistence.Column;
+    import jakarta.persistence.Entity;
+    import jakarta.persistence.JoinColumn;
+    import jakarta.persistence.ManyToOne;
+    import jakarta.persistence.Table;
+    import jakarta.validation.constraints.NotNull;
     
     @SuppressWarnings("serial")
     @Entity

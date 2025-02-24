@@ -24,7 +24,7 @@
 
   - **Language:** Java
 
-  - **Spring Boot:** 2.4.0
+  - **Spring Boot:** 3.4.3
 
   - **Group:** br.ufscar.dc.dsw
 
@@ -38,7 +38,7 @@
 
   - **Packaging:** Jar
 
-  - **Java:** 8
+  - **Java:** 17
 
     **Dependências:** Spring Web, Spring Data JPA, Spring Boot DevTools, Thymeleaf & Validation
 
@@ -215,10 +215,10 @@
    package br.ufscar.dc.dsw.domain;
    
    import java.io.Serializable;
-   import javax.persistence.GeneratedValue;
-   import javax.persistence.GenerationType;
-   import javax.persistence.Id;
-   import javax.persistence.MappedSuperclass;
+   import jakarta.persistence.GeneratedValue;
+   import jakarta.persistence.GenerationType;
+   import jakarta.persistence.Id;
+   import jakarta.persistence.MappedSuperclass;
    
    @SuppressWarnings("serial")
    @MappedSuperclass
@@ -273,14 +273,14 @@
    package br.ufscar.dc.dsw.domain;
    
    import java.math.BigDecimal;
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.JoinColumn;
-   import javax.persistence.ManyToOne;
-   import javax.persistence.Table;
-   import javax.validation.constraints.NotBlank;
-   import javax.validation.constraints.NotNull;
-   import javax.validation.constraints.Size;
+   import jakarta.persistence.Column;
+   import jakarta.persistence.Entity;
+   import jakarta.persistence.JoinColumn;
+   import jakarta.persistence.ManyToOne;
+   import jakarta.persistence.Table;
+   import jakarta.validation.constraints.NotBlank;
+   import jakarta.validation.constraints.NotNull;
+   import jakarta.validation.constraints.Size;
    import org.springframework.format.annotation.NumberFormat;
    import org.springframework.format.annotation.NumberFormat.Style;
    
@@ -360,12 +360,12 @@
    ```java
    package br.ufscar.dc.dsw.domain;
    import java.util.List;
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.OneToMany;
-   import javax.persistence.Table;
-   import javax.validation.constraints.NotBlank;
-   import javax.validation.constraints.Size;
+   import jakarta.persistence.Column;
+   import jakarta.persistence.Entity;
+   import jakarta.persistence.OneToMany;
+   import jakarta.persistence.Table;
+   import jakarta.validation.constraints.NotBlank;
+   import jakarta.validation.constraints.Size;
    import br.ufscar.dc.dsw.validation.UniqueCNPJ;
    
    @SuppressWarnings("serial")
@@ -421,8 +421,8 @@
    import java.lang.annotation.Retention;
    import java.lang.annotation.RetentionPolicy;
    import java.lang.annotation.Target;
-   import javax.validation.Constraint;
-   import javax.validation.Payload;
+   import jakarta.validation.Constraint;
+   import jakarta.validation.Payload;
    
    @Constraint(validatedBy = UniqueCNPJValidator.class)
    @Target(ElementType.FIELD)
@@ -439,8 +439,8 @@
    ```java
    package br.ufscar.dc.dsw.validation;
    
-   import javax.validation.ConstraintValidator;
-   import javax.validation.ConstraintValidatorContext;
+   import jakarta.validation.ConstraintValidator;
+   import jakarta.validation.ConstraintValidatorContext;
    
    import org.springframework.beans.factory.annotation.Autowired;
    import org.springframework.stereotype.Component;
@@ -474,10 +474,10 @@
    ```properties
    # Mensagens genéricas
    
-   javax.validation.constraints.Size.message = Deve estar entre {min} e {max} caracteres.
-   javax.validation.constraints.NotBlank.message = É obrigatório.
-   javax.validation.constraints.NotNull.message = É obrigatório.
-   javax.validation.constraints.Digits.message = Deve conter no máximo {integer} digitos.
+   jakarta.validation.constraints.Size.message = Deve estar entre {min} e {max} caracteres.
+   jakarta.validation.constraints.NotBlank.message = É obrigatório.
+   jakarta.validation.constraints.NotNull.message = É obrigatório.
+   jakarta.validation.constraints.Digits.message = Deve conter no máximo {integer} digitos.
    
    # Validação campos Livro
    
@@ -591,7 +591,7 @@
     ```java
     package br.ufscar.dc.dsw.controller;
     
-    import javax.validation.Valid;
+    import jakarta.validation.Valid;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.stereotype.Controller;
     import org.springframework.ui.ModelMap;
@@ -1050,7 +1050,7 @@
     
     import java.util.List;
     
-    import javax.validation.Valid;
+    import jakarta.validation.Valid;
     
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.stereotype.Controller;
@@ -1425,7 +1425,7 @@
     package br.ufscar.dc.dsw.controller;
     
     import java.util.Map;
-    import javax.servlet.http.HttpServletRequest;
+    import jakarta.servlet.http.HttpServletRequest;
     import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
     import org.springframework.http.HttpStatus;
     import org.springframework.stereotype.Component;

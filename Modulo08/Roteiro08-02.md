@@ -111,7 +111,7 @@
    
    import java.util.Map;
    
-   import javax.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletRequest;
    
    import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
    import org.springframework.http.HttpStatus;
@@ -721,10 +721,10 @@
       ```properties
     # Mensagens genéricas
       
-    javax.validation.constraints.Size.message = Must be between {min} and {max} characters.
-    javax.validation.constraints.NotBlank.message = It is mandatory.
-    javax.validation.constraints.NotNull.message = It is mandatory.
-    javax.validation.constraints.Digits.message = Must contain a maximum of {integer} digits.
+    jakarta.validation.constraints.Size.message = Must be between {min} and {max} characters.
+    jakarta.validation.constraints.NotBlank.message = It is mandatory.
+    jakarta.validation.constraints.NotNull.message = It is mandatory.
+    jakarta.validation.constraints.Digits.message = Must contain a maximum of {integer} digits.
       
     # Validação campos Livro
       
