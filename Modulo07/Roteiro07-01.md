@@ -38,11 +38,18 @@
    <project ... >
      <dependencies>
      	...
-      	<dependency>
+       
+       <dependency>
    		<groupId>org.hibernate</groupId>
-   		<artifactId>hibernate-core</artifactId>
-   		<version>4.3.8.Final</version>
+   		<artifactId>hibernate-core-jakarta</artifactId>
+   		<version>5.6.15.Final</version>
    		<scope>compile</scope>
+   		<exclusions>
+              <exclusion>
+              		<groupId>xml-apis</groupId>
+              		<artifactId>xml-apis</artifactId>
+               </exclusion>
+           </exclusions>
    	</dependency>
    
    	<!-- Implementação de EntityManager da JPA -->
@@ -50,8 +57,14 @@
    	<dependency>
    		<groupId>org.hibernate</groupId>
    		<artifactId>hibernate-entitymanager</artifactId>
-   		<version>4.3.8.Final</version>
+   		<version>5.6.15.Final</version>
    		<scope>compile</scope>
+   		<exclusions>
+           	<exclusion>
+               	<groupId>xml-apis</groupId>
+                   <artifactId>xml-apis</artifactId>
+               </exclusion>
+            </exclusions>
    	</dependency>
      </dependencies>
      ...   
@@ -115,11 +128,11 @@
     <persistence-unit name="JPAPU">
        <provider>org.hibernate.ejb.HibernatePersistence</provider>
        <properties>
-           <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/JPA" />
-           <property name="javax.persistence.jdbc.user" value="root" />
-           <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />
-           <property name="javax.persistence.jdbc.password" value="root" />
-           <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+           <property name="jakarta.persistence.jdbc.url" value="jdbc:derby://localhost:1527/JPA" />
+           <property name="jakarta.persistence.jdbc.user" value="root" />
+           <property name="jakarta.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />
+           <property name="jakarta.persistence.jdbc.password" value="root" />
+           <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create" />
            <property name="hibernate.show_sql" value="true" />
            <property name="hibernate.format_sql" value="true"/>
        </properties>
@@ -183,11 +196,11 @@
    <persistence-unit name="JPAPU">
        <provider>org.hibernate.ejb.HibernatePersistence</provider>
        <properties>
-           <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/JPA" />
-           <property name="javax.persistence.jdbc.user" value="root" />
-           <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
-           <property name="javax.persistence.jdbc.password" value="root" />
-           <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+           <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/JPA" />
+           <property name="jakarta.persistence.jdbc.user" value="root" />
+           <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+           <property name="jakarta.persistence.jdbc.password" value="root" />
+           <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create" />
            <property name="hibernate.show_sql" value="true" />
            <property name="hibernate.format_sql" value="true"/>
        </properties>
@@ -207,14 +220,14 @@
    ```java
    package br.ufscar.dc.dsw.domain;
    
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.GeneratedValue;
-   import javax.persistence.GenerationType;
-   import javax.persistence.Id;
-   import javax.persistence.Inheritance;
-   import javax.persistence.InheritanceType;
-   import javax.persistence.Table;
+   import jakarta.persistence.Column;
+   import jakarta.persistence.Entity;
+   import jakarta.persistence.GeneratedValue;
+   import jakarta.persistence.GenerationType;
+   import jakarta.persistence.Id;
+   import jakarta.persistence.Inheritance;
+   import jakarta.persistence.InheritanceType;
+   import jakarta.persistence.Table;
    
    @Entity
    @Table(name = "Pessoa")
@@ -259,10 +272,10 @@
    
    import java.util.Set;
    
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.ManyToMany;
-   import javax.persistence.Table;
+   import jakarta.persistence.Column;
+   import jakarta.persistence.Entity;
+   import jakarta.persistence.ManyToMany;
+   import jakarta.persistence.Table;
    
    @Entity
    @Table(name = "Aluno")
@@ -307,12 +320,12 @@
    ```java
    package br.ufscar.dc.dsw.domain;
    
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.JoinColumn;
-   import javax.persistence.ManyToOne;
-   import javax.persistence.OneToOne;
-   import javax.persistence.Table;
+   import jakarta.persistence.Column;
+   import jakarta.persistence.Entity;
+   import jakarta.persistence.JoinColumn;
+   import jakarta.persistence.ManyToOne;
+   import jakarta.persistence.OneToOne;
+   import jakarta.persistence.Table;
    
    @Entity @Table(name = "Professor")
    public class Professor extends Pessoa {
@@ -364,15 +377,15 @@
    
    ```java
    package br.ufscar.dc.dsw.domain;
-
+   
    import java.util.List;
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.GeneratedValue;
-   import javax.persistence.GenerationType;
-   import javax.persistence.Id;
-   import javax.persistence.OneToMany;
-   import javax.persistence.Table;
+   import jakarta.persistence.Column;
+   import jakarta.persistence.Entity;
+   import jakarta.persistence.GeneratedValue;
+   import jakarta.persistence.GenerationType;
+   import jakarta.persistence.Id;
+   import jakarta.persistence.OneToMany;
+   import jakarta.persistence.Table;
    
    @Entity
    @Table(name = "Departamento")
@@ -436,17 +449,17 @@
    
    ```java
    package br.ufscar.dc.dsw.domain;
-
+   
    import java.util.Set;
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.FetchType;
-   import javax.persistence.GeneratedValue;
-   import javax.persistence.GenerationType;
-   import javax.persistence.Id;
-   import javax.persistence.ManyToMany;
-   import javax.persistence.OneToOne;
-   import javax.persistence.Table;
+   import jakarta.persistence.Column;
+   import jakarta.persistence.Entity;
+   import jakarta.persistence.FetchType;
+   import jakarta.persistence.GeneratedValue;
+   import jakarta.persistence.GenerationType;
+   import jakarta.persistence.Id;
+   import jakarta.persistence.ManyToMany;
+   import jakarta.persistence.OneToOne;
+   import jakarta.persistence.Table;
    
    @Entity
    @Table(name = "Disciplina")
@@ -522,9 +535,9 @@
    
    import java.util.List;
    
-   import javax.persistence.EntityManager;
-   import javax.persistence.EntityManagerFactory;
-   import javax.persistence.Persistence;
+   import jakarta.persistence.EntityManager;
+   import jakarta.persistence.EntityManagerFactory;
+   import jakarta.persistence.Persistence;
    
    public abstract class GenericDAO<T> {
    
@@ -553,9 +566,9 @@
    
    import java.util.List;
    
-   import javax.persistence.EntityManager;
-   import javax.persistence.EntityTransaction;
-   import javax.persistence.Query;
+   import jakarta.persistence.EntityManager;
+   import jakarta.persistence.EntityTransaction;
+   import jakarta.persistence.Query;
    import br.ufscar.dc.dsw.domain.Pessoa;
    
    public class PessoaDAO extends GenericDAO<Pessoa>{
@@ -624,9 +637,9 @@
    
    import java.util.List;
    
-   import javax.persistence.EntityManager;
-   import javax.persistence.EntityTransaction;
-   import javax.persistence.TypedQuery;
+   import jakarta.persistence.EntityManager;
+   import jakarta.persistence.EntityTransaction;
+   import jakarta.persistence.TypedQuery;
    
    import br.ufscar.dc.dsw.domain.Departamento;
    import br.ufscar.dc.dsw.domain.Professor;
@@ -655,9 +668,9 @@
    
    import java.util.List;
    
-   import javax.persistence.EntityManager;
-   import javax.persistence.EntityTransaction;
-   import javax.persistence.Query;
+   import jakarta.persistence.EntityManager;
+   import jakarta.persistence.EntityTransaction;
+   import jakarta.persistence.Query;
    
    import br.ufscar.dc.dsw.domain.Departamento;
    
@@ -727,9 +740,9 @@
    
    import java.util.List;
    
-   import javax.persistence.EntityManager;
-   import javax.persistence.EntityTransaction;
-   import javax.persistence.Query;
+   import jakarta.persistence.EntityManager;
+   import jakarta.persistence.EntityTransaction;
+   import jakarta.persistence.Query;
    
    import br.ufscar.dc.dsw.domain.Disciplina;
    

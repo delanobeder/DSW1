@@ -23,8 +23,8 @@
 		
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>4.3.8.Final</version>
+			<artifactId>hibernate-core-jakarta</artifactId>
+			<version>5.6.15.Final</version>
 			<scope>compile</scope>
 			<exclusions>
                 <exclusion>
@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.3.8.Final</version>
+			<version>5.6.15.Final</version>
 			<scope>compile</scope>
 			<exclusions>
                 <exclusion>

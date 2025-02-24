@@ -23,7 +23,7 @@
 	
 	- **Language:** Java
 	
-	- **Spring Boot:** 2.4.0
+	- **Spring Boot:** 3.4.3
 	
 	- **Group:** br.ufscar.dc.dsw
 	
@@ -37,7 +37,7 @@
 	
 	- **Packaging:** Jar
 	
-	- **Java:** 8
+	- **Java:** 17
 	
 	  **Dependências:** Spring Web, Spring Data JPA e Spring Boot DevTools
 	
@@ -120,14 +120,14 @@
    ```java
    package br.ufscar.dc.dsw.domain;
    
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.GeneratedValue;
-   import javax.persistence.GenerationType;
-   import javax.persistence.Id;
-   import javax.persistence.Inheritance;
-   import javax.persistence.InheritanceType;
-   import javax.persistence.Table;
+   import jakarta,persistence.Column;
+   import jakarta,persistence.Entity;
+   import jakarta,persistence.GeneratedValue;
+   import jakarta,persistence.GenerationType;
+   import jakarta,persistence.Id;
+   import jakarta,persistence.Inheritance;
+   import jakarta,persistence.InheritanceType;
+   import jakarta,persistence.Table;
    
    @Entity
    @Table(name = "Pessoa")
@@ -173,10 +173,10 @@
    
    import java.util.Set;
    
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.ManyToMany;
-   import javax.persistence.Table;
+   import jakarta,persistence.Column;
+   import jakarta,persistence.Entity;
+   import jakarta,persistence.ManyToMany;
+   import jakarta,persistence.Table;
    
    @Entity
    @Table(name = "Aluno")
@@ -221,12 +221,12 @@
    ```java
    package br.ufscar.dc.dsw.domain;
    
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.JoinColumn;
-   import javax.persistence.ManyToOne;
-   import javax.persistence.OneToOne;
-   import javax.persistence.Table;
+   import jakarta,persistence.Column;
+   import jakarta,persistence.Entity;
+   import jakarta,persistence.JoinColumn;
+   import jakarta,persistence.ManyToOne;
+   import jakarta,persistence.OneToOne;
+   import jakarta,persistence.Table;
    
    @Entity
    @Table(name = "Professor")
@@ -283,13 +283,13 @@
    package br.ufscar.dc.dsw.domain;
    
    import java.util.List;
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.GeneratedValue;
-   import javax.persistence.GenerationType;
-   import javax.persistence.Id;
-   import javax.persistence.OneToMany;
-   import javax.persistence.Table;
+   import jakarta,persistence.Column;
+   import jakarta,persistence.Entity;
+   import jakarta,persistence.GeneratedValue;
+   import jakarta,persistence.GenerationType;
+   import jakarta,persistence.Id;
+   import jakarta,persistence.OneToMany;
+   import jakarta,persistence.Table;
    
    @Entity
    @Table(name = "Departamento")
@@ -355,15 +355,15 @@
    package br.ufscar.dc.dsw.domain;
    
    import java.util.Set;
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.FetchType;
-   import javax.persistence.GeneratedValue;
-   import javax.persistence.GenerationType;
-   import javax.persistence.Id;
-   import javax.persistence.ManyToMany;
-   import javax.persistence.OneToOne;
-   import javax.persistence.Table;
+   import jakarta,persistence.Column;
+   import jakarta,persistence.Entity;
+   import jakarta,persistence.FetchType;
+   import jakarta,persistence.GeneratedValue;
+   import jakarta,persistence.GenerationType;
+   import jakarta,persistence.Id;
+   import jakarta,persistence.ManyToMany;
+   import jakarta,persistence.OneToOne;
+   import jakarta,persistence.Table;
    
    @Entity
    @Table(name = "Disciplina")

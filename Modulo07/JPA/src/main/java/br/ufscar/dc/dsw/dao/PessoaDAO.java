@@ -2,9 +2,9 @@ package br.ufscar.dc.dsw.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
 import br.ufscar.dc.dsw.domain.Pessoa;
 
 public class PessoaDAO extends GenericDAO<Pessoa>{
