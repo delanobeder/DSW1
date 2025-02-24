@@ -21,10 +21,10 @@
     import java.io.IOException;
     import java.io.PrintWriter;
     import java.util.Date;
-    import javax.servlet.ServletException;
-    import javax.servlet.http.HttpServlet;
-    import javax.servlet.http.HttpServletRequest;
-    import javax.servlet.http.HttpServletResponse;
+    import jakarta.servlet.ServletException;
+    import jakarta.servlet.http.HttpServlet;
+    import jakarta.servlet.http.HttpServletRequest;
+    import jakarta.servlet.http.HttpServletResponse;
 
     public class AloMundoServlet extends HttpServlet {
         protected void doGet(HttpServletRequest request,
@@ -107,15 +107,15 @@
 11. Modificar o código fonte, adicionando as seguintes linhas
     ```java
     package br.ufscar.dc.dsw;
-
+    
     import java.io.IOException;
     import java.io.PrintWriter;
-    import javax.servlet.ServletException;
-    import javax.servlet.http.HttpServlet;
-    import javax.servlet.http.HttpServletRequest;
-    import javax.servlet.http.HttpServletResponse;
-    import javax.servlet.annotation.WebServlet;
-
+    import jakarta.servlet.ServletException;
+    import jakarta.servlet.http.HttpServlet;
+    import jakarta.servlet.http.HttpServletRequest;
+    import jakarta.servlet.http.HttpServletResponse;
+    import jakarta.servlet.annotation.WebServlet;
+    
     @WebServlet(urlPatterns = {"/TestarAloMundo"})
     public class AloMundoServlet extends HttpServlet {
     ...
@@ -133,7 +133,7 @@
 
 - Tomcat Application Developer's Guide (Deployment) 
   
-  https://tomcat.apache.org/tomcat-9.0-doc/appdev/deployment.html
+  https://tomcat.apache.org/tomcat-11.0-doc/appdev/deployment.html
   
   
   

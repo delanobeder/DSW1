@@ -24,7 +24,7 @@
         mvn -N io.takari:maven:wrapper
         ```
 
-    - Incluir as dependências (**javax.servlet**, **javax.servlet.jsp**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
+    - Incluir as dependências (**jakarta.servlet**, **jakarta.servlet.jsp**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
 
 2. Criar um arquivo pagina.html qualquer
 
@@ -42,11 +42,11 @@
    package br.ufscar.dc.dsw;
    
    import java.io.IOException;
-   import javax.servlet.ServletException;
-   import javax.servlet.annotation.WebServlet;
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
+   import jakarta.servlet.ServletException;
+   import jakarta.servlet.annotation.WebServlet;
+   import jakarta.servlet.http.HttpServlet;
+   import jakarta.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletResponse;
    
    @WebServlet(urlPatterns = {"/RedirectServlet"})
    public class RedirectServlet extends HttpServlet {
@@ -78,11 +78,11 @@
    package br.ufscar.dc.dsw;
    
    import java.io.IOException;
-   import javax.servlet.ServletException;
-   import javax.servlet.annotation.WebServlet;
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
+   import jakarta.servlet.ServletException;
+   import jakarta.servlet.annotation.WebServlet;
+   import jakarta.servlet.http.HttpServlet;
+   import jakarta.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletResponse;
    
    @WebServlet(urlPatterns = { "/ForwardServlet" })
    public class ForwardServlet extends HttpServlet {
@@ -117,11 +117,11 @@
    import java.util.Map;
    import java.util.Map.Entry;
    import java.util.Set;
-   import javax.servlet.ServletException;
-   import javax.servlet.annotation.WebServlet;
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
+   import jakarta.servlet.ServletException;
+   import jakarta.servlet.annotation.WebServlet;
+   import jakarta.servlet.http.HttpServlet;
+   import jakarta.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletResponse;
    
    @WebServlet(urlPatterns = {"/PrintParams"})
    public class PrintParamsServlet extends HttpServlet {
@@ -200,11 +200,11 @@
     
     import java.io.IOException;
     import java.io.PrintWriter;
-    import javax.servlet.ServletException;
-    import javax.servlet.annotation.WebServlet;
-    import javax.servlet.http.HttpServlet;
-    import javax.servlet.http.HttpServletRequest;
-    import javax.servlet.http.HttpServletResponse;
+    import jakarta.servlet.ServletException;
+    import jakarta.servlet.annotation.WebServlet;
+    import jakarta.servlet.http.HttpServlet;
+    import jakarta.servlet.http.HttpServletRequest;
+    import jakarta.servlet.http.HttpServletResponse;
     
     @WebServlet(urlPatterns = {"/IncludeServlet"})
     public class IncludeServlet extends HttpServlet {

@@ -24,7 +24,7 @@
 	  mvn -N io.takari:maven:wrapper
 	  ```
 
-    - Incluir as dependências (**javax.servlet**, **javax.servlet.jsp**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
+    - Incluir as dependências (**jakarta.servlet**, **jakarta.servlet.jsp**) e plugin (**tomcat7-maven-plugin**), conforme discutido nos roteiros anteriores
 
 2. Criar um **servlet** chamado **br.ufscar.dc.dsw.ArmazenarNaSessao**, que pega um parâmetro chamado **nome** e armazena na sessão. Em seguida, imprime na página o nome armazenado
 
@@ -33,11 +33,11 @@
    
    import java.io.IOException;
    import java.io.PrintWriter;
-   import javax.servlet.ServletException;
-   import javax.servlet.annotation.WebServlet;
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
+   import jakarta.servlet.ServletException;
+   import jakarta.servlet.annotation.WebServlet;
+   import jakarta.servlet.http.HttpServlet;
+   import jakarta.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletResponse;
    
    @WebServlet(urlPatterns = {"/ArmazenarNaSessao"})
    public class ArmazenarNaSessao extends HttpServlet {
@@ -86,12 +86,12 @@
    import java.text.SimpleDateFormat;
    import java.util.Date;
    import java.util.Enumeration;
-   import javax.servlet.ServletException;
-   import javax.servlet.annotation.WebServlet;
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
-   import javax.servlet.http.HttpSession;
+   import jakarta.servlet.ServletException;
+   import jakarta.servlet.annotation.WebServlet;
+   import jakarta.servlet.http.HttpServlet;
+   import jakarta.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletResponse;
+   import jakarta.servlet.http.HttpSession;
    
    @WebServlet(urlPatterns = {"/ExibirSessao"})
    public class ExibirSessao extends HttpServlet {

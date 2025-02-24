@@ -34,23 +34,23 @@
 
 3. Abra o diretório AloMundoMVN em um editor de texto (ex: Visual Studio Code). Adicionar a seguinte dependência e plugin ao arquivo **pom.xml** 
 
-     ```xml
+   ```xml
    <project ... >
      <dependencies>
      	...
-      		<dependency>
-      			<groupId>javax.servlet</groupId>
-          		<artifactId>javax.servlet-api</artifactId>
-          		<version>4.0.0</version>
-          		<scope>provided</scope>
-      		</dependency>
-      		<dependency>
-      		<groupId>javax.servlet.jsp</groupId>
-          		<artifactId>jsp-api</artifactId>
-          		<version>2.1</version>
-          		<scope>provided</scope>
-      	    </dependency>
-     </dependencies>
+         <dependency>
+   			<groupId>jakarta.servlet</groupId>
+   			<artifactId>jakarta.servlet-api</artifactId>
+   			<version>6.0.0</version>
+   			<scope>provided</scope>
+   		</dependency>
+   		<dependency>
+   			<groupId>jakarta.servlet.jsp</groupId>
+   			<artifactId>jakarta.servlet.jsp-api</artifactId>
+   			<version>3.0.0</version>
+   			<scope>provided</scope>
+   		</dependency>
+      	  </dependencies>
      ... 
      <build>
       ...
@@ -61,7 +61,7 @@
        	<version>2.2</version>
        	<configuration>
            	<url>http://localhost:8080/manager/text</url>
-           	<server>Tomcat9</server>
+           	<server>Tomcat11</server>
            	<path>/${project.artifactId}</path>
            </configuration>
        </plugin>
@@ -95,7 +95,7 @@
    <settings>
     	<servers>
         	<server>
-            	<id>Tomcat9</id>
+            	<id>Tomcat11</id>
             	<username>admin</username>
             	<password>admin</password>
         	</server>
@@ -120,11 +120,11 @@
    import java.io.PrintWriter;
    import java.util.Date;
      
-   import javax.servlet.ServletException;
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.annotation.WebServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
+   import jakarta.servlet.ServletException;
+   import jakarta.servlet.http.HttpServlet;
+   import jakarta.servlet.annotation.WebServlet;
+   import jakarta.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletResponse;
      
    @WebServlet(urlPatterns = { "/AloMundoServletNoMaven" })
    public class AloMundoServlet extends HttpServlet {
@@ -201,7 +201,7 @@
   
 - Tomcat Application Developer's Guide (Deployment) 
   
-  https://tomcat.apache.org/tomcat-9.0-doc/appdev/deployment.html
+  https://tomcat.apache.org/tomcat-11.0-doc/appdev/deployment.html
   
 - Maven in 5 Minutes
 

@@ -37,17 +37,17 @@
    	<dependencies>
    		...
       		<dependency>
-      			<groupId>javax.servlet</groupId>
-         		<artifactId>javax.servlet-api</artifactId>
-         		<version>4.0.0</version>
-         		<scope>provided</scope>
-      		</dependency>
-      		<dependency>
-        		<groupId>javax.servlet.jsp</groupId>
-          		<artifactId>jsp-api</artifactId>
-          		<version>2.1</version>
-          		<scope>provided</scope>
-       	</dependency>
+   			<groupId>jakarta.servlet</groupId>
+   			<artifactId>jakarta.servlet-api</artifactId>
+   			<version>6.0.0</version>
+   			<scope>provided</scope>
+   		</dependency>
+   		<dependency>
+   			<groupId>jakarta.servlet.jsp</groupId>
+   			<artifactId>jakarta.servlet.jsp-api</artifactId>
+   			<version>3.0.0</version>
+   			<scope>provided</scope>
+   		</dependency>
        </dependencies>
    	... 
    	<build>
@@ -59,7 +59,7 @@
             		<version>2.2</version>
             		<configuration>
                		<url>http://localhost:8080/manager/text</url>
-                 		<server>Tomcat9</server>
+                 		<server>Tomcat11</server>
                   		<path>/${project.artifactId}</path>
             		</configuration>
          		</plugin>
@@ -83,11 +83,11 @@
    import java.io.IOException;
    import java.io.PrintWriter;
    
-   import javax.servlet.ServletException;
-   import javax.servlet.annotation.WebServlet;
-   import javax.servlet.http.HttpServlet;
-   import javax.servlet.http.HttpServletRequest;
-   import javax.servlet.http.HttpServletResponse;
+   import jakarta.servlet.ServletException;
+   import jakarta.servlet.annotation.WebServlet;
+   import jakarta.servlet.http.HttpServlet;
+   import jakarta.servlet.http.HttpServletRequest;
+   import jakarta.servlet.http.HttpServletResponse;
    
    @WebServlet(urlPatterns = { "/InterpretarRequestServlet" })
    public class InterpretarRequestServlet extends HttpServlet {
