@@ -21,8 +21,12 @@
        <groupId>jakarta.servlet.jsp.jstl</groupId>
    	<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
    	<version>3.0.0</version>
-   	<scope>runtime</scope>
-   </dependency>   
+   </dependency>
+   <dependency>
+   	<groupId>org.glassfish.web</groupId>
+   	<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+   	<version>3.0.1</version>
+   </dependency>
    ```
 
 2. Adicionar a biblioteca Native2Ascii (https://native2ascii.net/) via Maven, adicionando as seguintes linhas ao arquivo pom.xml:
