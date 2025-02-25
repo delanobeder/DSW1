@@ -3,16 +3,17 @@ package br.ufscar.dc.dsw;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.nio.file.Path;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload2.core.FileItem;
+import org.apache.commons.fileupload2.core.DiskFileItemFactory;
+import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletFileUpload;
 
 import static br.ufscar.dc.dsw.Constants.*;
 
@@ -23,13 +24,11 @@ public class UploadFileServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		if (ServletFileUpload.isMultipartContent(request)) {
+		if (JakartaServletFileUpload.isMultipartContent(request)) {
 
-			DiskFileItemFactory factory = new DiskFileItemFactory();
-			factory.setSizeThreshold(MEMORY_THRESHOLD);
-			factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
-
-			ServletFileUpload upload = new ServletFileUpload(factory);
+			DiskFileItemFactory factory = DiskFileItemFactory.builder().get();
+			
+			JakartaServletFileUpload upload = new JakartaServletFileUpload(factory);
 			upload.setFileSizeMax(MAX_FILE_SIZE);
 			upload.setSizeMax(MAX_REQUEST_SIZE);
 			String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
@@ -45,9 +44,7 @@ public class UploadFileServlet extends HttpServlet {
 					for (FileItem item : formItems) {
 						if (!item.isFormField()) {
 							String fileName = new File(item.getName()).getName();
-							String filePath = uploadPath + File.separator + fileName;
-							File storeFile = new File(filePath);
-							item.write(storeFile);
+							item.write(Path.of(uploadPath, fileName));
 							request.getSession().setAttribute("message", "File " + fileName + " has uploaded successfully!");
 						}
 					}
