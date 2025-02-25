@@ -5,104 +5,102 @@
 
 - - -
 
-#### 03 - Envio de *emails* (SendGrid)
-[Código](https://github.com/delanobeder/DSW1/blob/master/Mail/SendGrid)
+#### 04 - Envio de *emails* (Gmail SMTP + Spring Email)
+[Código](https://github.com/delanobeder/DSW1/blob/master/Mail/SpringEmail)
+
 - - -
 
-1. Faça o cadastro em https://signup.sendgrid.com/
-   
-   
-   
-   
-   ![cadastro](fig/03-01.png)
 
 
+1. É necessário ter uma conta (endereço) Gmail: [username]@gmail.com
+    Obs: os emails institucionais ([username]@estudante.ufscar.br) também podem ser utilizados 
 
+2. Atualize o arquivo **src/main/resources/application.properties** com informações do cadastro (*username* e *password*)
 
-2. Crie uma nova chave e atualize o arquivo **src/main/resources/config.properties** com as informações da chave gerada (https://app.sendgrid.com/settings/api_keys)
-
-   Maiores informações: https://sendgrid.com/docs/ui/account-and-settings/api-keys/
-   
    ```properties
-   API_KEY = <chave com 69 caracteres>
+   spring.mail.host = smtp.gmail.com
+   spring.mail.port = 465
+   spring.mail.properties.mail.smtp.auth = true
+   spring.mail.properties.mail.smtp.ssl.enable = true
+   spring.mail.username = [username]@gmail.com
+   spring.mail.password = <password>
    ```
    
-   ![settings](fig/03-02.png)
+3. Caso a **<u>Verificação em duas etapas</u>** esteja desativada, é necessário ativar o **<u>Acesso a app menos seguro</u>** para permitir que seu programa Java acesse o Gmail SMTP
+
+    ![verificacao](fig/02-01.png)
+
+    ![settings](fig/02-02.png)    
 
 <div style="page-break-after: always"></div>
 
+4. Caso a **<u>Verificação em duas etapas</u>** esteja ativada, é necessário criar uma **Senha de app** para permitir que seu programa Java acesse o Gmail SMTP. Utilize essa senha no arquivo **config.properties** discutido anteriormente.
 
-3. Adicione os endereços que serão utilizados no envio de mensagens. Apenas esses endereços serão permitidos (propriedade **from** da mensagem) a enviar mensagens.
+    Maiores informações: https://support.google.com/accounts/answer/185833?hl=pt-BR
 
-    (https://app.sendgrid.com/settings/sender_auth)
+    ![senha app](fig/02-03.png)
+
     
-    ![senders](fig/03-03.png)
-    
-    
-    
-4. Atualize o arquivo **src/main/java/br/ufscar/dc/dsw/Main.java** com endereços válidos (Variáveis **from** e **to**). O endereço **from** deve constar na lista de endereços verificados (passo anterior)
+
+5. Atualize o arquivo **src/main/java/br/ufscar/dc/dsw/SpringEmailApplication.java** com endereços válidos (Variáveis **from** e **to**). O endereço **from** deve ser [username]@gmail.com (ou [username]@estudante.ufscar.br) usado no acesso ao Gmail SMTP.
 
     ```java
     package br.ufscar.dc.dsw;
     
     import java.io.File;
-    import java.io.IOException;
     
-    import com.sendgrid.helpers.mail.objects.Email;
+    import jakarta.mail.internet.InternetAddress;
     
-    public class Main {
-    	public static void main(String[] args) throws IOException {
-    		
-    		EmailService service = new EmailService();
-    		
-    		Email from = new Email("fulano@dsw.ufscar.br", "Fulano"); // Atualize
-    		Email to = new Email("beltrano@dsw.ufscar.br", "Beltrano"); // Atualize
+    import org.springframework.boot.CommandLineRunner;
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.context.annotation.Bean;
     
-    		String subject1 = "Exemplo Subject (SendGrid/Java)";
-    		String subject2 = "Exemplo Subject com Anexo (SendGrid/Java)";
+    @SpringBootApplication
+    public class SpringEmailApplication {
     
-    		String body1 = "Exemplo mensagem (SendGrid/Java)";
-    		String body2 = "Exemplo mensagem com Anexo (SendGrid/Java)";
+    	public static void main(String[] args) {
+    		SpringApplication.run(SpringEmailApplication.class, args);
+    	}
     
-    		// Envio sem anexo
-    		service.send(from, to, subject1, body1);
+    	@Bean
+    	public CommandLineRunner run(EmailService service) {
+    		return (args) -> {
     
-    		// Envio com anexo
-    		service.send(from, to, subject2, body2, new File("SIGA.pdf"));
+                InternetAddress from = new InternetAddress("<username>@gmail.com", "Fulano");
+    		    InternetAddress to = new InternetAddress("<email>@<dominio>", "Beltrano");
+    					
+    			String subject1 = "Exemplo Subject (Gmail SMTP/Spring)";
+    			String subject2 = "Exemplo Subject com Anexo (Gmail SMTP/Spring)";
+    
+    			String body1 = "Exemplo mensagem (Gmail SMTP/Spring)";
+    			String body2 = "Exemplo mensagem com Anexo (Gmail SMTP/Spring)";
+    
+    			// Envio sem anexo
+    			service.send(from, to, subject1, body1);
+    
+    			// Envio com anexo
+    			service.send(from, to, subject2, body2, new File("SIGA.pdf"));
+    		};
     	}
     }
     ```
-    
-    
-<div style="page-break-after: always"></div>
 
-5. Abrir um terminal dentro da pasta do projeto e executar os seguintes comandos:
+6. Abrir um terminal dentro da pasta do projeto e executar o seguinte comando:
 
     ```sh
-    % ./mvnw compile
-    % ./mvnw exec:java
+    % ./mvnw spring-boot:run
     ```
-
     
+7. Verificar se duas mensagens foram enviadas e recebidas. Abrir o *inbox* do endereço setado na variável **to**. 
 
-6. Verificar se duas mensagens foram recebidas
-    Abrir o *inbox* do endereço setado na variável **to**. 
-
-    
-
-7. Fim
+8. Fim
 
 
 
 #### Leituras adicionais
 
 - - -
-- SendGrid Java 
+- Guide to Spring Email
 
-  https://github.com/sendgrid/sendgrid-java
-
-  
-
-- SendGrid v3 API Java Code Example
-
-  https://sendgrid.com/docs/for-developers/sending-email/v3-java-code-example/
+  https://www.baeldung.com/spring-email

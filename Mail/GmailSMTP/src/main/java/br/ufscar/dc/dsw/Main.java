@@ -3,7 +3,7 @@ package br.ufscar.dc.dsw;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 
-import javax.mail.internet.InternetAddress;
+import jakarta.mail.internet.InternetAddress;
 
 public class Main {
 
@@ -11,8 +11,8 @@ public class Main {
 		
 		EmailService service = new EmailService();
 		
-		InternetAddress from = new InternetAddress("<username>@gmail.com", "Fulano");
-		InternetAddress to = new InternetAddress("<email>@<dominio>", "Beltrano");
+		InternetAddress from = new InternetAddress("delanobeder@gmail.com", "Delano Beder");
+		InternetAddress to = new InternetAddress("delano@ufscar.br", "Delano Beder");
 				
 		String subject1 = "Exemplo Subject (Gmail SMTP/Java)";
 		String subject2 = "Exemplo Subject com Anexo (Gmail SMTP/Java)";

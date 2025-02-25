@@ -3,7 +3,7 @@ package br.ufscar.dc.dsw;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 
-import javax.mail.internet.InternetAddress;
+import jakarta.mail.internet.InternetAddress;
 
 public class Main {
 
