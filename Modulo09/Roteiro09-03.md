@@ -24,7 +24,7 @@
 
   - **Language:** Java
 
-  - **Spring Boot:** 2.4.0
+  - **Spring Boot:** 3.4.3
 
   - **Group:** br.ufscar.dc.dsw
 
@@ -38,7 +38,7 @@
 
   - **Packaging:** Jar
 
-  - **Java:** 8
+  - **Java:** 17
 
     **Dependências:** Spring Web, Spring Data JPA, Spring Boot DevTools, Thymeleaf & Validation
 
@@ -153,7 +153,7 @@
    </dependency>
    ```
       <div style="page-break-after: always"></div>
-4.4 No arquivo **src/main/resources/application.properties**, iremos configurar o projeto para acessar o banco de dados **Transacoes**
+   4.4 No arquivo **src/main/resources/application.properties**, iremos configurar o projeto para acessar o banco de dados **Transacoes**
 
    ```properties
    # MySQL & JPA
@@ -272,10 +272,10 @@
    package br.ufscar.dc.dsw.domain;
    
    import java.io.Serializable;
-   import javax.persistence.GeneratedValue;
-   import javax.persistence.GenerationType;
-   import javax.persistence.Id;
-   import javax.persistence.MappedSuperclass;
+   import jakarta.persistence.GeneratedValue;
+   import jakarta.persistence.GenerationType;
+   import jakarta.persistence.Id;
+   import jakarta.persistence.MappedSuperclass;
    
    @SuppressWarnings("serial")
    @MappedSuperclass
@@ -329,11 +329,11 @@
    
    import java.util.List;
    
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.OneToMany;
-   import javax.persistence.Table;
-   import javax.validation.constraints.NotBlank;
+   import jakarta.persistence.Column;
+   import jakarta.persistence.Entity;
+   import jakarta.persistence.OneToMany;
+   import jakarta.persistence.Table;
+   import jakarta.validation.constraints.NotBlank;
    
    import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
    
@@ -430,15 +430,15 @@
    
    import java.math.BigDecimal;
    
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.EnumType;
-   import javax.persistence.Enumerated;
-   import javax.persistence.JoinColumn;
-   import javax.persistence.ManyToOne;
-   import javax.persistence.Table;
-   import javax.validation.constraints.NotBlank;
-   import javax.validation.constraints.NotNull;
+   import jakarta.persistence.Column;
+   import jakarta.persistence.Entity;
+   import jakarta.persistence.EnumType;
+   import jakarta.persistence.Enumerated;
+   import jakarta.persistence.JoinColumn;
+   import jakarta.persistence.ManyToOne;
+   import jakarta.persistence.Table;
+   import jakarta.validation.constraints.NotBlank;
+   import jakarta.validation.constraints.NotNull;
    
    import org.springframework.format.annotation.NumberFormat;
    import org.springframework.format.annotation.NumberFormat.Style;
@@ -709,7 +709,7 @@
     ```java
     package br.ufscar.dc.dsw.controller;
     
-    import javax.validation.Valid;
+    import jakarta.validation.Valid;
     
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.stereotype.Controller;
@@ -1142,7 +1142,7 @@
     
     import java.util.List;
     
-    import javax.validation.Valid;
+    import jakarta.validation.Valid;
     
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.stereotype.Controller;
@@ -1546,7 +1546,7 @@
     package br.ufscar.dc.dsw.controller;
     
     import java.util.Map;
-    import javax.servlet.http.HttpServletRequest;
+    import jakarta.servlet.http.HttpServletRequest;
     import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
     import org.springframework.http.HttpStatus;
     import org.springframework.stereotype.Component;

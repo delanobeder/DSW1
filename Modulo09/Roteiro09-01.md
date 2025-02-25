@@ -26,7 +26,7 @@
 	
 	- **Language:** Java
 	
-	- **Spring Boot:** 2.4.0
+	- **Spring Boot:** 3.4.3
 	
 	- **Group:** br.ufscar.dc.dsw
 	
@@ -40,7 +40,7 @@
 	
 	- **Packaging:** Jar
 	
-	- **Java:** 8
+	- **Java:** 17
 	
 	  **Dependências:** Spring Web, Spring Data JPA e Spring Boot DevTools
 	
@@ -138,10 +138,10 @@
    package br.ufscar.dc.dsw.domain;
    
    import java.io.Serializable;
-   import javax.persistence.GeneratedValue;
-   import javax.persistence.GenerationType;
-   import javax.persistence.Id;
-   import javax.persistence.MappedSuperclass;
+   import jakarta,persistence.GeneratedValue;
+   import jakarta,persistence.GenerationType;
+   import jakarta,persistence.Id;
+   import jakarta,persistence.MappedSuperclass;
    
    @SuppressWarnings("serial")
    @MappedSuperclass
@@ -192,9 +192,9 @@
    
    package br.ufscar.dc.dsw.domain;
    
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.Table;
+   import jakarta,persistence.Column;
+   import jakarta,persistence.Entity;
+   import jakarta,persistence.Table;
    
    @SuppressWarnings("serial")
    @Entity
@@ -237,11 +237,11 @@
    ```java
    package br.ufscar.dc.dsw.domain;
    
-   import javax.persistence.Column;
-   import javax.persistence.Entity;
-   import javax.persistence.JoinColumn;
-   import javax.persistence.ManyToOne;
-   import javax.persistence.Table;
+   import jakarta,persistence.Column;
+   import jakarta,persistence.Entity;
+   import jakarta,persistence.JoinColumn;
+   import jakarta,persistence.ManyToOne;
+   import jakarta,persistence.Table;
    
    @SuppressWarnings("serial")
    @Entity
@@ -489,7 +489,7 @@
    
    ```java
    package br.ufscar.dc.dsw.controller;
-
+   
    import java.io.IOException;
    import java.util.List;
    import org.json.simple.JSONObject;
