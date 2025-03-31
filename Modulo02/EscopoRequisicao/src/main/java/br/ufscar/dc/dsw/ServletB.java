@@ -17,6 +17,7 @@ public class ServletB extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE HTML>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet ServletB</title>");
