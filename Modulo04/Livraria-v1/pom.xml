@@ -44,11 +44,13 @@
 		</dependency>
 
 		<!-- Driver JDBC (banco de dados PosgreSQL) -->
+		<!---
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>42.2.15</version>
 		</dependency>
+		-->
 	</dependencies>
 	<build>
 		<finalName>${project.artifactId}</finalName>
