@@ -36,12 +36,14 @@ public class AcessaBD {
 			 */
 
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from Livro");
+			String query = "SELECT l.titulo, l.autor, l.ano, l.preco, e.nome FROM Livro l, Editora e WHERE l.editora_id = e.id;";
+			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
-				System.out.print(rs.getString("Titulo"));
-				System.out.print(", " + rs.getString("Autor"));
-				System.out.print(", " + rs.getInt("Ano"));
-				System.out.println(" (R$ " + rs.getFloat("Preco") + ")");
+				System.out.print(rs.getString("titulo"));
+				System.out.print(", " + rs.getString("autor"));
+				System.out.print(", " + rs.getInt("ano"));
+				System.out.print(", " + rs.getString("nome"));
+				System.out.println(" (R$ " + rs.getFloat("preco") + ")");
 			}
 			stmt.close();
 			con.close();
