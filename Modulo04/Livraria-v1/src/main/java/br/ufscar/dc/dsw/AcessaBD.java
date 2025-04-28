@@ -15,8 +15,7 @@ public class AcessaBD {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/Livraria";
-			Connection con = (Connection) DriverManager.getConnection(url,
-					"root", "root");
+			Connection con = (Connection) DriverManager.getConnection(url, "root", "root");
 
 			/* Setup para uso do banco de dados PostgreSQL */
 
@@ -31,8 +30,15 @@ public class AcessaBD {
 			/*
 			 * Class.forName("org.apache.derby.jdbc.ClientDriver");
 			 * String url = "jdbc:derby://localhost:1527/Livraria";
-			 * Connection con = (Connection) DriverManager.getConnection(url,
-			 * "root", "root");
+			 * Connection con = (Connection) DriverManager.getConnection(url, "root", "root");
+			 */
+
+			/* Setup para uso do banco de dados SQLite */
+			
+			/*
+			 * Class.forName("org.sqlite.JDBC");
+			 * String url = "jdbc:sqlite:./db/SQLite/Livraria.db";
+			 * Connection con = (Connection) DriverManager.getConnection(url);
 			 */
 
 			Statement stmt = con.createStatement();
