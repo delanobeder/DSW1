@@ -6,11 +6,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>AJAX (dynamic select)</title>
-        <script src="js/ajaxEstado.js"></script>
+        <script src="js/ajaxEstado.js" defer></script>
     </head>
-    <body>
+    <body onload='recuperaEstados()'>
         <br/>
-        <jsp:useBean id='bean' class='br.ufscar.dc.dsw.bean.BuscaPorEstadoBean'/>
 
         <form name='form'>
             <table>
@@ -19,9 +18,6 @@
                     <td>
                         <select id = 'estado' name='estado' onchange='estadoSelecionado(this.value)'>
                             <option value='--'>--</option>
-                            <c:forEach items='${bean.estados}' var='estado'>
-                                <option value='${estado.sigla}'>${estado.sigla}</option>
-                            </c:forEach>
                         </select>   
                     </td>
                 </tr>

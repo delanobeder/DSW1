@@ -14,12 +14,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/buscaPorNome"})
-public class NomeController extends HttpServlet {
+@WebServlet(urlPatterns = {"/cidades"})
+public class CidadesPorNomeController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         response.setContentType("application/json");
@@ -35,17 +36,5 @@ public class NomeController extends HttpServlet {
 
         System.out.println(gsonBuilder.toJson(cidades));
         response.getWriter().write(gsonBuilder.toJson(cidades));
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 }

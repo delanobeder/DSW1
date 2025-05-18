@@ -1,0 +1,46 @@
+#!/bin/bash
+
+populate_database() {
+        
+    cd Server
+    
+    mysql -uroot -proot < db/MySQL/create.sql
+
+    mvn clean package 
+    
+    mvn exec:java -Dexec.cleanupDaemonThreads=false -Dexec.mainClass="br.ufscar.dc.dsw.dao.PopulaBD"
+
+    cd ..
+}
+
+deploy_server() {
+    
+    cd Server
+    
+    mvn tomcat7:redeploy
+
+    mvn clean
+    
+    cd ..
+}
+
+deploy_client() {
+    
+    cd Client
+    
+    mvn tomcat7:redeploy
+    
+    mvn clean
+    
+    cd ..
+}
+
+while getopts ":p" option; do
+   case $option in
+      p)
+         populate_database
+   esac
+done
+
+deploy_server
+deploy_client

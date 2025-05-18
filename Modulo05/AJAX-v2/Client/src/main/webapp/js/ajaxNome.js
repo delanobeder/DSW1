@@ -19,7 +19,7 @@ function getCidades() {
 		return;
 	}
 
-	var url = "buscaPorNome";
+	var url = "/AJAX-Server/cidades";
 	url += "?term=" + nome;
 	xmlHttp.onreadystatechange = atualizaTabelaCidades;
 	xmlHttp.open("GET", url, true);

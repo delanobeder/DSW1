@@ -15,8 +15,11 @@ public class BuscaPorEstadoBean {
     }
 
     public List<Cidade> getCidades(String sigla) {
-        EstadoDAO dao = new EstadoDAO();
-        Estado estado = dao.getBySigla(sigla);
-        return new CidadeDAO().getByEstado(estado);
+        Estado estado = new EstadoDAO().getBySigla(sigla);
+        if (estado == null) {
+            return new CidadeDAO().getAll();
+        } else {
+            return new CidadeDAO().getByEstado(estado);     
+        } 
     } 
 }

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+undeploy_server() {
+    
+    cd Server
+    
+    mvn tomcat7:undeploy
+    
+    cd ..
+}
+
+undeploy_client() {
+    
+    cd Client
+    
+    mvn tomcat7:undeploy
+    
+    cd ..
+}
+
+undeploy_server
+undeploy_client
