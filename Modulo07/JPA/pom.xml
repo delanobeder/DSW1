@@ -58,14 +58,22 @@
 			<scope>runtime</scope>
 		</dependency>
 		
+		<!-- Driver JDBC (banco de dados PosgreSQL) -->
+		
+		<!--dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.15</version>
+		</dependency-->
+		
 		<!-- Driver JDBC (Banco de dados Derby) -->
 		 
-		<dependency>
+		<!--dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derbyclient</artifactId>
 			<version>10.14.2.0</version>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency-->
 		
 	</dependencies>
 </project>
