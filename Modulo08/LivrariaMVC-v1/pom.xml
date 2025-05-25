@@ -91,11 +91,6 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
-		<!-- Driver JDBC (banco de dados Derby) -->
-
-		<!-- <dependency> <groupId>org.apache.derby</groupId> <artifactId>derbyclient</artifactId> 
-			<scope>runtime</scope> </dependency> -->
-
 		<!-- Driver JDBC (banco de dados MySQL) -->
 
 		<dependency>
@@ -103,6 +98,24 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!--  Driver JDBC (banco de dados PosgreSQL)  -->
+		
+		<!--dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.15</version>
+			<scope>runtime</scope>
+		</dependency-->
+
+		<!-- Driver JDBC (banco de dados Derby) -->
+
+		<!--dependency> 
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derbyclient</artifactId> 
+			<scope>runtime</scope>
+		</dependency-->
+
 	</dependencies>
 	<build>
 		<plugins>

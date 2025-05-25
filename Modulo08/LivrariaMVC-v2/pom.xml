@@ -12,7 +12,7 @@
 	<groupId>br.ufscar.dc</groupId>
 	<artifactId>LivrariaMVC</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Livraria MVC (v2)</name>
+	<name>Livraria MVC (v1)</name>
 
 	<properties>
 		<java.version>17</java.version>
@@ -91,16 +91,6 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
-		<!-- Driver JDBC (banco de dados Derby) -->
-		
-		<!--
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derbyclient</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		-->
-		
 		<!-- Driver JDBC (banco de dados MySQL) -->
 
 		<dependency>
@@ -108,6 +98,23 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!--  Driver JDBC (banco de dados PosgreSQL)  -->
+		
+		<!--dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.15</version>
+			<scope>runtime</scope>
+		</dependency-->
+
+		<!-- Driver JDBC (banco de dados Derby) -->
+
+		<!--dependency> 
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derbyclient</artifactId> 
+			<scope>runtime</scope>
+		</dependency-->
 	</dependencies>
 	<build>
 		<plugins>
