@@ -8,17 +8,21 @@
 	<persistence-unit name="JPAPU">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<properties>
-			<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/JPA" />
+			<!--property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/JPA" />
 			<property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
 			<property name="jakarta.persistence.jdbc.user" value="root" />
 			<property name="jakarta.persistence.jdbc.password" value="root" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" /-->
 
 			<!-- property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/JPA" />
 			<property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="jakarta.persistence.jdbc.user" value="postgres" />
 			<property name="jakarta.persistence.jdbc.password" value="postgres" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /-->
+
+			<property name="jakarta.persistence.jdbc.url" value="jdbc:sqlite:./JPA.db" />
+			<property name="jakarta.persistence.jdbc.driver" value="org.sqlite.JDBC" />
+			<property name="hibernate.dialect" value="org.sqlite.hibernate.dialect.SQLiteDialect" />
 
 			<!--  property name="jakarta.persistence.jdbc.url" value="jdbc:derby://localhost:1527/JPA" />
 			<property name="jakarta.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />

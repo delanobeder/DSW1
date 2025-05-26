@@ -59,13 +59,31 @@
 
 		<!-- Driver JDBC (banco de dados PosgreSQL) -->
 		
-		<!--dependency>
+		<!--
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>42.2.15</version>
 			<scope>runtime</scope>
-		</dependency-->
+		</dependency>
+		-->
 
+		<!-- Driver JDBC (Banco de dados SQLite) -->
+
+		<!--
+		<dependency>
+			<groupId>org.xerial</groupId>
+			<artifactId>sqlite-jdbc</artifactId>
+			<version>3.49.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-community-dialects</artifactId>
+			<version>6.6.8.Final</version>
+		</dependency>
+		-->
+		
 		<!-- Driver JDBC (banco de dados Derby) -->
 		
 		<!--
