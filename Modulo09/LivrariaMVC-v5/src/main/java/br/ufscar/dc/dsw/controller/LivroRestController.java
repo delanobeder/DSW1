@@ -25,7 +25,7 @@ public class LivroRestController {
 	@Autowired
 	private ILivroService service;
 
-	@GetMapping(path = "/api/livros")
+	@GetMapping(path = "/livros")
 	public ResponseEntity<List<Livro>> lista() {
 		List<Livro> lista = service.buscarTodos();
 		if (lista.isEmpty()) {
@@ -34,7 +34,7 @@ public class LivroRestController {
 		return ResponseEntity.ok(lista);
 	}
 
-	@GetMapping(path = "/api/livros/{id}")
+	@GetMapping(path = "/livros/{id}")
 	public ResponseEntity<Livro> lista(@PathVariable("id") long id) {
 		Livro livro = service.buscarPorId(id);
 		if (livro == null) {
@@ -43,7 +43,7 @@ public class LivroRestController {
 		return ResponseEntity.ok(livro);
 	}
 
-	@GetMapping(path = "/api/livros/titulos/{titulo}")
+	@GetMapping(path = "/livros/titulos/{titulo}")
 	public ResponseEntity<List<Livro>> listaPorTitulo(@PathVariable("titulo") String titulo) {
 		List<Livro> lista = service.buscarPorTitulo(titulo);
 		if (lista.isEmpty()) {
@@ -52,7 +52,7 @@ public class LivroRestController {
 		return ResponseEntity.ok(lista);
 	}
 	
-	@PostMapping(path = "/api/livros")
+	@PostMapping(path = "/livros")
 	@ResponseBody
 	public ResponseEntity<Livro> cria(@Valid @RequestBody Livro livro, BindingResult result) {
 		
@@ -64,7 +64,7 @@ public class LivroRestController {
 		}		
 	}
 
-	@PutMapping(path = "/api/livros/{id}")
+	@PutMapping(path = "/livros/{id}")
 	public ResponseEntity<Livro> atualiza(@PathVariable("id") long id, @Valid @RequestBody Livro livro, BindingResult result) {
 		
 		if (result.hasErrors()) {
@@ -81,7 +81,7 @@ public class LivroRestController {
 		}			
 	}
 
-	@DeleteMapping(path = "/api/livros/{id}")
+	@DeleteMapping(path = "/livros/{id}")
 	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
 
 		Livro livro = service.buscarPorId(id);

@@ -14,7 +14,7 @@
 						<span>Lista de Cartões</span>
 					</li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/cartoes/cadastrar}" role="button"> 
+				<a class="btn btn-primary btn-md" th:href="@{/cartao/cadastrar}" role="button"> 
 					<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> 
 					<span>Novo Cartão</span>
 				</a>
@@ -47,12 +47,12 @@
 							<td th:text="${cartao.vencimento}"></td>
 							<td th:text="${cartao.CVV}"></td>
 							<td colspan="2">
-								<a class="btn btn-info btn-sm" th:href="@{/cartoes/editar/{id} (id=${cartao.id}) }"
+								<a class="btn btn-info btn-sm" th:href="@{/cartao/editar/{id} (id=${cartao.id}) }"
 									role="button"> 
 									<span class="oi oi-brush" title="Editar" aria-hidden="true"> </span>
 								</a>
 								<button
-									th:id="${'btn_cartoes/excluir/' + cartao.id}"
+									th:id="${'btn_cartao/excluir/' + cartao.id}"
 									type="button" class="btn btn-danger btn-sm"
 									data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>

@@ -17,7 +17,7 @@ public class CompraRestController {
 	@Autowired
 	private ICompraService service;
 	
-	@GetMapping(path = "/api/compras/usuarios/{id}")
+	@GetMapping(path = "/compras/usuarios/{id}")
 	public ResponseEntity<List<Compra>> lista(@PathVariable("id") long id) {
 		List<Compra> lista = service.buscarTodosPorUsuario(id);
 		if (lista.isEmpty()) {

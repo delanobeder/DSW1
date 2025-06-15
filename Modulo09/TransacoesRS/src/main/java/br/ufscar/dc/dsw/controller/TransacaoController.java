@@ -23,7 +23,7 @@ import br.ufscar.dc.dsw.service.spec.ICartaoService;
 import br.ufscar.dc.dsw.service.spec.ITransacaoService;
 
 @Controller
-@RequestMapping("/transacoes")
+@RequestMapping("/transacao")
 public class TransacaoController {
 
 	@Autowired
@@ -52,7 +52,7 @@ public class TransacaoController {
 
 		service.salvar(transacao);
 		attr.addFlashAttribute("sucess", "Transação inserida com sucesso.");
-		return "redirect:/transacoes/listar";
+		return "redirect:/transacao/listar";
 	}
 
 	@GetMapping("/editar/{id}")
@@ -70,7 +70,7 @@ public class TransacaoController {
 
 		service.salvar(transacao);
 		attr.addFlashAttribute("sucess", "Transação editada com sucesso.");
-		return "redirect:/transacoes/listar";
+		return "redirect:/transacao/listar";
 	}
 
 	@GetMapping("/excluir/{id}")

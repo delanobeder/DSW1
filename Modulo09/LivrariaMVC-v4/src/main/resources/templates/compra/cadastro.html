@@ -11,7 +11,7 @@
 					<li class="nav-item active"><i class="oi oi-caret-right"></i>
 						<span th:text="#{compra.cadastrar.label}"></span></li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/compras/listar}"
+				<a class="btn btn-primary btn-md" th:href="@{/compra/listar}"
 					role="button"> <span class="oi oi-spreadsheet" title="Listar"
 					aria-hidden="true"></span> <span th:text="#{compra.listar.label}"></span>
 				</a>
@@ -22,7 +22,7 @@
 
 			<div th:replace="~{fragments/alert}"></div>
 
-			<form th:action="@{/compras/salvar}" th:object="${compra}"
+			<form th:action="@{/compra/salvar}" th:object="${compra}"
 				method="POST">
 
 				<div th:replace="~{fragments/validacao::validacao}"></div>

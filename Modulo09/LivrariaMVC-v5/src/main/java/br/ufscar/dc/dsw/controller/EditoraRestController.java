@@ -25,7 +25,7 @@ public class EditoraRestController {
 	@Autowired
 	private IEditoraService service;
 	
-	@GetMapping(path = "/api/editoras")
+	@GetMapping(path = "/editoras")
 	public ResponseEntity<List<Editora>> lista() {
 		List<Editora> lista = service.buscarTodos();
 		if (lista.isEmpty()) {
@@ -34,7 +34,7 @@ public class EditoraRestController {
 		return ResponseEntity.ok(lista);
 	}
 
-	@GetMapping(path = "/api/editoras/{id}")
+	@GetMapping(path = "/editoras/{id}")
 	public ResponseEntity<Editora> lista(@PathVariable("id") long id) {
 		Editora editora = service.buscarPorId(id);
 		if (editora == null) {
@@ -43,7 +43,7 @@ public class EditoraRestController {
 		return ResponseEntity.ok(editora);
 	}
 
-	@PostMapping(path = "/api/editoras")
+	@PostMapping(path = "/editoras")
 	@ResponseBody
 	public ResponseEntity<Editora> cria(@Valid @RequestBody Editora editora, BindingResult result) {
 
@@ -55,7 +55,7 @@ public class EditoraRestController {
 		}
 	}
 
-	@PutMapping(path = "/api/editoras/{id}")
+	@PutMapping(path = "/editoras/{id}")
 	public ResponseEntity<Editora> atualiza(@PathVariable("id") long id, @Valid @RequestBody Editora editora,
 			BindingResult result) {
 		// Apenas rejeita se o problema não for com o CNPJ (CNPJ campo read-only)
@@ -74,7 +74,7 @@ public class EditoraRestController {
 		}
 	}
 
-	@DeleteMapping(path = "/api/editoras/{id}")
+	@DeleteMapping(path = "editoras/{id}")
 	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
 
 		Editora editora = service.buscarPorId(id);

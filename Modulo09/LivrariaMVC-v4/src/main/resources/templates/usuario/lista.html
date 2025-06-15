@@ -14,7 +14,7 @@
 						<span th:text="#{usuario.listar.label}"></span>
 					</li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/usuarios/cadastrar}" role="button"> 
+				<a class="btn btn-primary btn-md" th:href="@{/usuario/cadastrar}" role="button"> 
 					<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> 
 					<span th:text="#{usuario.cadastrar.label}"></span>
 				</a>
@@ -45,12 +45,12 @@
 							<td th:text="${usuario.CPF}"></td>
 							<td th:text="${usuario.role}"></td>
 							<td colspan="2">
-								<a class="btn btn-info btn-sm" th:href="@{/usuarios/editar/{id} (id=${usuario.id}) }"
+								<a class="btn btn-info btn-sm" th:href="@{/usuario/editar/{id} (id=${usuario.id}) }"
 									role="button"> 
 									<span class="oi oi-brush" th:title="#{link.editar.label}" aria-hidden="true"> </span>
 								</a>
 								<button
-									th:id="${'btn_usuarios/excluir/' + usuario.id}"
+									th:id="${'btn_usuario/excluir/' + usuario.id}"
 									type="button" class="btn btn-danger btn-sm"
 									data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" th:title="#{link.excluir.label}" aria-hidden="true"></span>

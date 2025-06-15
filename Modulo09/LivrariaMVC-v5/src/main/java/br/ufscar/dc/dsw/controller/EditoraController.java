@@ -16,7 +16,7 @@ import br.ufscar.dc.dsw.domain.Editora;
 import br.ufscar.dc.dsw.service.spec.IEditoraService;
 
 @Controller
-@RequestMapping("/editoras")
+@RequestMapping("/editora")
 public class EditoraController {
 	
 	@Autowired
@@ -42,7 +42,7 @@ public class EditoraController {
 		
 		service.salvar(editora);
 		attr.addFlashAttribute("sucess", "editora.create.sucess");
-		return "redirect:/editoras/listar";
+		return "redirect:/editora/listar";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -62,7 +62,7 @@ public class EditoraController {
 
 		service.salvar(editora);
 		attr.addFlashAttribute("sucess", "editora.edit.sucess");
-		return "redirect:/editoras/listar";
+		return "redirect:/editora/listar";
 	}
 	
 	@GetMapping("/excluir/{id}")

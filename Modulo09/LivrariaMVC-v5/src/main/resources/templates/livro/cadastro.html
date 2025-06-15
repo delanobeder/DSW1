@@ -14,7 +14,7 @@
 						<span th:text="#{livro.cadastrar.label}"></span></li>
 				</ul>
 			</div>
-			<a class="btn btn-primary btn-md" th:href="@{/livros/listar}"
+			<a class="btn btn-primary btn-md" th:href="@{/livro/listar}"
 				role="button"> <span class="oi oi-spreadsheet" title="Cadastro"
 				aria-hidden="true"></span> <span th:text="#{livro.listar.label}"></span>
 			</a>
@@ -25,7 +25,7 @@
 			<div th:replace="~{fragments/alert}"></div>
 
 			<form
-				th:action="${livro.id == null} ? @{/livros/salvar} : @{/livros/editar}"
+				th:action="${livro.id == null} ? @{/livro/salvar} : @{/livro/editar}"
 				th:object="${livro}" method="POST">
 
 				<div class="form-row">

@@ -12,7 +12,7 @@
 					<li class="nav-item active"><i class="oi oi-caret-right"></i>
 						<span>Cadastrar Cartões</span></li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/cartoes/listar}"
+				<a class="btn btn-primary btn-md" th:href="@{/cartao/listar}"
 					role="button"> <span class="oi oi-spreadsheet" title="Listar"
 					aria-hidden="true"></span> <span>Listar Cartões</span>
 				</a>
@@ -24,7 +24,7 @@
 			<div th:replace="~{fragments/alert}"></div>
 
 			<form
-				th:action="${cartao.id == null} ? @{/cartoes/salvar} : @{/cartoes/editar}"
+				th:action="${cartao.id == null} ? @{/cartao/salvar} : @{/cartao/editar}"
 				th:object="${cartao}" method="POST">
 
 				<div class="form-row">

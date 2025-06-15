@@ -12,7 +12,7 @@
 					<li class="nav-item active"><i class="oi oi-caret-right"></i>
 						<span th:text="#{usuario.cadastrar.label}"></span></li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/usuarios/listar}"
+				<a class="btn btn-primary btn-md" th:href="@{/usuario/listar}"
 					role="button"> <span class="oi oi-spreadsheet" title="Listar"
 					aria-hidden="true"></span> <span th:text="#{usuario.listar.label}"></span>
 				</a>
@@ -24,7 +24,7 @@
 			<div th:replace="~{fragments/alert}"></div>
 
 			<form
-				th:action="${usuario.id == null} ? @{/usuarios/salvar} : @{/usuarios/editar}"
+				th:action="${usuario.id == null} ? @{/usuario/salvar} : @{/usuario/editar}"
 				th:object="${usuario}" method="POST">
 
 				<div class="form-row">
@@ -40,16 +40,25 @@
 						</div>
 					</div>
 
-					<div class="form-group col-md-6">
+					<div th:if="${usuario.id == null}" class="form-group col-md-6">
 						<label th:text="#{usuario.password.label}" for="password"></label> 
-						<input type="text" class="form-control" id="password"
+						<input type="password" class="form-control" id="password"
 							th:placeholder="#{usuario.password.label}" autofocus="autofocus"
 							th:field="*{password}"
-							th:classappend="${#fields.hasErrors('password')} ? is-invalid" th:readonly="${usuario.id != null}"/>
+							th:classappend="${#fields.hasErrors('password')} ? is-invalid" />
 							
 						<div class="invalid-feedback">
 							<span th:errors="*{password}"></span>
 						</div>
+					</div>
+
+					<div th:unless="${usuario.id == null}" class="form-group col-md-6">
+						<label th:text="#{usuario.password.label}" for="password"></label> 
+						<input type="password" class="form-control" name="novoPassword"
+							th:placeholder="#{usuario.password.label}" autofocus="autofocus"
+							th:classappend="${#fields.hasErrors('password')} ? is-invalid" />
+							
+						<input type="hidden" th:field="*{password}" />
 					</div>
 					
 					<div class="form-group col-md-6">

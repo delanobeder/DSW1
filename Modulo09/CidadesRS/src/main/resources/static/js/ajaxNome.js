@@ -5,7 +5,7 @@ $(document).ready(function() {
 			$.ajax({
 				type : 'GET',
 				// url : '/cidades/filtros?term='+ nome,
-				url : 'http://localhost:8081/cidades/filtros?term='+ nome,
+				url : 'http://localhost:8080/cidades/filtros?term='+ nome,
 				success : function(result) {
 					var s = '';
 					s += '<p>Quantidade: ' + result.length+'</p>';

@@ -30,7 +30,7 @@ import br.ufscar.dc.dsw.service.spec.ICompraService;
 import br.ufscar.dc.dsw.service.spec.ILivroService;
 
 @Controller
-@RequestMapping("/compras")
+@RequestMapping("/compra")
 public class CompraController {
 
 	@Autowired
@@ -100,7 +100,7 @@ public class CompraController {
 			compra.setTransacaoID(id);
 			service.salvar(compra);
 			attr.addFlashAttribute("sucess", "compra.create.sucess");
-			return "redirect:/compras/listar";
+			return "redirect:/compra/listar";
 		} catch (RestClientException e) {
 			model.addAttribute("fail", "compra.connection.fail");
 			return cadastrar(model, compra);

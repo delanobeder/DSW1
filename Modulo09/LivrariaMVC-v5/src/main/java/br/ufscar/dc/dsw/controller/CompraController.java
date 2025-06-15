@@ -25,7 +25,7 @@ import br.ufscar.dc.dsw.service.spec.ICompraService;
 import br.ufscar.dc.dsw.service.spec.ILivroService;
 
 @Controller
-@RequestMapping("/compras")
+@RequestMapping("/compra")
 public class CompraController {
 	
 	@Autowired
@@ -64,7 +64,7 @@ public class CompraController {
 		
 		service.salvar(compra);
 		attr.addFlashAttribute("sucess", "compra.create.sucess");
-		return "redirect:/compras/listar";
+		return "redirect:/compra/listar";
 	}
 	
 	@ModelAttribute("livros")

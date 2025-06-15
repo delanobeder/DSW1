@@ -16,7 +16,7 @@ import br.ufscar.dc.dsw.domain.Cartao;
 import br.ufscar.dc.dsw.service.spec.ICartaoService;
 
 @Controller
-@RequestMapping("/cartoes")
+@RequestMapping("/cartao")
 public class CartaoController {
 
 	@Autowired
@@ -42,7 +42,7 @@ public class CartaoController {
 
 		service.salvar(cartao);
 		attr.addFlashAttribute("sucess", "Cartão inserido com sucesso");
-		return "redirect:/cartoes/listar";
+		return "redirect:/cartao/listar";
 	}
 
 	@GetMapping("/editar/{id}")
@@ -60,7 +60,7 @@ public class CartaoController {
 
 		service.salvar(cartao);
 		attr.addFlashAttribute("sucess", "Cartão editado com sucesso.");
-		return "redirect:/cartoes/listar";
+		return "redirect:/cartao/listar";
 	}
 
 	@GetMapping("/excluir/{id}")

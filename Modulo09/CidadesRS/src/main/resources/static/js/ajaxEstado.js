@@ -14,7 +14,7 @@ $(document).ready(function() {
 			$.ajax({
 				type : 'GET',
 				// url : '/cidades/estados/' + estadoId,
-				url : 'http://localhost:8081/cidades/estados/'+ estadoId,
+				url : 'http://localhost:8080/cidades/estados/'+ estadoId,
 				success : function(result) {
 					var s = '<option value="">Selecione</option>';
 					for (var i = 0; i < result.length; i++) {

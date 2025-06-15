@@ -14,7 +14,7 @@
 					</li>
 				</ul>
 			</div>
-			<a class="btn btn-primary btn-md" th:href="@{/livros/cadastrar}" role="button"> 
+			<a class="btn btn-primary btn-md" th:href="@{/livro/cadastrar}" role="button"> 
 				<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> 
 				<span th:text="#{livro.cadastrar.label}"></span>
 			</a>
@@ -47,10 +47,10 @@
 							<td th:text="|R$ ${#numbers.formatDecimal(livro.preco,2,2,'COMMA')}|"></td>
 							<td colspan="2">
 								<a class="btn btn-info btn-sm"
-									th:href="@{/livros/editar/{id} (id=${livro.id}) }" role="button"> 
+									th:href="@{/livro/editar/{id} (id=${livro.id}) }" role="button"> 
 									<span class="oi oi-brush" th:title="#{link.editar.label}" aria-hidden="true"></span>
 								</a>
-								<button th:id="${#strings.concat('btn_livros/excluir/',livro.id)}" 
+								<button th:id="${#strings.concat('btn_livro/excluir/',livro.id)}" 
 									type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" th:title="#{link.excluir.label}" aria-hidden="true"></span>
 								</button>

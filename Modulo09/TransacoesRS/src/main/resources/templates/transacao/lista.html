@@ -15,7 +15,7 @@
 					</li>
 				</ul>
 			</div>
-			<a class="btn btn-primary btn-md" th:href="@{/transacoes/cadastrar}" role="button"> 
+			<a class="btn btn-primary btn-md" th:href="@{/transacao/cadastrar}" role="button"> 
 				<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> 
 				<span>Nova Transação</span>
 			</a>
@@ -50,10 +50,10 @@
 							<td th:text="${transacao.cartao.numero}"></td>
 							<td colspan="2">
 								<a class="btn btn-info btn-sm"
-									th:href="@{/transacoes/editar/{id} (id=${transacao.id}) }" role="button"> 
+									th:href="@{/transacao/editar/{id} (id=${transacao.id}) }" role="button"> 
 									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 								</a>
-								<button th:id="${#strings.concat('btn_transacoes/excluir/',transacao.id)}" 
+								<button th:id="${#strings.concat('btn_transacao/excluir/',transacao.id)}" 
 									type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
 								</button>

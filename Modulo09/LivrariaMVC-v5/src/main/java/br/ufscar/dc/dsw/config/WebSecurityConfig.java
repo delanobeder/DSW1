@@ -45,9 +45,9 @@ public class WebSecurityConfig {
 				.authorizeHttpRequests((authz) -> authz
 						.requestMatchers("/error", "/login/**", "/js/**").permitAll()
 						.requestMatchers("/css/**", "/image/**", "/webjars/**").permitAll()
-						.requestMatchers("/compras/**").hasRole("USER")
-						.requestMatchers("/editoras/**", "/livros/**", "/usuarios/**").hasRole("ADMIN")
-						.requestMatchers("/api/**").permitAll()
+						.requestMatchers("/compra/**").hasRole("USER")
+						.requestMatchers("/editora/**", "/livro/**", "/usuario/**").hasRole("ADMIN")
+						.requestMatchers("/compras/**", "/editoras/**", "/livros/**").permitAll()
 						.anyRequest().authenticated())
 				.csrf(AbstractHttpConfigurer::disable)
 				.formLogin((form) -> form
