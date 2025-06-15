@@ -14,7 +14,7 @@
 						<span th:text="#{editora.listar.label}"></span>
 					</li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/editoras/cadastrar}" role="button"> 
+				<a class="btn btn-primary btn-md" th:href="@{/editora/cadastrar}" role="button"> 
 					<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> 
 					<span th:text="#{editora.cadastrar.label}"></span>
 				</a>
@@ -41,12 +41,12 @@
 							<td th:text="${editora.CNPJ}"></td>
 							<td th:text="${editora.nome}"></td>
 							<td colspan="2">
-								<a class="btn btn-info btn-sm" th:href="@{/editoras/editar/{id} (id=${editora.id}) }"
+								<a class="btn btn-info btn-sm" th:href="@{/editora/editar/{id} (id=${editora.id}) }"
 									role="button"> 
 									<span class="oi oi-brush" th:title="#{link.editar.label}" aria-hidden="true"> </span>
 								</a>
 								<button
-									th:id="${'btn_editoras/excluir/' + editora.id}"
+									th:id="${'btn_editora/excluir/' + editora.id}"
 									type="button" class="btn btn-danger btn-sm"
 									data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" th:title="#{link.excluir.label}" aria-hidden="true"></span>

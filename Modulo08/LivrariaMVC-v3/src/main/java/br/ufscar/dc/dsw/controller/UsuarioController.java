@@ -17,7 +17,7 @@ import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.service.spec.IUsuarioService;
 
 @Controller
-@RequestMapping("/usuarios")
+@RequestMapping("/usuario")
 public class UsuarioController {
 	
 	@Autowired
@@ -48,7 +48,7 @@ public class UsuarioController {
 		usuario.setPassword(encoder.encode(usuario.getPassword()));
 		service.salvar(usuario);
 		attr.addFlashAttribute("sucess", "usuario.create.sucess");
-		return "redirect:/usuarios/listar";
+		return "redirect:/usuario/listar";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -71,7 +71,7 @@ public class UsuarioController {
 		}
 		service.salvar(usuario);
 		attr.addFlashAttribute("sucess", "usuario.edit.sucess");
-		return "redirect:/usuarios/listar";
+		return "redirect:/usuario/listar";
 	}
 	
 	@GetMapping("/excluir/{id}")

@@ -26,7 +26,6 @@ public class WebSecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 
-	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 		authProvider.setUserDetailsService(userDetailsService());
@@ -45,8 +44,8 @@ public class WebSecurityConfig {
 				.authorizeHttpRequests((authz) -> authz
 						.requestMatchers("/error", "/login/**", "/js/**").permitAll()
 						.requestMatchers("/css/**", "/image/**", "/webjars/**").permitAll()
-						.requestMatchers("/compras/**").hasRole("USER")
-						.requestMatchers("/editoras/**", "/livros/**", "/usuarios/**").hasRole("ADMIN")
+						.requestMatchers("/compra/**").hasRole("USER")
+						.requestMatchers("/editora/**", "/livro/**", "/usuario/**").hasRole("ADMIN")
 						.anyRequest().authenticated())
 				.formLogin((form) -> form
 						.loginPage("/login")

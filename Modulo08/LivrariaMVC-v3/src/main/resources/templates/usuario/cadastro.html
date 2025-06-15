@@ -12,7 +12,7 @@
 					<li class="nav-item active"><i class="oi oi-caret-right"></i>
 						<span th:text="#{usuario.cadastrar.label}"></span></li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/usuarios/listar}"
+				<a class="btn btn-primary btn-md" th:href="@{/usuario/listar}"
 					role="button"> <span class="oi oi-spreadsheet" title="Listar"
 					aria-hidden="true"></span> <span th:text="#{usuario.listar.label}"></span>
 				</a>
@@ -24,7 +24,7 @@
 			<div th:replace="~{fragments/alert}"></div>
 
 			<form
-				th:action="${usuario.id == null} ? @{/usuarios/salvar} : @{/usuarios/editar}"
+				th:action="${usuario.id == null} ? @{/usuario/salvar} : @{/usuario/editar}"
 				th:object="${usuario}" method="POST">
 
 				<div class="form-row">

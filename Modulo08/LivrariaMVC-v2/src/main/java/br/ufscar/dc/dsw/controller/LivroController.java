@@ -21,7 +21,7 @@ import br.ufscar.dc.dsw.service.spec.IEditoraService;
 import br.ufscar.dc.dsw.service.spec.ILivroService;
 
 @Controller
-@RequestMapping("/livros")
+@RequestMapping("/livro")
 public class LivroController {
 
 	@Autowired
@@ -50,7 +50,7 @@ public class LivroController {
 
 		livroService.salvar(livro);
 		attr.addFlashAttribute("sucess", "livro.create.sucess");
-		return "redirect:/livros/listar";
+		return "redirect:/livro/listar";
 	}
 
 	@GetMapping("/editar/{id}")
@@ -68,14 +68,14 @@ public class LivroController {
 
 		livroService.salvar(livro);
 		attr.addFlashAttribute("sucess", "livro.edit.sucess");
-		return "redirect:/livros/listar";
+		return "redirect:/livro/listar";
 	}
 
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {
 		livroService.excluir(id);
 		attr.addFlashAttribute("sucess", "livro.delete.sucess");
-		return "redirect:/livros/listar";
+		return "redirect:/livro/listar";
 	}
 
 	@ModelAttribute("editoras")
