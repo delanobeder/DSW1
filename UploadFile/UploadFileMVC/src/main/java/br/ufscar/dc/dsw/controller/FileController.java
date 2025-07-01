@@ -30,22 +30,21 @@ public class FileController {
 	public String home(ModelMap model) throws IOException {
 
 		List<String> fileList = new ArrayList<String>();
-		
-		for (Path path: storageService.loadAll().toList()) {
+
+		for (Path path : storageService.loadAll().toList()) {
 			fileList.add(path.toString());
 		}
-				
+
 		model.addAttribute("files", fileList);
-		
+
 		return "index";
 	}
-	
+
 	@GetMapping(value = "/files/{filename:.+}")
 	public void download(HttpServletRequest request, HttpServletResponse response, @PathVariable String filename) {
-		
-		
+
 		Resource resource = storageService.load(filename);
-		
+
 		try {
 			// copies all bytes to an output stream
 			response.getOutputStream().write(resource.getContentAsByteArray());
@@ -56,17 +55,21 @@ public class FileController {
 			System.out.println("Error :- " + e.getMessage());
 		}
 	}
-		
-	
+
 	@PostMapping("/uploadFile")
-	public String addFile(@RequestParam("file") MultipartFile file, RedirectAttributes attr) throws IOException {
-		
-		storageService.save(file);
-		
-		String fileName = file.getOriginalFilename();
-				
-		attr.addFlashAttribute("sucess", "File " + fileName + " has uploaded successfully!");
-		
+	public String addFile(@RequestParam List<MultipartFile> file, RedirectAttributes attr) throws IOException {
+
+		String message = "";
+		for (MultipartFile f : file) {
+
+			String fileName = f.getOriginalFilename();
+			
+			if (!fileName.isEmpty()) {
+				storageService.save(f);
+				message += "File " + fileName + " has uploaded successfully!" + "\n";	
+			}
+		}
+		attr.addFlashAttribute("sucess", message);
 		return "redirect:/";
 	}
 }
