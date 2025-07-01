@@ -21,7 +21,7 @@
 	<h1>Files</h1>
 
 	<ul th:each="file : ${files}">
-		<li><a th:href="@{/upload/{file} (file=${file}) }" th:text="${file}"></a></li>
+		<li><a th:href="@{/files/{file} (file=${file}) }" th:text="${file}"></a></li>
 	</ul>
 </body>
 
