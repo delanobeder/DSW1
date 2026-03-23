@@ -18,6 +18,7 @@ public class UploadFileMvcApplication {
 	CommandLineRunner run(FilesStorageService service) throws Exception {
 		return args -> {
 			service.init();
+			service.deleteAll();
 		};
 	}
 
