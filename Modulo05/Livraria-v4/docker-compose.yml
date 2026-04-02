@@ -7,15 +7,13 @@ services:
       - .env
     volumes:
     - './db/MySQL:/tmp/db'
-    command: mysqld --init-file="/tmp/db/create.sql" --max-connections=500
+    command: mysqld --init-file="/tmp/db/create.sql" --max-connections=500 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
   tomcat:
-    image: tomcat:11.0.4
+    build: .
     container_name: tomcat
     env_file:
       - .env    
     ports:
       - "8080:8080"
-    volumes:
-      - ./target/Livraria.war:/usr/local/tomcat/webapps/Livraria.war
     depends_on:
       - mysql
