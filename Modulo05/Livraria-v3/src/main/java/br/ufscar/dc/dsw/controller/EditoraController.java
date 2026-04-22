@@ -39,6 +39,8 @@ public class EditoraController extends HttpServlet {
             action = "";
         }
 
+        request.setAttribute("contextPath", request.getContextPath().replace("/", ""));
+
         try {
             switch (action) {
                 case "/cadastro":
@@ -69,7 +71,6 @@ public class EditoraController extends HttpServlet {
             throws ServletException, IOException {
         List<Editora> listaEditoras = dao.getAll();
         request.setAttribute("listaEditoras", listaEditoras);
-        request.setAttribute("contextPath", request.getContextPath().replace("/", ""));
         RequestDispatcher dispatcher = request.getRequestDispatcher("/editora/lista.jsp");
         dispatcher.forward(request, response);
     }
@@ -84,8 +85,8 @@ public class EditoraController extends HttpServlet {
             throws ServletException, IOException {
         Long id = Long.parseLong(request.getParameter("id"));
         Editora editora = dao.get(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/editora/formulario.jsp");
         request.setAttribute("editora", editora);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/editora/formulario.jsp");
         dispatcher.forward(request, response);
     }
 
