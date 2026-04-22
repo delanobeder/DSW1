@@ -43,6 +43,8 @@ public class LivroController extends HttpServlet {
             action = "";
         }
 
+        request.setAttribute("contextPath", request.getContextPath().replace("/", ""));
+
         try {
             switch (action) {
                 case "/cadastro":
@@ -73,7 +75,6 @@ public class LivroController extends HttpServlet {
             throws ServletException, IOException {
         List<Livro> listaLivros = dao.getAll();
         request.setAttribute("listaLivros", listaLivros);
-        request.setAttribute("contextPath", request.getContextPath().replace("/", ""));
         RequestDispatcher dispatcher = request.getRequestDispatcher("/livro/lista.jsp");
         dispatcher.forward(request, response);
     }

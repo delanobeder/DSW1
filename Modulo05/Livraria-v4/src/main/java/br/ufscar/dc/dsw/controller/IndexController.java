@@ -30,6 +30,7 @@ public class IndexController extends HttpServlet {
 			if (senha == null || senha.isEmpty()) {
 				erros.add("Senha não informada!");
 			}
+			
 			if (!erros.isExisteErros()) {
 				UsuarioDAO dao = new UsuarioDAO();
 				Usuario usuario = dao.getbyLogin(login);
