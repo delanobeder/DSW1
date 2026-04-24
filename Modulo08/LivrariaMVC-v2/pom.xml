@@ -12,7 +12,7 @@
 	<groupId>br.ufscar.dc</groupId>
 	<artifactId>LivrariaMVC</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Livraria MVC (v1)</name>
+	<name>Livraria MVC (v2)</name>
 
 	<properties>
 		<java.version>17</java.version>
@@ -67,15 +67,16 @@
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
-			<version>4.4.1-1</version>
+			<version>5.3.7</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.webjars.bower</groupId>
-			<artifactId>open-iconic</artifactId>
-			<version>1.1.1</version>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>bootstrap-icons</artifactId>
+			<version>1.13.1</version>
+			<scope>compile</scope>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>jquery-mask-plugin</artifactId>
@@ -115,6 +116,7 @@
 			<artifactId>derbyclient</artifactId> 
 			<scope>runtime</scope>
 		</dependency-->
+
 	</dependencies>
 	<build>
 		<plugins>
