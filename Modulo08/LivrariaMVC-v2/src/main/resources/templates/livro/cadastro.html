@@ -32,7 +32,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<label th:text="#{livro.titulo.label}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Título" autofocus="autofocus"
+						<input type="text" class="form-control" id="nome" th:placeholder="#{livro.titulo.label}" autofocus="autofocus"
 							th:field="*{titulo}" th:classappend="${#fields.hasErrors('titulo')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -42,7 +42,7 @@
 
 					<div class="col-md-6">
 						<label th:text="#{livro.autor.label}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" placeholder="Autor" autofocus="autofocus"
+						<input type="text" class="form-control" id="nome" th:placeholder="#{livro.autor.label}" autofocus="autofocus"
 							th:field="*{autor}" th:classappend="${#fields.hasErrors('autor')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -66,7 +66,7 @@
 
 					<div class="col-md-6 mt-3">
 						<label th:text="#{livro.ano.label}" for="ano"></label>
-						<input type="number" class="form-control" id="nome" placeholder="Ano" autofocus="autofocus"
+						<input type="number" class="form-control" id="nome" th:placeholder="#{livro.ano.label}" autofocus="autofocus"
 							th:field="*{ano}" th:classappend="${#fields.hasErrors('ano')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -76,7 +76,7 @@
 
 					<div class="col-md-6 mt-3">
 						<label th:text="#{livro.preco.label}" for="preco"></label>
-						<input type="text" class="form-control" id="preco" placeholder="Preço" data-mask="000000,00"
+						<input type="text" class="form-control" id="preco" th:placeholder="#{livro.preco.label}" data-mask="000000,00"
 							data-mask-reverse="true" th:field="*{preco}"
 							th:classappend="${#fields.hasErrors('preco')} ? is-invalid" />
 
