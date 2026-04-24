@@ -37,7 +37,7 @@ body {
  */
 .sidebar {
     width: 0px;
-    height: 80vh;
+    height: 87.7vh;
     border-top: 1px solid #eee;
     border-right: 1px solid #eee;    
     background-color: #f8f9fa;
@@ -117,4 +117,9 @@ body {
 	display: block;
 	color: #777777;
 	text-align: center;
+}
+
+.form-control:read-only {
+    background-color: #e9ecef;
+    opacity: 1;
 }

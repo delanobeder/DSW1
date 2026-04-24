@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout}">
+
 <head>
-<meta charset="UTF-8" />
+	<meta charset="UTF-8" />
 </head>
+
 <body>
 	<section class="layout-content" layout:fragment="corpo">
 
 		<nav class="navbar navbar-expand-md bg-light">
-			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<i class="oi oi-caret-right"></i>
-						<span>Lista de Livros</span>
-					</li>
-				</ul>
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<i class="bi bi-caret-right-fill"></i>
+							<span>Lista de Livros</span>
+						</li>
+					</ul>
+					<a class="btn btn-primary btn-md nav-item ms-auto" th:href="@{/livro/cadastrar}" role="button">
+						<span class="bi bi-plus-circle-fill" title="Cadastro" aria-hidden="true"></span>
+						<span>Novo Livro</span>
+					</a>
+				</div>
 			</div>
-			<a class="btn btn-primary btn-md" th:href="@{/livro/cadastrar}" role="button"> 
-				<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> 
-				<span>Novo Livro</span>
-			</a>
 		</nav>
 
 		<div class="container" id="listagem">
@@ -38,7 +42,7 @@
 							<th>Ação</th>
 						</tr>
 					</thead>
-					<tbody>						
+					<tbody>
 						<tr th:each="livro : ${livros}">
 							<td th:text="${livro.id}"></td>
 							<td th:text="${livro.titulo}"></td>
@@ -47,13 +51,13 @@
 							<td th:text="${livro.ano}"></td>
 							<td th:text="|R$ ${#numbers.formatDecimal(livro.preco,2,2,'COMMA')}|"></td>
 							<td colspan="2">
-								<a class="btn btn-info btn-sm"
-									th:href="@{/livro/editar/{id} (id=${livro.id}) }" role="button"> 
-									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
+								<a class="btn btn-info btn-sm" th:href="@{/livro/editar/{id} (id=${livro.id}) }"
+									role="button">
+									<span class="bi bi-pen" title="Editar" aria-hidden="true"></span>
 								</a>
-								<button th:id="${#strings.concat('btn_livro/excluir/',livro.id)}" 
-									type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
-									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
+								<button th:id="${#strings.concat('btn_livro/excluir/',livro.id)}" type="button"
+									class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#myModal">
+									<span class="bi bi-trash" title="Excluir" aria-hidden="true"></span>
 								</button>
 							</td>
 						</tr>
@@ -65,4 +69,5 @@
 		<div th:replace="~{fragments/modal::modal}"></div>
 	</section>
 </body>
+
 </html>
