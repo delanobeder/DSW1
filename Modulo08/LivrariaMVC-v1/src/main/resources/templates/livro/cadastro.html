@@ -10,16 +10,19 @@
 	<section class="layout-content" layout:fragment="corpo">
 
 		<nav class="navbar navbar-expand-md bg-light">
-			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><i class="bi bi-caret-right-fill"></i>
-						<span>Cadastrar Livros</span>
-					</li>
-				</ul>
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active"><i class="bi bi-caret-right-fill"></i>
+							<span>Cadastrar Livros</span>
+						</li>
+					</ul>
+
+					<a class="btn btn-primary btn-md nav-item ms-auto" th:href="@{/livro/listar}" role="button"> <span
+							class="bi bi-list-ul" title="Cadastro" aria-hidden="true"></span> <span>Listar Livros</span>
+					</a>
+				</div>
 			</div>
-			<a class="btn btn-primary btn-md nav-item ms-auto" th:href="@{/livro/listar}" role="button"> <span
-					class="bi bi-list-ul" title="Cadastro" aria-hidden="true"></span> <span>Listar Livros</span>
-			</a>
 		</nav>
 
 		<div class="container" id="cadastro">
