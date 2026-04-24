@@ -1,77 +1,66 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:th="http://www.thymeleaf.org"
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
 <head>
-<head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
 </head>
+
 <body>
 	<nav class="sidebar sidebar-open" th:fragment="nav-sidebar">
 		<ul class="nav nav-pills">
-			<li class="nav-item"><a class="nav-link " th:href="@{/}"> <i
-					class="oi oi-home"></i> <span th:text="#{sidebar.link.home}"></span>
-			</a></li>
+			<li class="nav-item"><a class="nav-link " th:href="@{/}"> <i class="bi bi-house-door-fill"></i>
+					<span th:text="#{sidebar.link.home}"></span>
+				</a></li>
 		</ul>
 		<div sec:authorize="hasRole('ROLE_USER')">
 			<ul class="nav nav-pills">
-				<li class="nav-item"><span class="nav-link active"
-					th:text="#{sidebar.titulo.compra}"></span></li>
-				<li class="nav-item"><a class="nav-link"
-					th:href="@{/compra/cadastrar}"> <i class="oi oi-plus"></i> <span
-						th:text="#{sidebar.link.cadastrar}"></span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					th:href="@{/compra/listar}"> <i class="oi oi-spreadsheet"></i>
+				<li class="nav-item"><span class="nav-link active" th:text="#{sidebar.titulo.compra}"></span></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/compra/cadastrar}"> <i class="bi bi-plus-circle-fill"></i>
+						<span th:text="#{sidebar.link.cadastrar}"></span>
+					</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/compra/listar}"> <i class="bi bi-list-ul"></i>
 						<span th:text="#{sidebar.link.listar}"></span>
-				</a></li>
+					</a></li>
 			</ul>
 		</div>
 
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
 			<ul class="nav nav-pills">
-				<li class="nav-item"><span class="nav-link active"
-					th:text="#{sidebar.titulo.editora}"></span></li>
-				<li class="nav-item"><a class="nav-link"
-					th:href="@{/editora/cadastrar}"> <i class="oi oi-plus"></i> <span
-						th:text="#{sidebar.link.cadastrar}"></span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					th:href="@{/editora/listar}"> <i class="oi oi-spreadsheet"></i>
+				<li class="nav-item"><span class="nav-link active" th:text="#{sidebar.titulo.editora}"></span></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/editora/cadastrar}"> <i class="bi bi-plus-circle-fill"></i>
+						<span th:text="#{sidebar.link.cadastrar}"></span>
+					</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/editora/listar}"> <i class="bi bi-list-ul"></i>
 						<span th:text="#{sidebar.link.listar}"></span>
-				</a></li>
+					</a></li>
 			</ul>
 		</div>
 
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
 			<ul class="nav nav-pills">
-				<li class="nav-item"><span class="nav-link active"
-					th:text="#{sidebar.titulo.livro}"></span></li>
-				<li class="nav-item"><a class="nav-link"
-					th:href="@{/livro/cadastrar}"> <i class="oi oi-plus"></i> <span
-						th:text="#{sidebar.link.cadastrar}"></span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					th:href="@{/livro/listar}"> <i class="oi oi-spreadsheet"></i>
+				<li class="nav-item"><span class="nav-link active" th:text="#{sidebar.titulo.livro}"></span></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/livro/cadastrar}"> <i class="bi bi-plus-circle-fill"></i> <span
+							th:text="#{sidebar.link.cadastrar}"></span>
+					</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/livro/listar}"> <i class="bi bi-list-ul"></i>
 						<span th:text="#{sidebar.link.listar}"></span>
-				</a></li>
+					</a></li>
 			</ul>
 		</div>
 
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
 			<ul class="nav nav-pills">
-				<li class="nav-item"><span class="nav-link active"
-					th:text="#{sidebar.titulo.usuario}"></span></li>
-				<li class="nav-item"><a class="nav-link"
-					th:href="@{/usuario/cadastrar}"> <i class="oi oi-plus"></i> <span
-						th:text="#{sidebar.link.cadastrar}"></span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					th:href="@{/usuario/listar}"> <i class="oi oi-spreadsheet"></i>
+				<li class="nav-item"><span class="nav-link active" th:text="#{sidebar.titulo.usuario}"></span></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/usuario/cadastrar}"> <i class="bi bi-plus-circle-fill"></i>
+						<span th:text="#{sidebar.link.cadastrar}"></span>
+					</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/usuario/listar}"> <i class="bi bi-list-ul"></i>
 						<span th:text="#{sidebar.link.listar}"></span>
-				</a></li>
+					</a></li>
 			</ul>
 		</div>
 	</nav>
 </body>
+
 </html>
