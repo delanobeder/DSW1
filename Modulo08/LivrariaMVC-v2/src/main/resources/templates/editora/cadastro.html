@@ -34,8 +34,8 @@
 				<div class="row">
 
 					<div class="col-md-6">
-						<label th:text="#{editora.nome.label}" for="nome" class="col-form-label"></label>
-						<input type="text" class="form-control" id="nome" autofocus="autofocus" th:field="*{nome}"
+						<label class="form-label" th:text="#{editora.nome.label}" for="nome"></label>
+						<input class="form-control" type="text" id="nome" autofocus="autofocus" th:field="*{nome}"
 							th:placeholder="#{editora.nome.label}"
 							th:classappend="${#fields.hasErrors('nome')} ? is-invalid" />
 
@@ -44,9 +44,9 @@
 						</div>
 					</div>
 
-					<div class="col-md-6 g-3">
-						<label th:text="#{editora.cnpj.label}" for="CNPJ"></label>
-						<input type="text" class="form-control" id="CNPJ" autofocus="autofocus" th:field="*{CNPJ}"
+					<div class="col-md-6">
+						<label class="form-label" th:text="#{editora.cnpj.label}" for="CNPJ"></label>
+						<input class="form-control" type="text" id="CNPJ" autofocus="autofocus" th:field="*{CNPJ}"
 							placeholder="__.___.___/____-__" th:readonly="${editora.id != null}"
 							data-mask="00.000.000/0000-00" data-mask-reverse="true"
 							th:classappend="${#fields.hasErrors('CNPJ')} ? is-invalid" />
