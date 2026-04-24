@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout}">
+
 <head>
-<meta charset="UTF-8" />
+	<meta charset="UTF-8" />
 </head>
+
 <body>
 	<section class="layout-content" layout:fragment="corpo">
 
 		<nav class="navbar navbar-expand-md bg-light">
-			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><i class="oi oi-caret-right"></i>
-						<span>Cadastrar Cartões</span></li>
-				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/cartao/listar}"
-					role="button"> <span class="oi oi-spreadsheet" title="Listar"
-					aria-hidden="true"></span> <span>Listar Cartões</span>
-				</a>
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active"><i class="bi bi-caret-right-fill"></i>
+							<span>Cadastrar Cartões</span>
+						</li>
+					</ul>
+					<a class="btn btn-primary btn-md" th:href="@{/cartao/listar}" role="button"> <span
+							class="bi bi-list-ul" title="Listar" aria-hidden="true"></span> <span>Listar Cartões</span>
+					</a>
+				</div>
 			</div>
 		</nav>
 
@@ -23,64 +27,61 @@
 
 			<div th:replace="~{fragments/alert}"></div>
 
-			<form
-				th:action="${cartao.id == null} ? @{/cartao/salvar} : @{/cartao/editar}"
-				th:object="${cartao}" method="POST">
+			<form th:action="${cartao.id == null} ? @{/cartao/salvar} : @{/cartao/editar}" th:object="${cartao}"
+				method="POST">
 
-				<div class="form-row">
-					<div class="form-group col-md-6">
-						<label for="titular">Titular</label> 
-						<input type="text" class="form-control" id="titular" placeholder="Titular"
-							autofocus="autofocus" th:field="*{titular}"
-							th:classappend="${#fields.hasErrors('titular')} ? is-invalid" />
+				<div class="row">
+					<div class="col-md-6">
+						<label class="form-label" for="titular">Titular</label>
+						<input class="form-control" type="text" id="titular" placeholder="Titular" autofocus="autofocus"
+							th:field="*{titular}" th:classappend="${#fields.hasErrors('titular')} ? is-invalid" />
 
 						<div class="invalid-feedback">
 							<span th:errors="*{titular}"></span>
 						</div>
 					</div>
 
-					<div class="form-group col-md-6">
-						<label for="CPF">CPF</label> 
-						<input type="text" class="form-control" id="CPF" placeholder="___.___.___-__"
+					<div class="col-md-6">
+						<label class="form-label" for="CPF">CPF</label>
+						<input class="form-control" type="text" id="CPF" placeholder="___.___.___-__"
 							autofocus="autofocus" th:field="*{CPF}"
-							th:classappend="${#fields.hasErrors('CPF')} ? is-invalid"
-							data-mask="000.000.000-00" data-mask-reverse="true" />
+							th:classappend="${#fields.hasErrors('CPF')} ? is-invalid" data-mask="000.000.000-00"
+							data-mask-reverse="true" />
 
 						<div class="invalid-feedback">
 							<span th:errors="*{CPF}"></span>
 						</div>
 					</div>
 
-					<div class="form-group col-md-6">
-						<label for="numero">Número</label> 
-						<input type="text" class="form-control" id="numero" placeholder="____ ____ ____ ____"
+					<div class="col-md-6 mt-3">
+						<label class="form-label" for="numero">Número</label>
+						<input class="form-control" type="text" id="numero" placeholder="____ ____ ____ ____"
 							autofocus="autofocus" th:field="*{numero}"
-							th:classappend="${#fields.hasErrors('numero')} ? is-invalid"
-							data-mask="0000 0000 0000 0000" data-mask-reverse="true" />
+							th:classappend="${#fields.hasErrors('numero')} ? is-invalid" data-mask="0000 0000 0000 0000"
+							data-mask-reverse="true" />
 
 						<div class="invalid-feedback">
 							<span th:errors="*{numero}"></span>
 						</div>
 					</div>
 
-					<div class="form-group col-md-6">
-						<label for="vencimento">Vencimento</label> 
-						<input type="text" class="form-control" id="vencimento" placeholder="__/__"
+					<div class="col-md-6 mt-3">
+						<label class="form-label" for="vencimento">Vencimento</label>
+						<input class="form-control" type="text" id="vencimento" placeholder="__/__"
 							autofocus="autofocus" th:field="*{vencimento}"
-							th:classappend="${#fields.hasErrors('vencimento')} ? is-invalid"
-							data-mask="00/00" data-mask-reverse="true" />
+							th:classappend="${#fields.hasErrors('vencimento')} ? is-invalid" data-mask="00/00"
+							data-mask-reverse="true" />
 
 						<div class="invalid-feedback">
 							<span th:errors="*{vencimento}"></span>
 						</div>
 					</div>
 
-					<div class="form-group col-md-6">
-						<label for="CVV">CVV</label> 
-						<input type="text" class="form-control" id="CVV" placeholder="CVV"
-							autofocus="autofocus" th:field="*{CVV}"
-							th:classappend="${#fields.hasErrors('CVV')} ? is-invalid"
-							data-mask="000" data-mask-reverse="true" />
+					<div class="col-md-6 mt-3">
+						<label class="form-label" for="CVV">CVV</label>
+						<input class="form-control" type="text" id="CVV" placeholder="CVV" autofocus="autofocus"
+							th:field="*{CVV}" th:classappend="${#fields.hasErrors('CVV')} ? is-invalid" data-mask="000"
+							data-mask-reverse="true" />
 
 						<div class="invalid-feedback">
 							<span th:errors="*{CVV}"></span>
@@ -89,12 +90,10 @@
 				</div>
 
 				<input type="hidden" id="id" th:field="*{id}" />
-				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+				<button type="submit" class="btn btn-primary btn-sm mt-3">Salvar</button>
 			</form>
 		</div>
 	</section>
 </body>
+
 </html>
-
-
-

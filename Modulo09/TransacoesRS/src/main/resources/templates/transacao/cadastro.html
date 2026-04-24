@@ -1,61 +1,64 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout}">
+
 <head>
-<meta charset="UTF-8" />
+	<meta charset="UTF-8" />
 </head>
+
 <body>
 
 	<section class="layout-content" layout:fragment="corpo">
 
 		<nav class="navbar navbar-expand-md bg-light">
-			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><i class="oi oi-caret-right"></i>
-						<span>Cadastrar Transações</span></li>
-				</ul>
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active"><i class="bi bi-caret-right-fill"></i>
+							<span>Cadastrar Transações</span>
+						</li>
+					</ul>
+					<a class="btn btn-primary btn-md nav-item ms-auto" th:href="@{/transacao/listar}" role="button"> <span
+							class="bi bi-list-ul" title="Cadastro" aria-hidden="true"></span> <span>Listar
+							Transações</span>
+					</a>
+				</div>
 			</div>
-			<a class="btn btn-primary btn-md" th:href="@{/transacao/listar}"
-				role="button"> <span class="oi oi-spreadsheet" title="Cadastro"
-				aria-hidden="true"></span> <span>Listar Transações</span>
-			</a>
 		</nav>
 
 		<div class="container" id="cadastro">
 
 			<div th:replace="~{fragments/alert}"></div>
 
-			<form
-				th:action="${transacao.id == null} ? @{/transacao/salvar} : @{/transacao/editar}"
+			<form th:action="${transacao.id == null} ? @{/transacao/salvar} : @{/transacao/editar}"
 				th:object="${transacao}" method="POST">
 
-				<div class="form-row">
-					<div class="form-group col-md-6">
-						<label for="nome">Descrição</label> 
+				<div class="row">
+					<div class="col-md-6">
+						<label class="form-label" for="nome">Descrição</label>
 						<input type="text" class="form-control" id="descricao" placeholder="Descrição"
 							autofocus="autofocus" th:field="*{descricao}"
 							th:classappend="${#fields.hasErrors('descricao')} ? is-invalid" />
-						
+
 						<div class="invalid-feedback">
 							<span th:errors="*{descricao}"></span>
 						</div>
 					</div>
-					
-					<div class="form-group col-md-6">
-						<label for="valor">Valor</label> 
-						<input type="text" class="form-control" id="valor" placeholder="Valor"
-							data-mask="000000,00" data-mask-reverse="true" th:field="*{valor}"
+
+					<div class="col-md-6">
+						<label class="form-label" for="valor">Valor</label>
+						<input type="text" class="form-control" id="valor" placeholder="Valor" data-mask="000000,00"
+							data-mask-reverse="true" th:field="*{valor}"
 							th:classappend="${#fields.hasErrors('valor')} ? is-invalid" />
-						
+
 						<div class="invalid-feedback">
 							<span th:errors="*{valor}"></span>
 						</div>
 					</div>
-					
-					<div class="form-group col-md-6">
-						<label for="data">Data</label> 
-						<input type="text" class="form-control" id="data" placeholder="__/__/____"
-							autofocus="autofocus" th:field="*{data}"
-							th:classappend="${#fields.hasErrors('data')} ? is-invalid"
+
+					<div class="col-md-6 mt-3">
+						<label class="form-label" for="data">Data</label>
+						<input type="text" class="form-control" id="data" placeholder="__/__/____" autofocus="autofocus"
+							th:field="*{data}" th:classappend="${#fields.hasErrors('data')} ? is-invalid"
 							data-mask="00/00/0000" data-reverse="true" />
 
 						<div class="invalid-feedback">
@@ -63,41 +66,40 @@
 						</div>
 					</div>
 
-					<div class="form-group col-md-6">
-						<label for="categoria">Categoria</label> 
+					<div class="col-md-6 mt-3">
+						<label class="form-label" for="categoria">Categoria</label>
 						<select id="categoria" class="form-control" th:field="*{categoria}"
 							th:classappend="${#fields.hasErrors('categoria')} ? is-invalid">
 							<option value="">Selecione</option>
-							<option th:each="categoria : ${categorias}" th:value="${categoria}"
-								th:text="${categoria}"></option>
+							<option th:each="categoria : ${categorias}" th:value="${categoria}" th:text="${categoria}">
+							</option>
 						</select>
 
 						<div class="invalid-feedback">
 							<span th:errors="*{categoria}"></span>
 						</div>
 					</div>
-					
-					<div class="form-group col-md-6">
-						<label for="status">Status</label> 
+
+					<div class="col-md-6 mt-3">
+						<label class="form-label" for="status">Status</label>
 						<select id="status" class="form-control" th:field="*{status}"
 							th:classappend="${#fields.hasErrors('status')} ? is-invalid">
 							<option value="">Selecione</option>
-							<option th:each="status : ${statuses}" th:value="${status}"
-								th:text="${status}"></option>
+							<option th:each="status : ${statuses}" th:value="${status}" th:text="${status}"></option>
 						</select>
 
 						<div class="invalid-feedback">
 							<span th:errors="*{status}"></span>
 						</div>
 					</div>
-					
-					<div class="form-group col-md-6">
-						<label for="cartao">Cartão</label> 
+
+					<div class="col-md-6 mt-3">
+						<label class="form-label" for="cartao">Cartão</label>
 						<select id="cartao" class="form-control" th:field="*{cartao}"
 							th:classappend="${#fields.hasErrors('cartao')} ? is-invalid">
 							<option value="">Selecione</option>
-							<option th:each="cartao : ${cartoes}" th:value="${cartao.id}"
-								th:text="${cartao.numero}"></option>
+							<option th:each="cartao : ${cartoes}" th:value="${cartao.id}" th:text="${cartao.numero}">
+							</option>
 						</select>
 
 						<div class="invalid-feedback">
@@ -106,9 +108,10 @@
 					</div>
 				</div>
 				<input type="hidden" id="id" th:field="*{id}" />
-				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+				<button type="submit" class="btn btn-primary btn-sm mt-3">Salvar</button>
 			</form>
 		</div>
 	</section>
 </body>
+
 </html>
