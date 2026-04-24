@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout}">
+
 <head>
-<meta charset="UTF-8" />
+	<meta charset="UTF-8" />
 </head>
+
 <body>
 	<section class="layout-content" layout:fragment="corpo">
 
 		<nav class="navbar navbar-expand-md bg-light">
-			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<i class="oi oi-caret-right"></i>
-						<span th:text="#{compra.listar.label}"></span>
-					</li>
-				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/compra/cadastrar}" role="button"> 
-					<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> 
-					<span th:text="#{compra.cadastrar.label}"></span>
-				</a>
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+					<ul class="navbar-nav">
+						<li class="nav-item active">
+							<i class="bi bi-caret-right-fill"></i>
+							<span th:text="#{compra.listar.label}"></span>
+						</li>
+					</ul>
+					<a class="btn btn-primary btn-md nav-item ms-auto" th:href="@{/compra/cadastrar}" role="button">
+						<span class="bi bi-plus-circle-fill" title="Cadastro" aria-hidden="true"></span>
+						<span th:text="#{compra.cadastrar.label}"></span>
+					</a>
+				</div>
 			</div>
 		</nav>
-		
+
 		<div class="container" id="listagem">
 
 			<div th:replace="~{fragments/alert}"></div>
@@ -49,26 +53,19 @@
 							<td th:text="${compra.livro.ano}"></td>
 							<td th:text="|R$ ${#numbers.formatDecimal(compra.valor,2,2,'COMMA')}|"></td>
 							<td style="text-align: center">
-							<button type="button" class="btn btn-secondary btn-sm"
-									data-container="body" data-toggle="popover"
-									data-html="true"
-									data-placement="right"
-									th:attr="data-content=${compra.detalhes}">
-									<span class="oi oi-eye" title="Visualizar" aria-hidden="true"></span>
-									</button>
-							<!--  
-							<a th:href="@{/}" data-toggle="modal" data-target="#exampleModalCenter"> <span
-									th:text="${compra.transacao}"> </span>
-							</a>
-							-->
+								<button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="popover" 
+									th:data-bs-html="true" data-bs-placement="top"
+									th:data-bs-content="${compra.detalhes}">
+									<span class="bi bi-eye-fill" title="Visualizar" aria-hidden="true"></span>
+								</button>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-
-		<div th:replace="~{fragments/modal::modal}"></div>
 	</section>
+
 </body>
+
 </html>

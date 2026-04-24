@@ -72,15 +72,16 @@
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
-			<version>4.4.1-1</version>
+			<version>5.3.7</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.webjars.bower</groupId>
-			<artifactId>open-iconic</artifactId>
-			<version>1.1.1</version>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>bootstrap-icons</artifactId>
+			<version>1.13.1</version>
+			<scope>compile</scope>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>jquery-mask-plugin</artifactId>
@@ -96,16 +97,6 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
-		<!-- Driver JDBC (banco de dados Derby) -->
-		
-		<!--
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derbyclient</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		-->
-		
 		<!-- Driver JDBC (banco de dados MySQL) -->
 
 		<dependency>
@@ -113,6 +104,24 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!--  Driver JDBC (banco de dados PosgreSQL)  -->
+		
+		<!--dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.15</version>
+			<scope>runtime</scope>
+		</dependency-->
+
+		<!-- Driver JDBC (banco de dados Derby) -->
+
+		<!--dependency> 
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derbyclient</artifactId> 
+			<scope>runtime</scope>
+		</dependency-->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
