@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout}">
+
 <head>
-<meta charset="UTF-8" />
+	<meta charset="UTF-8" />
 </head>
+
 <body>
 	<section class="layout-content" layout:fragment="corpo">
 
 		<nav class="navbar navbar-expand-md bg-light">
-			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<i class="oi oi-caret-right"></i>
-						<span th:text="#{compra.listar.label}"></span>
-					</li>
-				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/compra/cadastrar}" role="button"> 
-					<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> 
-					<span th:text="#{compra.cadastrar.label}"></span>
-				</a>
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<i class="bi bi-caret-right-fill"></i>
+							<span th:text="#{compra.listar.label}"></span>
+						</li>
+					</ul>
+					<a class="btn btn-primary btn-md nav-item ms-auto" th:href="@{/compra/cadastrar}" role="button">
+						<span class="bi bi-plus-circle-fill" title="Cadastro" aria-hidden="true"></span>
+						<span th:text="#{compra.cadastrar.label}"></span>
+					</a>
+				</div>
 			</div>
 		</nav>
-		
+
 		<div class="container" id="listagem">
 
 			<div th:replace="~{fragments/alert}"></div>
@@ -56,4 +60,5 @@
 		<div th:replace="~{fragments/modal::modal}"></div>
 	</section>
 </body>
+
 </html>
