@@ -34,7 +34,7 @@
 
 					<div class="col-md-6">
 
-						<label for="nome" class="col-form-label">Nome</label>
+						<label class="form-label" for="nome">Nome</label>
 						<input type="text" class="form-control" id="nome" placeholder="Nome" autofocus="autofocus"
 							th:field="*{nome}" th:classappend="${#fields.hasErrors('nome')} ? is-invalid" />
 						<div class="invalid-feedback">
@@ -42,9 +42,9 @@
 						</div>
 					</div>
 
-					<div class="col-md-6 g-3">
-						<label for="CNPJ">CNPJ</label>
-						<input type="text" class="form-control" id="CNPJ" placeholder="__.___.___/____-__"
+					<div class="col-md-6">
+						<label class="form-label" for="CNPJ">CNPJ</label>
+						<input class="form-control" type="text" id="CNPJ" placeholder="__.___.___/____-__"
 							th:readonly="${editora.id != null}" autofocus="autofocus" th:field="*{CNPJ}"
 							th:classappend="${#fields.hasErrors('CNPJ')} ? is-invalid" data-mask="00.000.000/0000-00"
 							data-mask-reverse="true" />

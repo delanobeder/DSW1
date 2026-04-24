@@ -34,8 +34,8 @@
 
 				<div class="row">
 					<div class="col-md-6">
-						<label for="nome">Título</label>
-						<input type="text" class="form-control" id="nome" placeholder="Título" autofocus="autofocus"
+						<label class="form-label" for="nome">Título</label>
+						<input class="form-control" type="text" id="nome" placeholder="Título" autofocus="autofocus"
 							th:field="*{titulo}" th:classappend="${#fields.hasErrors('titulo')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -44,8 +44,8 @@
 					</div>
 
 					<div class="col-md-6">
-						<label for="nome">Autor</label>
-						<input type="text" class="form-control" id="nome" placeholder="Autor" autofocus="autofocus"
+						<label class="form-label" for="nome">Autor</label>
+						<input class="form-control" type="text" id="nome" placeholder="Autor" autofocus="autofocus"
 							th:field="*{autor}" th:classappend="${#fields.hasErrors('autor')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -54,8 +54,8 @@
 					</div>
 
 					<div class="col-md-6 mt-3">
-						<label for="editora">Editora</label>
-						<select id="editora" class="form-select" th:field="*{editora}"
+						<label class="form-label" for="editora">Editora</label>
+						<select class="form-select" id="editora" th:field="*{editora}"
 							th:classappend="${#fields.hasErrors('editora')} ? is-invalid">
 							<option value="">Selecione</option>
 							<option th:each="editora : ${editoras}" th:value="${editora.id}" th:text="${editora.nome}">
@@ -68,8 +68,8 @@
 					</div>
 
 					<div class="col-md-6 mt-3">
-						<label for="nome">Ano</label>
-						<input type="number" class="form-control" id="nome" placeholder="Ano" autofocus="autofocus"
+						<label class="form-label" for="nome">Ano</label>
+						<input class="form-control" type="number" id="nome" placeholder="Ano" autofocus="autofocus"
 							th:field="*{ano}" th:classappend="${#fields.hasErrors('ano')} ? is-invalid" />
 
 						<div class="invalid-feedback">
@@ -78,8 +78,8 @@
 					</div>
 
 					<div class="col-md-6 mt-3">
-						<label for="preco">Preço</label>
-						<input type="text" class="form-control" id="preco" placeholder="Preço" data-mask="000000,00"
+						<label class="form-label" for="preco">Preço</label>
+						<input class="form-control" type="text" id="preco" placeholder="Preço" data-mask="000000,00"
 							data-mask-reverse="true" th:field="*{preco}"
 							th:classappend="${#fields.hasErrors('preco')} ? is-invalid" />
 
