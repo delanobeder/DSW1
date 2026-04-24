@@ -34,8 +34,8 @@
 
 				<div class="row">
 					<div class="col-md-6">
-						<label th:text="#{livro.titulo.label}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" th:placeholder="#{livro.titulo.label}"
+						<label class="form-label" th:text="#{livro.titulo.label}" for="nome"></label>
+						<input class="form-control" type="text" id="nome" th:placeholder="#{livro.titulo.label}"
 							autofocus="autofocus" th:field="*{titulo}"
 							th:classappend="${#fields.hasErrors('titulo')} ? is-invalid" />
 
@@ -45,8 +45,8 @@
 					</div>
 
 					<div class="col-md-6">
-						<label th:text="#{livro.autor.label}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" th:placeholder="#{livro.autor.label}"
+						<label class="form-label" th:text="#{livro.autor.label}" for="nome"></label>
+						<input class="form-control" type="text" id="nome" th:placeholder="#{livro.autor.label}"
 							autofocus="autofocus" th:field="*{autor}"
 							th:classappend="${#fields.hasErrors('autor')} ? is-invalid" />
 
@@ -56,8 +56,8 @@
 					</div>
 
 					<div class="col-md-6 mt-3">
-						<label th:text="#{livro.editora.label}" for="editora"></label>
-						<select id="editora" class="form-select" th:field="*{editora}"
+						<label class="form-label" th:text="#{livro.editora.label}" for="editora"></label>
+						<select class="form-select" id="editora" th:field="*{editora}"
 							th:classappend="${#fields.hasErrors('editora')} ? is-invalid">
 							<option th:text="#{select.label}" value="">Selecione</option>
 							<option th:each="editora : ${editoras}" th:value="${editora.id}" th:text="${editora.nome}">
@@ -70,8 +70,8 @@
 					</div>
 
 					<div class="col-md-6 mt-3">
-						<label th:text="#{livro.ano.label}" for="ano"></label>
-						<input type="number" class="form-control" id="nome" th:placeholder="#{livro.ano.label}"
+						<label class="form-label" th:text="#{livro.ano.label}" for="ano"></label>
+						<input class="form-control" type="number" id="nome" th:placeholder="#{livro.ano.label}"
 							autofocus="autofocus" th:field="*{ano}"
 							th:classappend="${#fields.hasErrors('ano')} ? is-invalid" />
 
@@ -81,8 +81,8 @@
 					</div>
 
 					<div class="col-md-6 mt-3">
-						<label th:text="#{livro.preco.label}" for="preco"></label>
-						<input type="text" class="form-control" id="preco" th:placeholder="#{livro.preco.label}"
+						<label class="form-label" th:text="#{livro.preco.label}" for="preco"></label>
+						<input class="form-control" type="text" id="preco" th:placeholder="#{livro.preco.label}"
 							data-mask="000000,00" data-mask-reverse="true" th:field="*{preco}"
 							th:classappend="${#fields.hasErrors('preco')} ? is-invalid" />
 
