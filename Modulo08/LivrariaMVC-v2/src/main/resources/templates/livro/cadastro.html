@@ -10,16 +10,19 @@
 	<section class="layout-content" layout:fragment="corpo">
 
 		<nav class="navbar navbar-expand-md bg-light">
-			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><i class="bi bi-caret-right-fill"></i>
-						<span th:text="#{livro.cadastrar.label}"></span>
-					</li>
-				</ul>
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active"><i class="bi bi-caret-right-fill"></i>
+							<span th:text="#{livro.cadastrar.label}"></span>
+						</li>
+					</ul>
+					<a class="btn btn-primary btn-md nav-item ms-auto" th:href="@{/livro/listar}" role="button"> <span
+							class="bi bi-list-ul" title="Cadastro" aria-hidden="true"></span> <span
+							th:text="#{livro.listar.label}"></span>
+					</a>
+				</div>
 			</div>
-			<a class="btn btn-primary btn-md nav-item ms-auto" th:href="@{/livro/listar}" role="button"> <span class="bi bi-list-ul"
-					title="Cadastro" aria-hidden="true"></span> <span th:text="#{livro.listar.label}"></span>
-			</a>
 		</nav>
 
 		<div class="container" id="cadastro">
@@ -32,8 +35,9 @@
 				<div class="row">
 					<div class="col-md-6">
 						<label th:text="#{livro.titulo.label}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" th:placeholder="#{livro.titulo.label}" autofocus="autofocus"
-							th:field="*{titulo}" th:classappend="${#fields.hasErrors('titulo')} ? is-invalid" />
+						<input type="text" class="form-control" id="nome" th:placeholder="#{livro.titulo.label}"
+							autofocus="autofocus" th:field="*{titulo}"
+							th:classappend="${#fields.hasErrors('titulo')} ? is-invalid" />
 
 						<div class="invalid-feedback">
 							<span th:errors="*{titulo}"></span>
@@ -42,8 +46,9 @@
 
 					<div class="col-md-6">
 						<label th:text="#{livro.autor.label}" for="nome"></label>
-						<input type="text" class="form-control" id="nome" th:placeholder="#{livro.autor.label}" autofocus="autofocus"
-							th:field="*{autor}" th:classappend="${#fields.hasErrors('autor')} ? is-invalid" />
+						<input type="text" class="form-control" id="nome" th:placeholder="#{livro.autor.label}"
+							autofocus="autofocus" th:field="*{autor}"
+							th:classappend="${#fields.hasErrors('autor')} ? is-invalid" />
 
 						<div class="invalid-feedback">
 							<span th:errors="*{autor}"></span>
@@ -66,8 +71,9 @@
 
 					<div class="col-md-6 mt-3">
 						<label th:text="#{livro.ano.label}" for="ano"></label>
-						<input type="number" class="form-control" id="nome" th:placeholder="#{livro.ano.label}" autofocus="autofocus"
-							th:field="*{ano}" th:classappend="${#fields.hasErrors('ano')} ? is-invalid" />
+						<input type="number" class="form-control" id="nome" th:placeholder="#{livro.ano.label}"
+							autofocus="autofocus" th:field="*{ano}"
+							th:classappend="${#fields.hasErrors('ano')} ? is-invalid" />
 
 						<div class="invalid-feedback">
 							<span th:errors="*{ano}"></span>
@@ -76,8 +82,8 @@
 
 					<div class="col-md-6 mt-3">
 						<label th:text="#{livro.preco.label}" for="preco"></label>
-						<input type="text" class="form-control" id="preco" th:placeholder="#{livro.preco.label}" data-mask="000000,00"
-							data-mask-reverse="true" th:field="*{preco}"
+						<input type="text" class="form-control" id="preco" th:placeholder="#{livro.preco.label}"
+							data-mask="000000,00" data-mask-reverse="true" th:field="*{preco}"
 							th:classappend="${#fields.hasErrors('preco')} ? is-invalid" />
 
 						<div class="invalid-feedback">
