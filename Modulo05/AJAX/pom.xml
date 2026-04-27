@@ -76,6 +76,17 @@
           <path>/${project.artifactId}</path>
         </configuration>
       </plugin>
+      <plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven3-plugin</artifactId>
+				<version>1.10.26</version>
+				<configuration>
+					<container>
+						<containerId>tomcat11x</containerId>
+						<type>embedded</type>
+					</container>
+				</configuration>
+			</plugin>
     </plugins>
     <pluginManagement>
       <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
