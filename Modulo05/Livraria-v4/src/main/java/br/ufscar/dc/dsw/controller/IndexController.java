@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import br.ufscar.dc.dsw.dao.UsuarioDAO;
 import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.util.Erro;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 
 @WebServlet(name = "Index", urlPatterns = { "/index.jsp", "/logout.jsp" })
 public class IndexController extends HttpServlet {
@@ -34,8 +35,11 @@ public class IndexController extends HttpServlet {
 			if (!erros.isExisteErros()) {
 				UsuarioDAO dao = new UsuarioDAO();
 				Usuario usuario = dao.getbyLogin(login);
+
 				if (usuario != null) {
-					if (usuario.getSenha().equalsIgnoreCase(senha)) {
+					BCrypt.Result result = BCrypt.verifyer().verify(senha.toCharArray(), usuario.getSenha());
+					
+					if (result.verified) {
 						request.getSession().setAttribute("usuarioLogado", usuario);
 						String contextPath = request.getContextPath().replace("/", "");
 						request.getSession().setAttribute("contextPath", contextPath);

@@ -1,4 +1,3 @@
-
 <c:if test="${usuario != null}">
 	<input type="hidden" name="id" value="<c:out value='${usuario.id}' />" />
 </c:if>
@@ -10,6 +9,7 @@
 		value="<c:out value='${usuario.nome}' />" />
 </div>
 
+
 <div class="mb-3 row">
 	<label for="login" class="form-label">
 		<fmt:message key="user.login" />
@@ -18,13 +18,25 @@
 		value="<c:out value='${usuario.login}' />" />
 </div>
 
-<div class="mb-3 row">
-	<label for="senha" class="form-label">
-		<fmt:message key="user.password" />
-	</label>
-	<input type="text" class="form-control" name="senha" size="20" required
-		value="<c:out value='${usuario.senha}' />" />
-</div>
+<c:choose>
+	<c:when test="${usuario == null}">
+		<div class="mb-3 row">
+			<label for="senha" class="form-label">
+				<fmt:message key="user.password" />
+			</label>
+			<input type="password" class="form-control" name="senha" size="20" required />
+		</div>
+	</c:when>
+	<c:otherwise>
+		<div class="mb-3 row">
+			<label for="senha" class="form-label">
+				<fmt:message key="user.password" />
+			</label>
+			<input type="password" class="form-control" name="novasenha" size="20" />
+		</div>
+		<input type="hidden" name="senha" value="<c:out value='${usuario.senha}' />" />
+	</c:otherwise>
+</c:choose>
 
 <div class="mb-3 row">
 	<label for="papel" class="form-label">

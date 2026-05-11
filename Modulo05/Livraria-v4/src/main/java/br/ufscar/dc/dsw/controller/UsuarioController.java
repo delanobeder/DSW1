@@ -14,6 +14,8 @@ import br.ufscar.dc.dsw.dao.UsuarioDAO;
 import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.util.Erro;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 @WebServlet(urlPatterns = "/usuarios/*")
 public class UsuarioController extends HttpServlet {
 
@@ -109,7 +111,7 @@ public class UsuarioController extends HttpServlet {
 
 		String nome = request.getParameter("nome");
 		String login = request.getParameter("login");
-		String senha = request.getParameter("senha");
+		String senha = BCrypt.withDefaults().hashToString(12, request.getParameter("senha").toCharArray());
 		String papel = request.getParameter("papel");
 		
 		Usuario usuario = new Usuario(nome, login, senha, papel);
@@ -126,7 +128,14 @@ public class UsuarioController extends HttpServlet {
 		String nome = request.getParameter("nome");
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
+		String novaSenha = request.getParameter("novasenha");
 		String papel = request.getParameter("papel");
+		
+		if (novaSenha != null && !novaSenha.trim().isEmpty()) {
+			senha = BCrypt.withDefaults().hashToString(12, request.getParameter("novasenha").toCharArray());
+		} else {
+			System.out.println("Senha não foi editada");
+		}
 		
 		Usuario usuario = new Usuario(id, nome, login, senha, papel);
 

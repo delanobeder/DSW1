@@ -22,9 +22,9 @@ insert into Livro(titulo, autor, ano, preco, editora_id) values ('Diálogos Impo
 
 create table Usuario(id bigint not null auto_increment, nome varchar(256) not null, login varchar(20) not null unique, senha varchar(64) not null, papel varchar(10), primary key (id));
 
-insert into Usuario(nome, login, senha, papel) values ('Administrador', 'admin', 'admin', 'ADMIN');
+insert into Usuario(nome, login, senha, papel) values ('Administrador', 'admin', '$2a$12$ofcWciphYV0fI3uGYMw2beMn411EHyufcRAi323pmDP1d4sHHRc3m', 'ADMIN');
 
-insert into Usuario(nome, login, senha, papel) values ('Usuario', 'user', 'user', 'USER');
+insert into Usuario(nome, login, senha, papel) values ('Usuario', 'user', '$2a$12$TW4BlW2eZL8AwLqKJVGw1u.DNe6u2GdNtdCfg0DgJ5ro4UX1wsJh.', 'USER');
 
 create table Compra(id bigint not null auto_increment, data varchar(10) not null, valor float not null, livro_id bigint not null, usuario_id bigint not null, primary key (id), foreign key (livro_id) references Livro(id), foreign key (usuario_id) references Usuario(id));
 
