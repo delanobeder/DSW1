@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -71,7 +72,11 @@ public class FilesStorageServiceImpl implements FilesStorageService {
 
 	@Override
 	public void deleteAll() {
-		FileSystemUtils.deleteRecursively(root.toFile());
+		try {
+			FileUtils.cleanDirectory(root.toFile());
+		} catch (IOException e) {
+			throw new RuntimeException("Error: " + e.getMessage());
+		}
 	}
 
 	@Override
