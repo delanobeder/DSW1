@@ -85,7 +85,7 @@ public class EditoraRestController {
 				return new ResponseEntity<Boolean>(false, HttpStatus.FORBIDDEN);
 			} else {
 				service.excluir(id);
-				return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+				return ResponseEntity.ok(true);
 			}
 		}
 	}

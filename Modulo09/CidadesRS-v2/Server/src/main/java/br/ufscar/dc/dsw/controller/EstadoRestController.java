@@ -80,7 +80,7 @@ public class EstadoRestController {
 			return ResponseEntity.notFound().build();
 		} else {
 			service.delete(id);
-			return ResponseEntity.noContent().build();
+			return ResponseEntity.ok(true);
 		}
 	}
 }

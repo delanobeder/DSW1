@@ -3,7 +3,6 @@ package br.ufscar.dc.dsw.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -89,7 +88,7 @@ public class LivroRestController {
 			return ResponseEntity.notFound().build();
 		} else {
 			service.excluir(id);
-			return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+			return ResponseEntity.ok(true);
 		}
 	}
 }
