@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<body>
+	<th:block th:fragment="footer">
+		<footer>
+		<hr/>
+			<div class="container">
+				<div class="col-md-12 col-md-offset-3">
+					<div sec:authorize="isAuthenticated()">
+						<form th:action="@{/logout}" method="post">
+							<div class="form-group">
+								<div class="row">
+									<div class="col-md-9">
+										<b><span th:text="#{login.username}"></span>:</b> <span sec:authentication="name"></span> | 
+										<b><span th:text="#{user.role}"></span>:</b> <span sec:authentication="principal.authorities"></span>
+									</div>
+									<div class="col-md-3">
+										<input type="submit" name="logout-submit" id="logout-submit"
+											class="btn btn-dark" value="Logout">
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</th:block>
+</body>
+</html>
