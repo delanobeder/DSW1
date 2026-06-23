@@ -3,6 +3,7 @@ package br.ufscar.dc.dsw.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -79,8 +80,12 @@ public class EstadoRestController {
 		if (estado == null) {
 			return ResponseEntity.notFound().build();
 		} else {
-			service.delete(id);
-			return ResponseEntity.ok(true);
+			if (service.estadoTemCidades(id)) {
+				return new ResponseEntity<Boolean>(false, HttpStatus.FORBIDDEN);
+			} else {
+				service.delete(id);
+				return ResponseEntity.ok(true);
+			}
 		}
 	}
 }

@@ -1,16 +1,18 @@
 package br.ufscar.dc.dsw.domain;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class Cidade {
 
 	private Long id;
 	
+	@NotBlank
 	private String nome;
-	
+
+	@NotNull
 	private Estado estado;
 
-	public Cidade() {
-	}
-	
 	public Cidade(String nome, Estado estado) {
 		this.nome = nome;
 		this.estado = estado;
@@ -39,6 +41,6 @@ public class Cidade {
 
 	@Override
 	public String toString() {
-		return nome + "/" + estado.getSigla();
+		return id + ", " + nome + " { " + estado.toString() + " }";
 	}
 }

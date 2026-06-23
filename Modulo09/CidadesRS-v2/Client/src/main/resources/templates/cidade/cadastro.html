@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+
+<head>
+	<meta charset="UTF-8" />
+</head>
+
+<body>
+
+	<section class="layout-content" layout:fragment="corpo">
+
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active"><i class="bi bi-caret-right-fill"></i>
+							<span>Cadastrar Cidades</span>
+						</li>
+					</ul>
+
+					<a class="btn btn-primary btn-md nav-item ms-auto" th:href="@{/cidade/listar}" role="button"> <span
+							class="bi bi-list-ul" title="Cadastro" aria-hidden="true"></span> <span>Listar Cidades</span>
+					</a>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container" id="cadastro">
+
+			<div th:replace="~{fragments/alert}"></div>
+
+			<form th:action="${cidade.id == null} ? @{/cidade/salvar} : @{/cidade/editar}" th:object="${cidade}"
+				method="POST">
+
+				<div class="row">
+					<div class="col-md-6">
+						<label class="form-label" for="nome">Título</label>
+						<input class="form-control" type="text" id="nome" placeholder="Nome" autofocus="autofocus"
+							th:field="*{nome}" th:classappend="${#fields.hasErrors('nome')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{nome}"></span>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<label class="form-label" for="estado">Estado</label>
+						<select class="form-select" id="estado" th:field="*{estado}" value=""
+							th:classappend="${#fields.hasErrors('estado')} ? is-invalid">
+							<option value="">Selecione</option>
+							<option th:each="e : ${estados}" th:value="${e.id}" th:text="${e.sigla}"></option>>
+							</option>
+						</select>
+
+						<div class="invalid-feedback">
+							<span th:errors="*{estado}"></span>
+						</div>
+					</div>
+				</div>
+				<input type="hidden" id="id" th:field="*{id}" />
+				<button type="submit" class="btn btn-primary btn-sm mt-3">Salvar</button>
+			</form>
+		</div>
+	</section>
+</body>
+
+</html>

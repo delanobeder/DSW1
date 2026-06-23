@@ -37,4 +37,9 @@ public class EstadoService implements IEstadoService {
 	public void delete(Long id) {
 		dao.deleteById(id);
 	}
+
+	@Transactional(readOnly = true)
+	public boolean estadoTemCidades(Long id) {
+		return !dao.findById(id.longValue()).getCidades().isEmpty(); 
+	}
 }

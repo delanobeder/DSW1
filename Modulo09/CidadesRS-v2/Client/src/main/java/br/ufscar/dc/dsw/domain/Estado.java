@@ -1,16 +1,19 @@
 package br.ufscar.dc.dsw.domain;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class Estado {
 
 	private Long id;
 	
+	@NotBlank
+	@Size(min = 2, max = 2)
 	private String sigla;
 	
+	@NotBlank
 	private String nome;
 
-	public Estado() {
-	}
-	
 	public Estado(Long id, String sigla, String nome) {
 		this.id = id;
 		this.sigla = sigla;
@@ -40,6 +43,23 @@ public class Estado {
 
 	@Override
 	public String toString() {
-		return nome + " (" + sigla + ")";
+		return id + ", " + nome + " (" + sigla + ")";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Estado other = (Estado) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 }

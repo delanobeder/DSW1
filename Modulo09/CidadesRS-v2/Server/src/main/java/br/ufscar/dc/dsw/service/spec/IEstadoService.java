@@ -12,4 +12,6 @@ public interface IEstadoService {
 	void save(Estado estado);
 
 	void delete(Long id);
+
+	public boolean estadoTemCidades(Long id);
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<nav class="sidebar sidebar-open" th:fragment="nav-sidebar">
+		<ul class="nav nav-pills">
+			<li class="nav-item"><a class="nav-link " th:href="@{/}"> <i class="bi bi-house-door-fill"></i>
+					<span>Home</span>
+				</a></li>
+		</ul>
+
+		<ul class="nav nav-pills">
+			<li class="nav-item"><span class="nav-link active">Estados</span></li>
+			<li class="nav-item"><a class="nav-link" th:href="@{/estado/cadastrar}"> <i
+						class="bi bi-plus-circle-fill"></i> <span>Cadastrar</span>
+				</a></li>
+			<li class="nav-item"><a class="nav-link" th:href="@{/estado/listar}"> <i class="bi bi-list-ul"></i>
+					<span>Listar</span>
+				</a></li>
+		</ul>
+
+		<ul class="nav nav-pills">
+			<li class="nav-item"><span class="nav-link active">Cidades</span></li>
+			<li class="nav-item"><a class="nav-link" th:href="@{/cidade/cadastrar}"> <i
+						class="bi bi-plus-circle-fill"></i> <span>Cadastrar</span>
+				</a></li>
+			<li class="nav-item"><a class="nav-link" th:href="@{/cidade/listar}">
+					<i class="bi bi-list-ul"></i> <span>Listar</span>
+				</a></li>
+		</ul>
+	</nav>
+</body>
+
+</html>
