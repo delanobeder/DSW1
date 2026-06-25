@@ -24,17 +24,17 @@ public class LivrariaMvcApplication {
 		return (args) -> {
 						
 			Editora e1 = new Editora();
-			e1.setCNPJ("55.789.390/0008-99");
+			e1.setCNPJ("46.474.049/0001-87");
 			e1.setNome("Companhia das Letras");
 			editoraDAO.save(e1);
 			
 			Editora e2 = new Editora();
-			e2.setCNPJ("71.150.470/0001-40");
+			e2.setCNPJ("21.674.001/0001-91");
 			e2.setNome("Record");
 			editoraDAO.save(e2);
 			
 			Editora e3 = new Editora();
-			e3.setCNPJ("32.106.536/0001-82");
+			e3.setCNPJ("62.641.833/0001-99");
 			e3.setNome("Objetiva");
 			editoraDAO.save(e3);
 			

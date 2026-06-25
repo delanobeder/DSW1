@@ -1,5 +1,7 @@
 package br.ufscar.dc.dsw.domain;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -23,6 +25,7 @@ public class Usuario extends AbstractEntity<Long> {
     private String name;
     
     @NotBlank
+    @CPF(message = "{Invalid.usuario.CPF}")
     @Column(nullable = false, length = 14)
     private String CPF;
     

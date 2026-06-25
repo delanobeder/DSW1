@@ -8,8 +8,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.br.CNPJ;
 import br.ufscar.dc.dsw.validation.UniqueCNPJ;
 
 @SuppressWarnings("serial")
@@ -18,8 +18,9 @@ import br.ufscar.dc.dsw.validation.UniqueCNPJ;
 @Table(name = "Editora")
 public class Editora extends AbstractEntity<Long> {
 
-	@UniqueCNPJ (message = "{Unique.editora.CNPJ}")
+	@UniqueCNPJ(message = "{Unique.editora.CNPJ}")
 	@NotBlank
+	@CNPJ(message = "{Invalid.editora.CNPJ}")
 	@Size(min = 18, max = 18, message = "{Size.editora.CNPJ}")
 	@Column(nullable = false, unique = true, length = 60)
 	private String CNPJ;

@@ -2,6 +2,9 @@ package br.ufscar.dc.dsw.domain;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.br.CPF;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -21,10 +24,12 @@ public class Cartao extends AbstractEntity<Long> {
 	private String titular;
 
 	@NotBlank
+	@CPF(message="CPF inválido.")
     @Column(nullable = false, length = 14)
     private String CPF;
 	
 	@NotBlank
+	@CreditCardNumber(ignoreNonDigitCharacters = true, message="Número inválido.")
 	@Column(nullable = false, unique = true, length = 19)
 	private String numero;
 	
