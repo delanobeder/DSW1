@@ -1,0 +1,76 @@
+### Cria uma nova editora (C)
+
+POST http://localhost:8080/editoras
+Content-Type: application/json
+
+{ 
+    "cnpj" : "64.695.400/0001-41", "nome": "Editora da UFSCar" 
+}
+
+### Retorna a lista de editoras (R)
+
+GET http://localhost:8080/editoras
+
+### Retorna a editora de id = 1 (R)
+
+GET http://localhost:8080/editoras/1
+
+### Atualiza a editora de id = 4 (U)
+
+PUT http://localhost:8080/editoras/4
+Content-Type: application/json
+
+{ 
+    "cnpj" : "64.695.400/0001-41", "nome": "EdUFSCar" 
+}
+
+### Remove a editora de id = 4 (D)
+
+DELETE http://localhost:8080/editoras/4
+
+### Cria um novo livro (C)
+
+POST http://localhost:8080/livros
+Content-Type: application/json
+
+{ 
+    "titulo" : "Teste Titulo", "autor": "Teste Autor" , "preco": 90.5, "ano": 2020, 
+    "editora": { "id": 1, "nome": "Companhia das Letras", "cnpj": "46.474.049/0001-87" }
+}
+
+### Retorna a lista de livros (R)
+
+GET http://localhost:8080/livros
+
+
+### Retorna o livro de id = 1 (R)
+
+GET http://localhost:8080/livros/1
+
+### Atualiza o livro (apenas o titulo) de id = 4 (U)
+
+PUT http://localhost:8080/livros/4 
+Content-Type: application/json
+
+{ 
+    "titulo" : "Teste Titulo Atualizado", "autor": "Teste Autor" , "preco": 90.5, "ano": 2020, 
+    "editora": { "id": 1, "nome": "Companhia das Letras", "cnpj": "46.474.049/0001-87" }
+}
+
+### Atualiza o livro (o titulo e a editora) de id = 4 (U)
+
+PUT http://localhost:8080/livros/4 
+Content-Type: application/json
+
+{ 
+    "titulo" : "Teste Titulo Atualizado novamente", "autor": "Teste Autor" , "preco": 90.5, "ano": 2020, 
+    "editora": { "id": 3, "nome": "Objetiva", "cnpj": "62.641.833/0001-99" }
+}
+
+### Remove o livro de id = 4 (D)
+
+DELETE http://localhost:8080/livros/4 
+
+### Retorna a lista de compras de usuario de id = 3 (R)
+
+GET http://localhost:8080/compras/usuarios/3

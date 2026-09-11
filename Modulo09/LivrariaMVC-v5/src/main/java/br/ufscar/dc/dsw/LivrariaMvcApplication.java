@@ -1,6 +1,8 @@
 package br.ufscar.dc.dsw;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -8,9 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import br.ufscar.dc.dsw.dao.ICompraDAO;
 import br.ufscar.dc.dsw.dao.IEditoraDAO;
 import br.ufscar.dc.dsw.dao.ILivroDAO;
 import br.ufscar.dc.dsw.dao.IUsuarioDAO;
+import br.ufscar.dc.dsw.domain.Compra;
 import br.ufscar.dc.dsw.domain.Editora;
 import br.ufscar.dc.dsw.domain.Livro;
 import br.ufscar.dc.dsw.domain.Usuario;
@@ -23,7 +27,7 @@ public class LivrariaMvcApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(IUsuarioDAO usuarioDAO, BCryptPasswordEncoder encoder, IEditoraDAO editoraDAO, ILivroDAO livroDAO) {
+	public CommandLineRunner demo(BCryptPasswordEncoder encoder, IUsuarioDAO usuarioDAO, IEditoraDAO editoraDAO, ILivroDAO livroDAO, ICompraDAO compraDAO) {
 		return (args) -> {
 			
 			Usuario u1 = new Usuario();
@@ -91,6 +95,13 @@ public class LivrariaMvcApplication {
 			l3.setPreco(BigDecimal.valueOf(22.9));
 			l3.setEditora(e3);
 			livroDAO.save(l3);
+
+			Compra c = new Compra();
+			c.setLivro(l3);
+			c.setUsuario(u3);
+			c.setValor(l3.getPreco());
+			c.setData(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Calendar.getInstance().getTime()));
+			compraDAO.save(c);
 		};
 	}
 }

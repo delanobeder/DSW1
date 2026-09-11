@@ -1,0 +1,71 @@
+### Cria -- usuário papel ROLE_USER
+
+POST http://localhost:8081/usuarios
+Content-Type: application/json
+
+{ 
+    "username" : "user", "password": "user", "role": "ROLE_USER" 
+}
+
+### Login -- usuário papel ROLE_USER
+# @name LoginUser
+
+POST http://localhost:8081/usuarios/login
+Content-Type: application/json
+
+{ 
+    "username" : "user", "password": "user" 
+}
+
+@tokenUser = {{LoginUser.response.body.content}}
+
+### Verifica autenticação - usuário papel ROLE_USER
+
+GET http://localhost:8081/usuarios/jwt
+Authorization: Bearer {{tokenUser}}
+
+### Verifica autorização (/user) - usuário papel ROLE_USER
+
+GET http://localhost:8081/usuarios/jwt/user
+Authorization: Bearer {{tokenUser}}
+
+### Verifica autorização (/admin) - usuário papel ROLE_USER
+
+GET http://localhost:8081/usuarios/jwt/admin
+Authorization: Bearer {{tokenUser}}
+
+### Cria -- usuário papel ROLE_ADMIN
+
+POST http://localhost:8081/usuarios
+Content-Type: application/json
+
+{ 
+    "username" : "admin", "password": "admin", "role": "ROLE_ADMIN" 
+}
+
+### Login -- usuário papel ROLE_ADMIN
+# @name LoginAdmin
+
+POST http://localhost:8081/usuarios/login
+Content-Type: application/json
+
+{ 
+    "username" : "admin", "password": "admin" 
+}
+
+@tokenAdmin = {{LoginAdmin.response.body.content}}
+
+### Verifica autenticação - usuário papel ROLE_ADMIN
+
+GET http://localhost:8081/usuarios/jwt
+Authorization: Bearer {{tokenAdmin}}
+
+### Verifica autorização (/user) - usuário papel ROLE_ADMIN
+
+GET http://localhost:8081/usuarios/jwt/user
+Authorization: Bearer {{tokenAdmin}}
+
+### Verifica autorização (/admin) - usuário papel ROLE_ADMIN
+
+GET http://localhost:8081/usuarios/jwt/admin
+Authorization: Bearer {{tokenAdmin}}

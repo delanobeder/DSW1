@@ -1,0 +1,71 @@
+
+### Cria um novo estado (C)
+
+POST http://localhost:8081/estados HTTP/1.1
+Content-Type: application/json
+
+{ 
+    "sigla": "TS", "nome": "Teste"
+}
+
+### Retorna a lista de estados (R)
+
+GET http://localhost:8081/estados
+
+### Retorna o estado de id = 1 (R)
+
+GET http://localhost:8081/estados/1
+
+### Atualiza o estado de id = 28 (U)
+
+PUT http://localhost:8081/estados/28 
+Content-Type: application/json
+
+{ 
+    "sigla": "TS", "nome": "Teste Atualizado"
+}
+
+### Remove o estado de id = 28 (D)
+
+DELETE http://localhost:8081/estados/28
+
+### Cria um nova cidade (C)
+
+POST http://localhost:8081/cidades
+Content-Type: application/json
+
+{ 
+    "nome": "Teste Cidade", 
+    "estado": { "id": 9, "sigla": "GO", "nome": "Goiás" } 
+}
+
+### Retorna a lista de cidades (R)
+
+GET http://localhost:8081/cidades
+
+### Retorna a cidade de id = 1 (R)
+
+GET http://localhost:8081/cidades/1
+
+### Atualiza a cidade (apenas no nome) de id = 5563 (U)
+
+PUT http://localhost:8081/cidades/5563 
+Content-Type: application/json
+
+{ 
+    "nome": "Teste Cidade Atualizado", 
+    "estado": { "id": 9, "sigla": "GO", "nome": "Goiás" } 
+}
+
+### Atualiza a cidade (nome e estado) de id = 5563 (U)
+
+PUT http://localhost:8081/cidades/5563 
+Content-Type: application/json
+
+{ 
+    "nome": "Teste Cidade Atualizado Novamente", 
+    "estado": { "id": 27, "sigla": "TO", "nome": "Tocantins" }
+}
+
+### Remove a cidade de id = 5563 (D)
+DELETE http://localhost:8081/cidades/5563
